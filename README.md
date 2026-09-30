@@ -6,6 +6,8 @@
 
 <p align="center"><strong>Physical Recursive Self-Improvement</strong></p>
 
+<p align="center"><em>From adaptation to inherited improvement.</em></p>
+
 <p align="center">A paper-aligned, evidence-auditable map of recursive improvement in embodied systems.</p>
 
 <p align="center">
@@ -27,16 +29,32 @@
 
 </div>
 
-Physical RSI asks a narrower question than whether robots can keep learning:
+<p align="center">
+  <a href="https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png"><img src="docs/figures/darwin-tree-1837.jpg" alt="Charles Darwin's first sketch of an evolutionary tree, headed I think" width="360"></a>
+</p>
+<p align="center"><sub>Charles Darwin's first evolutionary tree, Notebook B, 1837. Public domain; Cambridge University Library, via Wikimedia Commons.</sub></p>
 
-> **Can evidence from physical interaction improve the process that produces the robot's next
+<a id="from-evolution-to-physical-rsi"></a>
+
+## From Evolution to Physical RSI <sub><a href="#readme-top">top</a></sub>
+
+Natural evolution did not become powerful because organisms changed once. Variation mattered
+because selection acted on it, and inheritance carried the consequences forward. Across
+generations, the environment became part of the history of what life could become.
+
+Physical RSI asks whether an embodied artificial system can form an engineered counterpart to
+this chain. Physical interaction supplies experience, verification determines which changes are
+admitted, and inheritance returns accepted changes to the next improvement cycle.
+
+> **Can the world change not only what a machine does, but how it produces its next
 > improvement?**
 
-A robot may collect more data, recover from a failed grasp, or fine-tune a policy after deployment.
-Those are useful forms of adaptation, but they are not recursive by themselves. Recursion begins
-when a retained change reaches the mechanism that generates, evaluates, or selects later updates.
-It becomes *physical* when real interaction has a causal role in deciding what mechanism changes or
-survives.
+The analogy deliberately stops there. Natural selection does not owe us a protected objective,
+an audit trail, or a matched resource budget. An engineered recursive system does. A robot may
+collect more data, recover from a failed grasp, or fine-tune a policy after deployment, but these
+remain forms of adaptation until a retained change reaches the mechanism that generates,
+evaluates, or selects later updates. The recursion becomes *physical* only when real interaction
+has a causal role in deciding what mechanism changes or survives.
 
 This repository is for **Physical Recursive Self-Improvement** research, where we study how
 physical interaction can drive retained changes in embodied systems and the processes that improve
@@ -60,6 +78,7 @@ entry, you can:
 The repository is organized to be read from definitions and evidence to methods, papers, and
 validation:
 
+- [From Evolution to Physical RSI](#from-evolution-to-physical-rsi)
 - [The Boundary](#the-boundary)
 - [Capability Map](#capability-map)
 - [Featured Evidence Register](#featured-evidence-register)
