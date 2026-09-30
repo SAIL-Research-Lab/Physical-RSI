@@ -30,9 +30,10 @@
 </div>
 
 <p align="center">
-  <img src="docs/figures/evolution-to-physical-rsi.jpg" alt="Organic evolutionary forms merging into NASA's Valkyrie humanoid robot" width="900">
+  <img src="docs/figures/darwin-haeckel-evolutionary-trees.png" alt="Darwin's first evolutionary tree sketch beside Haeckel's nineteenth-century pedigree of humankind" width="820">
 </p>
-<p align="center"><sub>From evolved form to embodied intelligence. Original composition using Ernst Haeckel's <a href="https://commons.wikimedia.org/wiki/File:Haeckel_Stephoidea.jpg"><em>Stephoidea</em></a> and NASA's <a href="https://commons.wikimedia.org/wiki/File:Valkyrie-robot-4.jpg">Valkyrie</a>; both source images are public domain.</sub></p>
+<p align="center"><em>Life is not repetition, but creation. Duration carries the whole of reality: a boundless river flowing toward a horizon with no predetermined end.</em><br>
+<sub>Darwin's <a href="https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png">first evolutionary tree</a> (1837), beside Haeckel's <a href="https://commons.wikimedia.org/wiki/File:Pedigree_of_man_(Haeckel_1874).jpg"><em>Pedigree of Man</em></a> (1874). Both works are public domain.</sub></p>
 
 <a id="from-evolution-to-physical-rsi"></a>
 
