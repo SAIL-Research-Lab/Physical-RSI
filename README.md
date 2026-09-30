@@ -30,9 +30,9 @@
 </div>
 
 <p align="center">
-  <a href="https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png"><img src="docs/figures/darwin-tree-1837.jpg" alt="Charles Darwin's first sketch of an evolutionary tree, headed I think" width="360"></a>
+  <img src="docs/figures/evolution-to-physical-rsi.jpg" alt="Organic evolutionary forms merging into NASA's Valkyrie humanoid robot" width="900">
 </p>
-<p align="center"><sub>Charles Darwin's first evolutionary tree, Notebook B, 1837. Public domain; Cambridge University Library, via Wikimedia Commons.</sub></p>
+<p align="center"><sub>From evolved form to embodied intelligence. Original composition using Ernst Haeckel's <a href="https://commons.wikimedia.org/wiki/File:Haeckel_Stephoidea.jpg"><em>Stephoidea</em></a> and NASA's <a href="https://commons.wikimedia.org/wiki/File:Valkyrie-robot-4.jpg">Valkyrie</a>; both source images are public domain.</sub></p>
 
 <a id="from-evolution-to-physical-rsi"></a>
 
