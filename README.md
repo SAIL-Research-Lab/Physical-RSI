@@ -16,13 +16,13 @@
 </p>
 
 <p align="center">
-  <a href="#reading-paths">Reading paths</a> &nbsp;|&nbsp;
-  <a href="#scope-and-relevance">Scope</a> &nbsp;|&nbsp;
+  <a href="#the-boundary">Boundary</a> &nbsp;|&nbsp;
   <a href="#capability-map">L1-L5</a> &nbsp;|&nbsp;
   <a href="#featured-evidence-register">Evidence register</a> &nbsp;|&nbsp;
   <a href="#three-views-of-one-system">Research map</a> &nbsp;|&nbsp;
   <a href="#paper-catalog">Paper catalog</a> &nbsp;|&nbsp;
-  <a href="docs/paper-reference-index.md">All references</a>
+  <a href="docs/paper-reference-index.md">All references</a> &nbsp;|&nbsp;
+  <a href="#contributing">Contribute</a>
 </p>
 
 </div>
@@ -38,88 +38,40 @@ when a retained change reaches the mechanism that generates, evaluates, or selec
 It becomes *physical* when real interaction has a causal role in deciding what mechanism changes or
 survives.
 
-This repository follows the evidence boundaries of the **Physical Recursive Self-Improvement**
-paper. It is a reading map, not a leaderboard: labels such as "self-improving," "autonomous," or
-"lifelong" are not treated as evidence on their own.
+This repository is for **Physical Recursive Self-Improvement** research, where we study how
+physical interaction can drive retained changes in embodied systems and the processes that improve
+them. It follows the evidence boundaries of the accompanying paper and serves as a reading map,
+not a leaderboard: labels such as "self-improving," "autonomous," or "lifelong" are not treated as
+evidence on their own.
 
-<a id="latest-update"></a>
+This repository is actively maintained. If an author would prefer not to have a paper listed here,
+please contact <shangding.gu@berkeley.edu>. Constructive comments, corrections, and suggestions are
+welcome.
 
-## Latest Update <sub><a href="#readme-top">top</a></sub>
+You are also welcome to update the collection. To suggest a missing paper or correct an existing
+entry, you can:
 
-**2026-09-30 - Evidence audit added.** The repository now separates a featured 65-paper catalog
-from the complete 102-work bibliography, adds reading paths and scope rules, and records grounding,
-updated objects, and evidence boundaries for representative physical-improvement workflows.
+- fork this repository and open a pull request;
+- [report an issue](https://github.com/SAIL-Research-Lab/Physical-RSI/issues);
+- or email <shangding.gu@berkeley.edu>.
 
-<a id="reading-paths"></a>
+**Content**
 
-## Reading Paths <sub><a href="#readme-top">top</a></sub>
+The repository is organized to be read from definitions and evidence to methods, papers, and
+validation:
 
-The catalog is designed for reference. These shorter routes are better starting points:
+- [The Boundary](#the-boundary)
+- [Capability Map](#capability-map)
+- [Featured Evidence Register](#featured-evidence-register)
+- [Agent Participation, Training, and Verification](#three-views-of-one-system)
+- [Paper Catalog](#paper-catalog)
+- [Open Questions](#open-questions)
+- [Paper Reference Coverage](#paper-reference-coverage)
+- [Contributing](#contributing)
+- [Data Provenance and Validation](#data-provenance-and-validation)
+- [License](#license)
 
-| Goal | Suggested route |
-| --- | --- |
-| **Understand the claim** | Read [The boundary](#the-boundary), then compare inheritance, persistent improvement, structural recursion, and beneficial recursion. |
-| **Place a physical workflow** | Use the [L1-L5 capability map](#capability-map), then inspect the [featured evidence register](#featured-evidence-register). |
-| **Study autonomous robot learning** | Start with [SELFI](https://proceedings.mlr.press/v270/hirose25a.html), [VERITAS](https://arxiv.org/abs/2606.18247), and [SOAR](https://arxiv.org/abs/2407.20635), then browse [Training](#2-training). |
-| **Study mechanism improvement** | Read [ENPIRE](https://arxiv.org/abs/2606.19980) beside the digital precedents [Darwin Godel Machine](https://arxiv.org/abs/2505.22954) and [HyperAgents](https://arxiv.org/abs/2603.19461). |
-| **Study trustworthy recursion** | Follow [Verification](#3-verification), the beneficial-recursion protocol, and the verification papers in the [catalog](#verification-evaluation-and-safety). |
-| **Audit coverage** | Check the [complete reference index](docs/paper-reference-index.md) and [data provenance](#data-provenance-and-validation). |
-
-<a id="scope-and-relevance"></a>
-
-## Scope and Relevance <sub><a href="#readme-top">top</a></sub>
-
-This repository includes several kinds of work because the paper uses them for different parts of
-the argument. Inclusion is not a claim that every paper demonstrates Physical RSI.
-
-| Scope | Inclusion rule | What it establishes |
-| --- | --- | --- |
-| **Physical capability evidence** | A reported workflow uses robot interaction to support a specific L1-L5 claim. | Evidence only for the marked capability and experimental regime. |
-| **Physical supporting method** | A method contributes execution, training, memory, reward, or verification machinery to an embodied improvement loop. | A component of the loop, not necessarily recursion. |
-| **Simulation mechanism** | A simulated system changes rewards, curricula, skills, policies, or training artifacts. | A mechanism precedent without real-world physical grounding. |
-| **Digital RSI precedent** | A software or agent system revises an inherited improvement process. | Structural or evaluation precedent without embodied grounding. |
-| **L5 candidate** | Physical evidence revises and reuses a mechanism that governs later improvement. | Structural Physical RSI; strict L5 still requires a matched beneficial-recursion comparison. |
-
-Standard robot execution, one-off fine-tuning, or a better successor alone does not establish
-recursive improvement. Likewise, a paper's use of "self-improving" or "self-evolving" is never
-treated as sufficient evidence.
-
-<a id="improvement-loop-anatomy"></a>
-
-## Improvement-Loop Anatomy <sub><a href="#readme-top">top</a></sub>
-
-Every claimed workflow can be read through the same closed loop:
-
-> **physical experience -> evaluation and credit -> candidate update -> verification and consolidation -> successor re-entry**
-
-| Component | Audit question |
-| --- | --- |
-| **System boundary** | What counts as the changing self: policy, memory, verifier, training code, or the wider embodied system? |
-| **Experience** | Which real, simulated, or imagined interaction supplies evidence for the change? |
-| **Updated object** | What persists: weights, data, skills, reward, verifier, harness, or improvement mechanism? |
-| **Improver** | What proposes the candidate, and is that procedure itself fixed or revisable? |
-| **Verifier** | Who controls admission or release, and is the evidence independent of the candidate? |
-| **Inheritance** | Is the accepted change actually reused in a later episode or improvement cycle? |
-| **Later-round effect** | Does the evidence show recovery, persistent learning, transfer, structural recursion, or beneficial recursion? |
-
-Three questions catch most overclaims: **Where does the loop close? What is updated and inherited?
-Which improvement decisions remain external?**
-
-<a id="evidence-tags"></a>
-
-## How to Read the Evidence Tags <sub><a href="#readme-top">top</a></sub>
-
-The featured register uses four independent fields:
-
-| Field | Values used here |
-| --- | --- |
-| **Capability** | `L1` to `L5 candidate`; levels are non-exclusive evidence claims, not quality rankings. |
-| **Grounding** | `Physical`, `Hybrid`, `Simulation`, or `Digital`; this records where the relevant evidence comes from. |
-| **Updated object** | Policy, data, memory, skill, reward, verifier, model, harness, training code, or improvement mechanism. |
-| **Status** | `Supported`, `Candidate`, or `Context`; this separates demonstrated evidence from a useful precedent. |
-
-The four fields should not be collapsed. A physically deployed system can still have a fixed
-improver, and a structurally recursive digital system can still lack physical grounding.
+---
 
 <a id="the-boundary"></a>
 
