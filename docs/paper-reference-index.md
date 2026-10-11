@@ -137,3 +137,10 @@ RSI or a particular L1-L5 capability. The evidence claims in the
 - **3 duplicate version pairs** are consolidated: AutoRT, Robometer, and Darwin Godel Machine.
 - Links prefer the canonical paper page or the URL printed in the bibliography. A canonical public
   page is supplied for the few bibliography records that only include a DOI or omit a URL.
+
+## Harness chapter update
+
+The [Harness chapter reference supplement](harness-reference-supplement.md) records citations
+from the saved chapter on 11 October 2026. It overlaps with this index and adds a separately
+scoped chapter snapshot. The original 102-work coverage claim above is unchanged. See the
+[Harness adaptation guide](harness-adaptation.md) for mechanisms and evidence boundaries.
