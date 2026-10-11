@@ -199,6 +199,18 @@ selects rewards belongs to Loop 3. Digital and simulation studies clarify this b
 not become evidence of Physical RSI without physical grounding and inherited use in the same
 workflow.
 
+### Harness adaptation update
+
+The [Harness adaptation guide](docs/harness-adaptation.md) expands the agent perspective into
+feedback interpretation, memory/skill/workflow changes, adoption and improvement history, and
+meta-improvement of the update-generating method. It includes four current chapter figures and
+mechanism-level reading tables, with digital and simulation evidence identified separately from
+physical evidence.
+
+The [Harness chapter reference supplement](docs/harness-reference-supplement.md) records the
+saved chapter's citations as of 11 October 2026. This is an extension to the September manuscript
+snapshot, not a revision of its 102-work bibliography count.
+
 ### 2. Training
 
 Training is a continuing, gated process rather than a one-off offline stage:
@@ -261,6 +273,9 @@ for all 102 unique works cited in the manuscript.
 
 ### Agent participation and harnesses
 
+For the updated mechanism-based collection, see [Harness adaptation](docs/harness-adaptation.md)
+and its [chapter reference supplement](docs/harness-reference-supplement.md).
+
 - [Self-Evolving Embodied Agents via Skill-Harness Evolution](https://arxiv.org/abs/2608.11350) by Peidong Wang et al. 2026.
 - [HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning](https://arxiv.org/abs/2606.08610) by Zechu Li et al. 2026.
 - [Grounded Vision-Language Interpreter for Long-Horizon Bimanual Task and Motion Planning](https://arxiv.org/abs/2506.03270) by Jeremy Siburian et al. 2025.
@@ -308,6 +323,9 @@ for all 102 unique works cited in the manuscript.
 - [Unpacking Failure Modes of Generative Policies: Runtime Monitoring of Consistency and Progress](https://arxiv.org/abs/2410.04640) by Christopher Agia et al. 2024.
 
 ### Recursive and meta-improvement
+
+The [Harness meta-improvement guide](docs/harness-adaptation.md#4-meta-improvement-of-adaptation)
+connects editable adaptation methods to downstream evaluation and inheritance.
 
 - [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026.
 - [SBCO: Self-Supervised, Verifier-Grounded Harness Optimization for Planning Agents](https://arxiv.org/abs/2608.10157) by Vivek Kulkarni et al. 2026.
@@ -393,7 +411,7 @@ search results alone.
 | arXiv coverage | 87 identifiers parsed from the manuscript; all 87 occur in the full index |
 | Featured-to-index check | 65 README entries; all map to the 102-work index |
 | Figure provenance | Figures 3, 5, and 14 extracted from the supplied manuscript |
-| Repository policy | The source PDF is excluded by `.gitignore`; only the three cited figures are tracked. |
+| Repository policy | The source PDF is excluded by `.gitignore`; the original manuscript figures and explicitly documented chapter-update renderings are tracked. |
 | Last audit | 2026-09-30 |
 
 Counts describe this manuscript snapshot. Future additions to the living catalog should be labeled
