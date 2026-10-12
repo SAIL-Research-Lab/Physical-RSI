@@ -1,4 +1,4 @@
-`<a id="readme-top"></a>`
+<a id="readme-top"></a>
 
 <div align="center">
 
@@ -34,9 +34,9 @@
 <p align="center"><em>Life is not repetition, but creation. Duration carries the whole of reality: a boundless river flowing toward a horizon with no predetermined end.</em><br>
 <sub>Darwin's <a href="https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png">first evolutionary tree</a> (1837), beside Haeckel's <a href="https://commons.wikimedia.org/wiki/File:Pedigree_of_man_(Haeckel_1874).jpg"><em>Pedigree of Man</em></a> (1874). Both works are public domain.</sub></p>
 
-`<a id="from-evolution-to-physical-rsi"></a>`
+<a id="from-evolution-to-physical-rsi"></a>
 
-## From Evolution to Physical RSI `<sub><a href="#readme-top">`top `</a></sub>`
+## From Evolution to Physical RSI <sub><a href="#readme-top">top</a></sub>
 
 Natural evolution did not become powerful because organisms changed once. Variation mattered
 because selection acted on it, and inheritance carried the consequences forward. Across
@@ -94,9 +94,9 @@ open questions:
 
 ---
 
-`<a id="the-boundary"></a>`
+<a id="the-boundary"></a>
 
-## The Boundary `<sub><a href="#readme-top">`top `</a></sub>`
+## The Boundary <sub><a href="#readme-top">top</a></sub>
 
 The paper separates the **task-execution system** from the **procedure that improves it**.
 Their roles, rather than whether they are implemented as code, text, or weights, determine what
@@ -132,9 +132,9 @@ through physics simulation or real interaction. Simulated feedback is not eviden
 safety; learned-model imagination alone does not meet the grounding condition. Deploying a frozen
 result on a robot does not retroactively make its earlier revisions depend on real-robot feedback.
 
-`<a id="capability-map"></a>`
+<a id="capability-map"></a>
 
-## Capability Map `<sub><a href="#readme-top">`top `</a></sub>`
+## Capability Map <sub><a href="#readme-top">top</a></sub>
 
 L1–L4 cross two dimensions: **the update target** and **the scope of the demonstrated gain**.
 They are not a simple ladder from human assistance to autonomy. L5 builds on L4 and adds verified
@@ -177,9 +177,9 @@ skills changes `κ`.
 Cross-task evidence must also show that the retained source change is actually used and contributes
 to target performance. Running the same fixed procedure independently on many tasks is not enough.
 
-`<a id="featured-evidence-register"></a>`
+<a id="featured-evidence-register"></a>
 
-## Featured Evidence Register `<sub><a href="#readme-top">`top `</a></sub>`
+## Featured Evidence Register <sub><a href="#readme-top">top</a></sub>
 
 The entries below follow the manuscript's selected protocols in Section 2.3 and Figure 3.
 They separate the inherited object from the setting that supplies its feedback. The register is
@@ -200,9 +200,9 @@ physical operation should be reported separately from human labeling, corrective
 code edits, or update selection. The latter can determine what is inherited and therefore affect
 the level claim; the former do not change the level by themselves, but still contribute cost and risk.
 
-`<a id="three-views-of-one-system"></a>`
+<a id="three-views-of-one-system"></a>
 
-## Harness Adaptation, Training, and Verification `<sub><a href="#readme-top">`top`</a></sub>`
+## Harness Adaptation, Training, and Verification <sub><a href="#readme-top">top</a></sub>
 
 Harness adaptation and model training are two pathways through the same improvement system.
 Safety constrains both; verification decides what can be inherited; independent evaluation asks
@@ -311,9 +311,9 @@ These resources probe different parts of the problem. An iterative agent benchma
 fact alone, a complete Physical RSI evaluation. Verified recursive gain across tasks under matched
 conditions remains a gap identified in the manuscript's reviewed resources.
 
-`<a id="paper-catalog"></a>`
+<a id="paper-catalog"></a>
 
-## Paper Catalog `<sub><a href="#readme-top">`top `</a></sub>`
+## Paper Catalog <sub><a href="#readme-top">top</a></sub>
 
 ### Model Training
 
@@ -601,7 +601,7 @@ safeguards are not physical-safety evidence. Benchmark resources remain in the b
 - [Unpacking Failure Modes of Generative Policies: Runtime Monitoring of Consistency and Progress](https://proceedings.mlr.press/v270/agia25a.html) by Christopher Agia et al. 2025.
 - [Code-as-Monitor: Constraint-Aware Visual Programming for Reactive and Proactive Robotic Failure Detection](https://arxiv.org/abs/2412.04455) by Enshen Zhou et al. 2024.
 
-`<a id="catalog-verification"></a>`
+<a id="catalog-verification"></a>
 
 ### Verification and Evaluation Methods
 
@@ -621,7 +621,7 @@ safety-specific monitors remain in [Safety and Assurance](#catalog-safety).
 - [Self-Taught Evaluators](https://arxiv.org/abs/2408.02666) by Tianlu Wang et al. 2024.
 - [Meta-Rewarding Language Models: Self-Improving Alignment with LLM-as-a-Meta-Judge](https://arxiv.org/abs/2407.19594) by Tianhao Wu et al. 2024.
 
-`<a id="catalog-benchmarks"></a>`
+<a id="catalog-benchmarks"></a>
 
 ### Benchmarks, Datasets, and Evaluation Resources
 
@@ -700,9 +700,9 @@ Cited years follow v33 and may differ from first preprint dates.
 - [MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation](https://proceedings.mlr.press/v235/huang24y.html) by Qian Huang et al. 2024.
 - [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://arxiv.org/abs/2410.07095) by Jun Shern Chan et al. 2024.
 
-`<a id="open-questions"></a>`
+<a id="open-questions"></a>
 
-## Open Questions `<sub><a href="#readme-top">`top `</a></sub>`
+## Open Questions <sub><a href="#readme-top">top</a></sub>
 
 Section 7 identifies open problems beyond autonomous execution and learning:
 
@@ -717,9 +717,9 @@ Section 7 identifies open problems beyond autonomous execution and learning:
 
 These are gaps scoped to the reviewed manuscript, not claims that no related work exists elsewhere.
 
-`<a id="license"></a>`
+<a id="license"></a>
 
-## License `<sub><a href="#readme-top">`top `</a></sub>`
+## License <sub><a href="#readme-top">top</a></sub>
 
 This repository is released under the [MIT License](LICENSE). Linked papers and third-party
 materials remain subject to their respective licenses.
