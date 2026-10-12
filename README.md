@@ -83,7 +83,7 @@ validation:
 - [The Boundary](#the-boundary)
 - [Capability Map](#capability-map)
 - [Featured Evidence Register](#featured-evidence-register)
-- [Agent Participation, Training, and Verification](#three-views-of-one-system)
+- [Harness Adaptation, Training, and Verification](#three-views-of-one-system)
 - [Paper Catalog](#paper-catalog)
 - [Open Questions](#open-questions)
 - [Paper Reference Coverage](#paper-reference-coverage)
@@ -91,172 +91,253 @@ validation:
 - [Data Provenance and Validation](#data-provenance-and-validation)
 - [License](#license)
 
+> **Version note.** The sections below follow `IEEE_TPAMI__Physical_RSI-33.pdf` (12 October 2026).
+> The opening introduction and badges are retained from the earlier README; their L1–L5 taxonomy,
+> real-only grounding language, and bibliography counts should not be read as claims about this snapshot.
+> The current framework and coverage are specified below.
+
 ---
 
 <a id="the-boundary"></a>
 
 ## The Boundary <sub><a href="#readme-top">top</a></sub>
 
-The relevant "self" is the complete embodied improvement system: policy, safety guard, verifier,
-memory, data pipeline, training procedure, and the infrastructure that decides which changes
-persist. Deploying a fixed improvement loop on a robot is not enough.
+The paper separates the **task-execution system** from the **procedure that improves it**.
+Their roles, rather than whether they are implemented as code, text, or weights, determine what
+has changed and which claim the evidence supports.
+
+| Object | Role in the improvement system |
+| --- | --- |
+| **Execution system `M = (Θ, H)`** | Learned execution models `Θ` and the model-external harness `H`: prompts, memory, skills, tools, and orchestration. |
+| **Improvement procedure `Φ = (Adapt, Train, Ver)`** | Harness adaptation, data preparation and model training, and verification of candidate updates. These stages may themselves be revised. |
+| **Experience `D`** | Execution records and improvement histories, including attempted changes and their outcomes. |
+| **Protected evaluation `E/Q`** | Tasks and scoring rules outside `Φ`, used to evaluate the systems it produces and to judge revisions of `Ver`. |
+
+<p align="center">
+  <a href="docs/figures/physical-rsi-v33-overview.png"><img src="docs/figures/physical-rsi-v33-overview.png" alt="Physical RSI architecture and L0–L5 framework" width="96%"></a>
+</p>
+<p align="center"><sub><strong>Figure 1.</strong> Task execution, the improvement procedure, safety and control, and the L0–L5 framework.</sub></p>
 
 Four claims that are often collapsed should be kept separate:
 
 | Claim | What must be shown |
 | --- | --- |
-| **Inheritance** | A change from one cycle is retained and used later. |
-| **Persistent improvement** | The retained change contributes to better later performance. |
-| **Structural recursion** | The retained change modifies the process that produces later updates. |
-| **Beneficial recursion** | Under matched conditions, the revised process produces better successors than the process it replaced. |
+| **Inheritance** | An accepted change persists beyond its originating episode and is used later. |
+| **Retained capability gain** | The inherited change contributes to better later task performance. |
+| **Meta-level self-inheritance** | The procedure produces a revision of its own stages, which is retained and used in later improvement. |
+| **Recursive gain across tasks** | Successive revised procedures produce better subsequent systems than their predecessors from matched starting systems and experience, under equal budgets and protected evaluation. |
 
-<p align="center">
-  <a href="docs/figures/beneficial-recursion.jpg"><img src="docs/figures/beneficial-recursion.jpg" alt="From inheritance to beneficial recursion, with a matched improver comparison" width="96%"></a>
-</p>
-<p align="center"><sub><strong>Figure 14.</strong> Beneficial recursion requires testing the improver, not only its latest successor.</sub></p>
+Replanning within an execution is not inheritance. Revising a procedure is not proof that it
+improves more effectively. A persuasive comparison accounts for robot trials, resets, hardware wear,
+compute, search, and human effort—not only the final successor's score.
 
-Structural recursion establishes the recursive form. Beneficial recursion establishes that the
-recursive change actually helped. A persuasive comparison starts from the same system, uses the
-same task conditions and protected evaluation criterion, and accounts for robot trials, resets,
-hardware wear, compute, search, and human effort.
+**Grounding and deployment are different records.** Definitions 1–2 and Section 5.2 allow grounding
+through physics simulation or real interaction. Simulated feedback is not evidence of hardware
+safety; learned-model imagination alone does not meet the grounding condition. Deploying a frozen
+result on a robot does not retroactively make its earlier revisions depend on real-robot feedback.
 
 <a id="capability-map"></a>
 
 ## Capability Map <sub><a href="#readme-top">top</a></sub>
 
-L1-L5 are **independent evidence claims**, not a maturity ladder. A workflow may support several
-capabilities, and a higher number does not silently establish the levels below it. Classification
-applies to the demonstrated workflow, not to the title of a paper.
+L1–L4 cross two dimensions: **the update target** and **the scope of the demonstrated gain**.
+They are not a simple ladder from human assistance to autonomy. L5 builds on L4 and adds verified
+recursive gain. A level applies to a specified improvement workflow and evaluation protocol—not
+to every experiment in a paper.
+
+| Scope of gain | Capability-level update to `M = (Θ, H)` | Meta-level update to `Φ` |
+| --- | --- | --- |
+| **Same task** | **L1:** an autonomously inherited capability update yields a retained same-task gain, with the improvement procedure fixed. | **L2:** an autonomously revised and inherited procedure is reused for same-task improvement, with retained capability gain. |
+| **Across tasks** | **L3:** source-task experience produces an inherited capability change that contributes to target-task gain, with the improvement procedure fixed. | **L4:** a procedure revision formed through source-task improvement is inherited and used for improvement across tasks, with retained capability gain. |
+
+- **L0 — no autonomous retained-improvement loop in the assessed workflow.** This includes
+  execution-only correction and, under the paper's autonomy rule, retained updates that depend on
+  human intervention or labeling during improvement.
+- **L5 — verified recursive gain across tasks.** Beyond L4, successive inherited revisions of `Φ`
+  must produce better subsequent improvements than their predecessors from matched starting
+  systems and experience, under equal budgets and protected evaluation.
+
+**Procedure change is not sufficient for L5.** Revising training code, a curriculum, or an acceptance
+rule establishes a changed mechanism only when the revision is retained and used. Its superiority
+requires a separate comparison of the subsequent systems produced by the old and new procedures.
+The manuscript's Figure 3 reports **no confirmed L5 case among its selected systems**.
+
+### What counts as another task?
+
+The manuscript describes a task through its required **skill sequence `κ`** and its **instance
+parameters `ξ`**. A change in object pose or scene difficulty does not establish across-task transfer
+if the required sequence remains unchanged. A new skill or a new ordering or composition of existing
+skills changes `κ`.
+
+- Grasping a cup from two different exposed positions: potentially the **same task**, with different `ξ`.
+- Grasping a cup versus opening a cabinet and then grasping it: **different tasks**.
+- `navigate → open → grasp` versus `grasp → navigate → open`: **different skill sequences**.
 
 <p align="center">
-  <a href="docs/figures/capability-levels.png"><img src="docs/figures/capability-levels.png" alt="Five capability categories from human-supported improvement to physically grounded mechanism revision" width="100%"></a>
+  <a href="docs/figures/physical-rsi-v33-update-targets-and-tasks.png"><img src="docs/figures/physical-rsi-v33-update-targets-and-tasks.png" alt="Capability versus meta-level updates, and task identity through skill sequences" width="100%"></a>
 </p>
-<p align="center"><sub><strong>Figure 3.</strong> Five capability categories of physical self-improvement.</sub></p>
+<p align="center"><sub><strong>Manuscript Figure 2.</strong> Update targets and task identity. New scenes or embodiments should not automatically be counted as new tasks.</sub></p>
 
-| Capability | Deciding question | Representative evidence |
-| --- | --- | --- |
-| **L1: Human-supported improvement** | Does a person supply the corrective information that determines what changes? | [ConRFT](https://arxiv.org/abs/2502.05450) learns from robot trajectories containing operator corrections. |
-| **L2: Autonomous error recognition and recovery** | Does the system detect an unsatisfactory execution and choose how to recover? | [DoReMi](https://sites.google.com/view/doremi-paper) detects task-constraint violations and replans; [REFLECT](https://arxiv.org/abs/2306.15724) explains failures and proposes repairs. |
-| **L3: Autonomous learning across episodes** | Does physical experience produce a system-directed, retained change used later? | [SELFI](https://proceedings.mlr.press/v270/hirose25a.html) improves navigation through autonomous practice; [VERITAS](https://arxiv.org/abs/2606.18247) returns verified rollouts to policy training. |
-| **L4: Transfer of acquired experience** | Is the contribution of prior experience demonstrated in another task, scene, environment, or embodiment? | [SOAR](https://arxiv.org/abs/2407.20635) isolates cross-scene experience; [ASPIRE](https://arxiv.org/abs/2607.00272) retrieves discovered skills for real-robot programming. |
-| **L5: Physically grounded mechanism improvement** | Does physical evidence revise an inherited improvement mechanism, and does that mechanism produce better later improvements? | [ENPIRE](https://arxiv.org/abs/2606.19980) revises and reuses robot-training code, making it an important **L5 candidate**. It does not yet provide the matched improver comparison required for confirmed L5. |
-
-The paper finds strong evidence for the lower capabilities and early evidence for physically grounded
-mechanism revision. It does **not** identify a reviewed physical workflow that conclusively
-demonstrates strict, beneficial L5.
+Cross-task evidence must also show that the retained source change is actually used and contributes
+to target performance. Running the same fixed procedure independently on many tasks is not enough.
 
 <a id="featured-evidence-register"></a>
 
 ## Featured Evidence Register <sub><a href="#readme-top">top</a></sub>
 
-This compact register makes the classification decision inspectable. Capability, grounding, and
-updated object are recorded independently; the final column states the main evidential limit rather
-than repeating the paper's abstract claim.
+The entries below follow the manuscript's selected protocols in Section 2.3 and Figure 3.
+They separate the inherited object from the setting that supplies its feedback. The register is
+selective and does not replace the underlying experiments or their autonomy conditions.
 
-| Workflow | Capability | Grounding | Updated object | Status and boundary |
-| --- | --- | --- | --- | --- |
-| [ConRFT](https://arxiv.org/abs/2502.05450) | `L1` | `Physical` | Policy, critic, replay data | **Supported:** operator corrections determine the learning signal. |
-| [DoReMi](https://sites.google.com/view/doremi-paper) | `L2` | `Hybrid` | Plan, failure detector | **Supported:** recovery is online; detector transfer is offline. |
-| [REFLECT](https://arxiv.org/abs/2306.15724) | `L2 candidate` | `Physical` | Explanation, repair plan | **Candidate:** physical failures inform recovery, but the autonomy claim depends on the evaluated setup. |
-| [SELFI](https://proceedings.mlr.press/v270/hirose25a.html) | `L3` | `Physical` | Policy, critic | **Supported:** autonomous practice produces retained cross-episode learning. |
-| [VERITAS](https://arxiv.org/abs/2606.18247) | `L3` | `Physical` | Policy, verified data | **Supported:** verified real-world rollouts return to policy training. |
-| [RISE](https://arxiv.org/abs/2602.11075) | `L3 candidate` | `Hybrid` | Policy, dynamics, value | **Candidate:** physical grounding is followed by imagined refinement. |
-| [SOAR](https://arxiv.org/abs/2407.20635) | `L3`, `L4` | `Physical` | Policy, robot data | **Supported:** persistent learning and cross-scene transfer are evaluated. |
-| [Robometer](https://arxiv.org/abs/2603.02115) | `L4` | `Physical` | Reward model, target policies | **Supported:** a transferred reward model supplies feedback for target policies. |
-| [ASPIRE](https://arxiv.org/abs/2607.00272) | `L4` | `Hybrid` | Programs, repair skills | **Supported:** simulation-discovered skills are retrieved for real-robot programs. |
-| [ENPIRE](https://arxiv.org/abs/2606.19980) | `L5 candidate` | `Physical` | Training code, recipes | **Candidate:** the mechanism is revised and reused, but beneficial recursion is not isolated under matched conditions. |
+| Selected workflow | Reading under the current framework | Evidence and boundary |
+| --- | --- | --- |
+| [ConRFT](https://arxiv.org/abs/2502.05450), operator-assisted learning | **L0 reference workflow** | Human corrections contribute to retained learning. This is useful robot improvement, but not autonomous improvement under the manuscript's level-assignment rule. |
+| [DoReMi](https://sites.google.com/view/doremi-paper), execution recovery | **L0 reference workflow** | Detecting a mismatch and replanning during execution does not by itself establish a retained update to `M` or `Φ`. |
+| [SOAR](https://arxiv.org/abs/2407.20635) and [SELFI](https://proceedings.mlr.press/v270/hirose25a.html), autonomous robot learning | **L1 in the selected workflows** | Real-robot experience supports retained capability updates. A new scene or further training round is not automatically a new `κ` or an updated improvement procedure. |
+| [ENPIRE](https://arxiv.org/abs/2606.19980), pin-insertion training-code revision | **L2 in the selected same-task protocol** | Robot outcomes guide revisions to training code and recipes. The selected experiment does not establish across-task procedure improvement or the successive matched gains required for L5. |
+| [ASPIRE](https://arxiv.org/abs/2607.00272), retained library transfer | **L3 in the selected simulation protocol** | Guidance accumulated on LIBERO-90 is applied to held-out long-horizon tasks without further debugging or task-specific library updates. The retained library belongs to `H`; separate real-robot transfer does not change the source of its discovery feedback. |
+| [RPG](https://arxiv.org/abs/2610.02204), skill and prompt improvement | **L3 in the manuscript's selected workflow** | Simulation practice updates the execution system, which is then frozen for real deployment. Retaining an improved skill library is not the same as revising the method that builds the library. |
+| [Hyperagents](https://arxiv.org/html/2603.19461v1), transferable meta-improvement | **L4 comparator in Figure 3; methodological precedent** | The manuscript uses this work to discuss editable improvement procedures and transfer. Its digital/meta-level evidence should not be relabeled as a demonstration of real-robot L5. |
 
-The register is intentionally selective. It identifies representative evidence needed to understand
-the taxonomy; the [paper catalog](#paper-catalog) provides broader reading coverage, and the
-[reference index](docs/paper-reference-index.md) records every unique work cited by the manuscript.
+**Autonomy needs its own record.** Human setup, scene resets, hardware repair, and authorization for
+physical operation should be reported separately from human labeling, corrective intervention,
+code edits, or update selection. The latter can determine what is inherited and therefore affect
+the level claim; the former do not change the level by themselves, but still contribute cost and risk.
 
 <a id="three-views-of-one-system"></a>
 
-## Three Views of One System <sub><a href="#readme-top">top</a></sub>
+## Harness Adaptation, Training, and Verification <sub><a href="#readme-top">top</a></sub>
 
-Agent participation, training, and verification are complementary views of the same improvement
-system. The first asks what an agent's output controls; the second asks how experience becomes a
-persistent update; the third asks what the system is allowed to carry forward.
+Harness adaptation and model training are two pathways through the same improvement system.
+Safety constrains both; verification decides what can be inherited; independent evaluation asks
+whether the retained changes helped. Sections 3–6 organize these complementary roles.
+
+### 1. Harness adaptation
+
+The harness carries execution resources across tasks: memory, skill implementations, interfaces,
+and orchestration or recovery logic. Its update loop connects physical evidence to later use:
+
+> **execution evidence → diagnosis and edit scope → candidate change → verification → inheritance**
+
+| Question | Update target | Representative work |
+| --- | --- | --- |
+| **What execution resource should change?** | Memory, programs, skills, prompts, or workflows in `H`. | [ASPIRE](https://arxiv.org/abs/2607.00272), [RPG](https://arxiv.org/abs/2610.02204), [RoboFoundry](https://arxiv.org/html/2609.32862v1), [KnowBody](https://arxiv.org/html/2609.28530v1) |
+| **How should later harness changes be produced?** | The diagnosis, construction, or selection method in `Adapt`. | Digital precedents include [STOP](https://arxiv.org/pdf/2310.02304v3), [MemSkill](https://arxiv.org/abs/2602.02474v2), and [VERSE](https://arxiv.org/abs/2610.02616v1). |
+
+Adding a skill changes an execution resource. Changing the method that discovers or selects future
+skills targets the improvement procedure. Digital examples help explain this distinction; their
+inclusion does not establish physical grounding.
+
+#### Harness adaptation guide
+
+The [Harness adaptation guide](docs/harness-adaptation.md) expands this pathway into feedback
+interpretation, memory/skill/workflow changes, adoption and improvement history, and meta-improvement
+of the update-generating method. It includes four chapter figures and mechanism-level reading tables,
+with digital and simulation evidence identified separately from real-robot evidence.
+
+The [Harness chapter reference supplement](docs/harness-reference-supplement.md) records the saved
+chapter's citations as of **11 October 2026**. Both resources retain their own chapter snapshot;
+they extend the earlier September bibliography rather than certify complete coverage of v33.
+
+### 2. Model training
+
+Training connects collected and selected experience to inherited model updates:
+
+> **experience preparation → IL / SSL / RL → model update → verification → later interaction**
+
+The paper reviews data preparation, imitation learning, self-supervised learning, reinforcement
+learning, and VLA, world, and reward models. [SOAR](https://arxiv.org/abs/2407.20635) and
+[SELFI](https://proceedings.mlr.press/v270/hirose25a.html) illustrate continued robot learning;
+[EmbodiRSI](https://arxiv.org/abs/2609.38905) and [F4R](https://arxiv.org/abs/2609.35575v2)
+provide adaptation examples; [ENPIRE](https://arxiv.org/abs/2606.19980) illustrates training-code revision.
+
+Better weights under a fixed objective do not establish a better improvement procedure. A reward
+or world model used only during training may belong to `Φ`, but fitting it to a prescribed target is
+not automatically meta-improvement. Identify a retained change to the objective, update rule,
+curriculum, training configuration, or decision procedure, and assess its later effect.
+
+### 3. Safety and control
+
+Safety must be reassessed across updates, rather than checked only for the final policy.
+
+| Decision | Required distinction |
+| --- | --- |
+| **Attempt a trial** | Check operating assumptions, action constraints, uncertainty, and feasible stopping or recovery. |
+| **Accept an update** | Decide whether the candidate should be inherited; check affected interfaces, capabilities, and safeguards. |
+| **Authorize operation** | Establish the conditions under which the system may operate physically; acceptance alone does not grant release. |
+| **Assess accumulated risk** | Include rejected trials, resets, recovery, interventions, and hardware wear—not only successful execution. |
+
+A safe final policy does not show that its learning process was safe. Earlier guarantees remain
+usable only while their assumptions and statistical bounds remain valid. The paper reviews
+component guarantees under stated conditions, not a safety guarantee for unrestricted Physical RSI.
+
+### 4. Verification and evaluation
+
+**Verification asks what may be retained. Evaluation asks what its later use achieved.**
+Section 6 separates these roles: `Ver` belongs to `Φ`; protected `E/Q` assesses the resulting system.
 
 <p align="center">
-  <a href="docs/figures/research-landscape.png"><img src="docs/figures/research-landscape.png" alt="Physical RSI research landscape across agent participation, training, and verification" width="82%"></a>
+  <a href="docs/figures/physical-rsi-v33-verification-evaluation.png"><img src="docs/figures/physical-rsi-v33-verification-evaluation.png" alt="Candidate verification and independent evaluation" width="96%"></a>
 </p>
-<p align="center"><sub><strong>Figure 5.</strong> The paper's research landscape and representative systems.</sub></p>
+<p align="center"><sub><strong>Figure 10.</strong> Candidate construction, implementation, effectiveness and preservation checks, and the independent evaluator.</sub></p>
 
-### 1. Agent participation
+| Verification check | Deciding question |
+| --- | --- |
+| **Implementation validity** | Can the candidate run with the required syntax, interfaces, formats, and outputs? |
+| **Repair effectiveness** | Does it address the targeted failure under the tested conditions? |
+| **Capability preservation** | Does it retain earlier successful behavior and revalidate dependent knowledge? |
+| **Meta-verification** | If `Ver` changes, do independent outcomes of the systems it accepts justify that revision? |
 
-Agent roles are classified by the later use of their outputs, not by whether those outputs are code,
-weights, or text.
+Passing an implementation check establishes testability, not improvement. More accepted updates
+under a revised verifier do not establish that the verifier is better.
 
-| Loop | What the output controls | Representative work |
+Improvement evaluation follows three questions:
+
+1. **Performance and retention:** what improves over rounds, and which earlier capabilities remain?
+2. **Attribution and transfer:** what retained change causes the gain, and does it transfer to a new `κ`?
+3. **Efficiency and autonomy:** what interaction, compute, human assistance, and physical risk produced it?
+
+For L5, compare successive versions of `Φ` from the same starting execution system and initial
+experience, with equal budgets, matched safety and stopping conditions, and protected across-task
+evaluation. Use repeated trials and uncertainty estimates. Report the cost of developing a revision
+separately from the cost of using it to produce later improvements.
+
+Two forms of independence matter. **Control independence** prevents a candidate from changing or
+bypassing the protected evaluator. **Information independence** prevents adaptive feedback from
+turning the final test into an optimization target. Keeping `E/Q` outside `Φ` is not enough if its
+decisions repeatedly guide later proposals. Use fresh evidence or appropriate statistical correction;
+if the evaluation set changes, retain a fixed anchor or re-evaluate earlier generations.
+
+### 5. Benchmark resources
+
+Section 6.3 and Table 4 group resources by what they assess, not by an assigned RSI level.
+This selected map also includes process-oriented resources discussed in the text.
+
+| Family | Evaluation focus | Representative resources |
 | --- | --- | --- |
-| **Loop 1: Task execution** | The current task: specification, planning, tool use, execution, or outcome interpretation. | [SayCan](https://arxiv.org/abs/2204.01691), [Code as Policies](https://arxiv.org/abs/2209.07753), [Code-as-Monitor](https://arxiv.org/abs/2412.04455) |
-| **Loop 2: Capability improvement** | A harness or model capability used in later tasks. | [SOAR](https://arxiv.org/abs/2407.20635), [RoboGen](https://arxiv.org/abs/2311.01455), [DrEureka](https://arxiv.org/abs/2406.01967), [SHAPER](https://arxiv.org/abs/2608.11350) |
-| **Loop 3: Meta-improvement** | The procedure that produces or selects future capability improvements. | [ENPIRE](https://arxiv.org/abs/2606.19980), [EvoTrainer](https://arxiv.org/abs/2606.03108), [HyperAgents](https://arxiv.org/abs/2603.19461), [Darwin Godel Machine](https://arxiv.org/abs/2505.22954) |
+| **Embodied** | Task performance and generalization | Meta-World, LIBERO, ManiSkill3, BEHAVIOR-1K, RoboCasa365 |
+| **Embodied** | Robustness and physical evaluation | LIBERO-PRO, SIMPLER, RoboTwin, RoboArena |
+| **Embodied** | Feedback and evaluation reliability | FailBench, RoboRewardBench, WorldEval, dWorldEval, SC3-Eval, RBM-EVAL |
+| **Embodied** | Robot engineering and development | CaP-Bench within CaP-X, EmboCoach-Bench as named in the manuscript, RLE-Bench |
+| **Primarily digital** | AI research, training algorithms, and data strategies | AI4AI-Bench, RSIBench-Data, MLAgentBench, MLE-bench, MLGym-Bench, MLRC-Bench, RE-Bench |
+| **Primarily digital** | Method or harness development and retained experience | RSI-Exam, HarnessDev, PAST-Bench |
 
-A reward written for one training run is a Loop 2 input. Changing the procedure that generates or
-selects rewards belongs to Loop 3. Digital and simulation studies clarify this boundary, but they do
-not become evidence of Physical RSI without physical grounding and inherited use in the same
-workflow.
-
-### Harness adaptation update
-
-The [Harness adaptation guide](docs/harness-adaptation.md) expands the agent perspective into
-feedback interpretation, memory/skill/workflow changes, adoption and improvement history, and
-meta-improvement of the update-generating method. It includes four current chapter figures and
-mechanism-level reading tables, with digital and simulation evidence identified separately from
-physical evidence.
-
-The [Harness chapter reference supplement](docs/harness-reference-supplement.md) records the
-saved chapter's citations as of 11 October 2026. This is an extension to the September manuscript
-snapshot, not a revision of its 102-work bibliography count.
-
-### 2. Training
-
-Training is a continuing, gated process rather than a one-off offline stage:
-
-> **experience collection -> evaluation and credit -> parameter update -> verification and consolidation**
-
-The main architectural substrates expose different objects to this loop:
-
-- **Causal VLA Transformers:** [SARM2](https://arxiv.org/abs/2606.10305) couples stage estimation and value learning to produce dense progress feedback.
-- **Unified world-action models:** [Motus2](https://arxiv.org/abs/2608.30237) shares policy, simulator, and evaluator interfaces; [RISE](https://arxiv.org/abs/2602.11075) separates dynamics from progress evaluation for imagined RL.
-- **Video-generative world models:** [SC3-Eval](https://arxiv.org/abs/2606.18610) evaluates policies through dynamics, cross-view, and test-time consistency.
-- **Constrained diffusion post-training:** [PACT](https://arxiv.org/abs/2606.08414) aligns a pretrained policy under safety and task-progress constraints.
-
-Data selection matters as much as generation. Failures must be represented, imagined experience
-must remain calibrated to the real world, and protected evaluation data must not leak into the
-self-evolving loop. [FAR](https://arxiv.org/abs/2607.01111), for example, attributes failures to
-action blocks and returns successful recoveries to training.
-
-### 3. Verification
-
-Verification enters the loop at three different points:
-
-1. **Behavior verification:** should the current action or trajectory continue?
-2. **Data admission:** should this experience enter memory or training?
-3. **Update release:** should the resulting change become part of the persistent system?
-
-A trajectory score is not an update-release test. Release may also require retention tests,
-out-of-distribution evaluation, safety checks, and evidence that old capabilities have not regressed.
-[Robometer](https://arxiv.org/abs/2603.02115), [WorldEval](https://arxiv.org/abs/2505.19017),
-[RoboArena](https://arxiv.org/abs/2506.18123), and [SC3-Eval](https://arxiv.org/abs/2606.18610)
-cover different parts of this problem.
-
-Two forms of independence matter. **Control independence** prevents a candidate from choosing,
-modifying, or bypassing its evaluator. **Information independence** prevents repeated feedback from
-turning a protected criterion into another optimization target. More judges do not create independent
-evidence when they share the same blind spot.
+These resources probe different parts of the problem. An iterative agent benchmark is not, by that
+fact alone, a complete Physical RSI evaluation. Verified recursive gain across tasks under matched
+conditions remains a gap identified in the manuscript's reviewed resources.
 
 <a id="paper-catalog"></a>
 
 ## Paper Catalog <sub><a href="#readme-top">top</a></sub>
 
-The list below follows the compact citation style used by research-map repositories: linked title,
-authors, and year. Papers are grouped by their primary role in the Physical RSI argument; some
-support more than one perspective. Within each group, papers are ordered newest first; entries from
-the same year follow reverse arXiv chronology where available. See the [complete paper reference index](docs/paper-reference-index.md)
-for all 102 unique works cited in the manuscript.
+The list retains the compact citation style of the original README: linked title, authors, and year.
+Papers are grouped by their role in the argument; inclusion does not assign a capability level.
+The **90-entry selected catalog** retains the earlier collection and adds representative works from v33.
+Overlapping entries use the cited v33 records where matched; other inherited entries are not a new
+primary-paper audit. Entries are ordered by cited year within each group.
+
+The [reference index](docs/paper-reference-index.md) remains an earlier-snapshot resource, not a
+complete bibliography of v33. Preprint and publication years may differ.
 
 ### Physical improvement and capability evidence
 
@@ -264,20 +345,24 @@ for all 102 unique works cited in the manuscript.
 - [ENPIRE: Agentic Robot Policy Self-Improvement in the Real World](https://arxiv.org/abs/2606.19980) by Wenli Xiao et al. 2026.
 - [Visual Verification Enables Inference-Time Steering and Autonomous Policy Improvement](https://arxiv.org/abs/2606.18247) by Mingtong Zhang and Dhruv Shah. 2026.
 - [ConRFT: A Reinforced Fine-Tuning Method for VLA Models via Consistency Policy](https://arxiv.org/abs/2502.05450) by Yuhui Chen et al. 2025.
-- [SELFI: Autonomous Self-Improvement with RL for Vision-Based Navigation Around People](https://proceedings.mlr.press/v270/hirose25a.html) by Noriaki Hirose et al. 2025.
+- [SELFI: Autonomous Self-Improvement with RL for Vision-Based Navigation around People](https://proceedings.mlr.press/v270/hirose25a.html) by Noriaki Hirose et al. 2025.
 - [Autonomous Improvement of Instruction Following Skills via Foundation Models](https://arxiv.org/abs/2407.20635) by Zhiyuan Zhou et al. 2024.
 - [RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation](https://openreview.net/forum?id=vsDnJ2WR4x) by Konstantinos Bousmalis et al. 2024.
 - [DoReMi: Grounding Language Model by Detecting and Recovering from Plan-Execution Misalignment](https://sites.google.com/view/doremi-paper) by Yanjiang Guo et al. 2024.
 - [REFLECT: Summarizing Robot Experiences for Failure Explanation and Correction](https://arxiv.org/abs/2306.15724) by Zeyi Liu, Arpit Bahety, and Shuran Song. 2023.
 - [Self-Improving Robots: End-to-End Autonomous Visuomotor Reinforcement Learning](https://proceedings.mlr.press/v229/sharma23b.html) by Archit Sharma et al. 2023.
 
-### Agent participation and harnesses
+### Harness and system adaptation
 
-For the updated mechanism-based collection, see [Harness adaptation](docs/harness-adaptation.md)
+For the mechanism-based collection, see [Harness adaptation](docs/harness-adaptation.md)
 and its [chapter reference supplement](docs/harness-reference-supplement.md).
 
 - [Self-Evolving Embodied Agents via Skill-Harness Evolution](https://arxiv.org/abs/2608.11350) by Peidong Wang et al. 2026.
 - [HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning](https://arxiv.org/abs/2606.08610) by Zechu Li et al. 2026.
+- [Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents](https://arxiv.org/abs/2610.02204) by Yen-Jen Wang et al. 2026.
+- [RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents](https://arxiv.org/html/2609.32862v1) by Jingsong Liang et al. 2026.
+- [HarnessPAI: An Evolving Harness for Physical AI](https://arxiv.org/html/2609.29166v1) by Xin Wang et al. 2026.
+- [Know Your Body: A Harness for Direct and Self-Improving Robot Control with VLMs](https://arxiv.org/html/2609.28530v1) by Zeyu Lou et al. 2026.
 - [Grounded Vision-Language Interpreter for Long-Horizon Bimanual Task and Motion Planning](https://arxiv.org/abs/2506.03270) by Jeremy Siburian et al. 2025.
 - [Code-as-Monitor: Constraint-Aware Visual Programming for Reactive and Proactive Robotic Failure Detection](https://arxiv.org/abs/2412.04455) by Enshen Zhou et al. 2024.
 - [Open-World Task and Motion Planning via Vision-Language Model Generated Constraints](https://arxiv.org/abs/2411.08253) by Nishanth Kumar et al. 2024.
@@ -302,6 +387,8 @@ and its [chapter reference supplement](docs/harness-reference-supplement.md).
 - [SARM2: Multi-Task Stage Aware Reward Modeling for Self Improving Robotic Manipulation](https://arxiv.org/abs/2606.10305) by Qianzhong Chen et al. 2026.
 - [PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation](https://arxiv.org/abs/2606.08414) by Lingxuan Wu et al. 2026.
 - [RISE: Self-Improving Robot Policy with Compositional World Model](https://arxiv.org/abs/2602.11075) by Jiazhi Yang et al. 2026.
+- [EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905) by Haoran Lang et al. 2026.
+- [F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575v2) by Zhuoyuan Yu et al. 2026.
 - [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](https://arxiv.org/abs/2310.08864) by the Open X-Embodiment Collaboration. 2024.
 
 ### Verification, evaluation, and safety
@@ -315,110 +402,153 @@ and its [chapter reference supplement](docs/harness-reference-supplement.md).
 - [ROBOGATE: Adaptive Failure Discovery for Safe Robot Policy Deployment via Two-Stage Boundary-Focused Sampling](https://arxiv.org/abs/2603.22126) by Azuki Kim. 2026.
 - [Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons](https://arxiv.org/abs/2603.02115) by Anthony Liang et al. 2026.
 - [Robust Finetuning of Vision-Language-Action Robot Policies via Parameter Merging](https://arxiv.org/abs/2512.08333) by Yajat Yadav et al. 2026.
+- [FailBench: How Reliable Are VLMs at Judging Robot Task Success?](https://arxiv.org/abs/2609.03611v1) by Zaruhi Navasardyan et al. 2026.
+- [dWorldEval: Scalable Robotic Policy Evaluation via Discrete Diffusion World Model](https://arxiv.org/abs/2604.22152) by Yaxuan Li et al. 2026.
+- [RoboReward: General-Purpose Vision-Language Reward Models for Robotics](https://arxiv.org/abs/2601.00675) by Tony Lee et al. 2026.
 - [RoVer: Robot Reward Model as Test-Time Verifier for Vision-Language-Action Model](https://arxiv.org/abs/2510.10975) by Mingtong Dai et al. 2025.
-- [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://arxiv.org/abs/2506.18123) by Pranav Atreya et al. 2025.
+- [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://proceedings.mlr.press/v305/atreya25a.html) by Pranav Atreya et al. 2025.
 - [RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models](https://arxiv.org/abs/2506.17811) by Jacky Kwok et al. 2025.
 - [SAFE: Multitask Failure Detection for Vision-Language-Action Models](https://arxiv.org/abs/2506.09937) by Qiao Gu et al. 2025.
 - [WorldEval: World Model as Real-World Robot Policies Evaluator](https://arxiv.org/abs/2505.19017) by Yaxuan Li et al. 2025.
-- [Unpacking Failure Modes of Generative Policies: Runtime Monitoring of Consistency and Progress](https://arxiv.org/abs/2410.04640) by Christopher Agia et al. 2024.
+- [Unpacking Failure Modes of Generative Policies: Runtime Monitoring of Consistency and Progress](https://proceedings.mlr.press/v270/agia25a.html) by Christopher Agia et al. 2025.
+- [Safe Continual Domain Adaptation after Sim2Real Transfer of Reinforcement Learning Policies in Robotics](https://arxiv.org/abs/2503.10949) by Josip Josifovski et al. 2025.
+- [AutoEval: Autonomous Evaluation of Generalist Robot Manipulation Policies in the Real World](https://arxiv.org/abs/2503.24278v1) by Zhiyuan Zhou et al. 2025.
+- [Preventing Undesirable Behavior of Intelligent Machines](https://doi.org/10.1126/science.aag3311) by Philip S. Thomas et al. 2019.
+- [Control Barrier Function Based Quadratic Programs for Safety Critical Systems](https://doi.org/10.1109/TAC.2016.2638961) by Aaron D. Ames et al. 2017.
+- [Constrained Policy Optimization](https://proceedings.mlr.press/v70/achiam17a.html) by Joshua Achiam et al. 2017.
+- [High Confidence Policy Improvement](https://proceedings.mlr.press/v37/thomas15.html) by Philip S. Thomas et al. 2015.
 
 ### Recursive and meta-improvement
 
 The [Harness meta-improvement guide](docs/harness-adaptation.md#4-meta-improvement-of-adaptation)
 connects editable adaptation methods to downstream evaluation and inheritance.
 
-- [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026.
 - [SBCO: Self-Supervised, Verifier-Grounded Harness Optimization for Planning Agents](https://arxiv.org/abs/2608.10157) by Vivek Kulkarni et al. 2026.
-- [PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents](https://arxiv.org/abs/2608.04003) by Shuhan Xue et al. 2026.
 - [EvoTrainer: Co-Evolving LLM Policies and Training Harnesses for Autonomous Agentic Reinforcement Learning](https://arxiv.org/abs/2606.03108) by Guhong Chen et al. 2026.
 - [Self-Trained Verification for Training- and Test-Time Self-Improvement](https://arxiv.org/abs/2605.30290) by Chen Henry Wu and Aditi Raghunathan. 2026.
 - [GEAR: Genetic AutoResearch for Agentic Code Evolution](https://arxiv.org/abs/2605.13874) by Ahmadreza Jeddi et al. 2026.
-- [HyperAgents](https://arxiv.org/abs/2603.19461) by Jenny Zhang et al. 2026.
+- [Hyperagents](https://arxiv.org/html/2603.19461v1) by Jenny Zhang et al. 2026.
 - [Learning to Discover at Test Time](https://arxiv.org/abs/2601.16175) by Mert Yuksekgonul et al. 2026.
-- [Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents](https://arxiv.org/abs/2505.22954) by Jenny Zhang et al. 2026.
+- [VERSE: Verified Self-Evolving Optimizer for Agent Harnesses](https://arxiv.org/abs/2610.02616v1) by Zekai Wang et al. 2026.
+- [MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents](https://arxiv.org/abs/2602.02474v2) by Haozhen Zhang et al. 2026.
+- [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](https://arxiv.org/abs/2505.22954) by Jenny Zhang et al. 2025.
 - [CALM: Co-Evolution of Algorithms and Language Model for Automatic Heuristic Design](https://arxiv.org/abs/2505.12285) by Ziyao Huang et al. 2025.
 - [Algorithm Discovery with LLMs: Evolutionary Search Meets Reinforcement Learning](https://arxiv.org/abs/2504.05108) by Anja Surina et al. 2025.
 - [Godel Agent: A Self-Referential Agent Framework for Recursively Self-Improvement](https://aclanthology.org/2025.acl-long.1354/) by Xunjian Yin et al. 2025.
 - [Self-Taught Evaluators](https://arxiv.org/abs/2408.02666) by Tianlu Wang et al. 2024.
 - [Meta-Rewarding Language Models: Self-Improving Alignment with LLM-as-a-Meta-Judge](https://arxiv.org/abs/2407.19594) by Tianhao Wu et al. 2024.
-- [Self-Taught Optimizer: Recursively Self-Improving Code Generation](https://arxiv.org/abs/2310.02304) by Eric Zelikman et al. 2023.
+- [Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation](https://arxiv.org/pdf/2310.02304v3) by Eric Zelikman et al. 2024.
 - [Godel Machines: Fully Self-Referential Optimal Universal Self-Improvers](https://doi.org/10.1007/978-3-540-68677-4_7) by Jurgen Schmidhuber. 2007.
+
+### Embodied task suites and development benchmarks
+
+- [CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation](https://proceedings.mlr.press/v306/fu26u.html) by Letian Fu et al. 2026.
+- [RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots](https://arxiv.org/abs/2603.04356) by Soroush Nasiriany et al. 2026.
+- [From Digital to Physical: Digital Agents as Autonomous Coaches for Physical Intelligence](https://arxiv.org/abs/2601.21570) by Zixing Lei et al. 2026. *Associated with the EmboCoach-Bench entry in the manuscript; preserve the paper/benchmark version distinction.*
+- [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://arxiv.org/abs/2306.03310) by Bo Liu et al. 2023.
+- [Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning](https://proceedings.mlr.press/v100/yu20a.html) by Tianhe Yu et al. 2020.
+
+### Digital research and improvement benchmarks
+
+- [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](https://arxiv.org/abs/2609.01437) by Yuhao Wu et al. 2026.
+- [RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement](https://arxiv.org/abs/2607.25886) by Fanqing Meng et al. 2026.
+- [RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research](https://github.com/aiming-lab/RSI-Exam) by RSI-Exam Team. 2026. *Repository resource cited by the manuscript.*
+- [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026.
+- [PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents](https://arxiv.org/abs/2608.04003) by Shuhan Xue et al. 2026.
 
 <a id="open-questions"></a>
 
 ## Open Questions <sub><a href="#readme-top">top</a></sub>
 
-- **Weight-level self-modification:** no physical system has demonstrated a complete, sustained loop in which its own weight-update process improves and continues to benefit.
-- **Judge reliability:** verifier and reward-model errors propagate through the training loop.
-- **Imagination-reality gap:** world-model error limits imagined training and evaluation.
-- **Forgetting and stability:** new policies, values, and world models can erase earlier competence.
-- **Sustained safety:** a continuously changing policy needs more than a one-time safety check.
-- **Longitudinal evaluation:** repeated self-evaluation needs protected tests and explicit anti-leakage rules.
-- **Transfer of training methods:** transferring a skill is not the same as transferring the procedure that learns it.
-- **Theory of recursive training:** we lack conditions for convergence when policy, world model, and evaluator train one another.
+Section 7 identifies open problems beyond autonomous execution and learning:
+
+- **Reliable learning signals:** partial and noisy physical feedback can compound errors across generations.
+- **Cross-component attribution:** similar failures may originate in perception, skills, orchestration, training, or their interactions.
+- **Cumulative knowledge:** skills and improvement histories must remain usable as interfaces and physical conditions change.
+- **Safety under evolving procedures:** inherited revisions may invalidate earlier assumptions, safeguards, or guarantees.
+- **Reward hacking and leakage:** repeated judgments can become optimization targets instead of independent evidence.
+- **Verified recursive gain:** successive procedures need controlled comparisons of the later across-task improvements they produce.
+- **Affordable physical meta-updates:** simulation, imagination, logged experience, and real trials have different costs and grounding limits.
+- **Comparable autonomy:** setup, resets, labeling, takeovers, editing, and update selection need separate records.
+
+These are gaps scoped to the reviewed manuscript, not claims that no related work exists elsewhere.
 
 <a id="paper-reference-coverage"></a>
 
 ## Paper Reference Coverage <sub><a href="#readme-top">top</a></sub>
 
-The supplied paper contains **105 bibliography records**. AutoRT, Robometer, and Darwin Godel
-Machine each appear twice as preprint and publication records. After consolidating those three
-pairs, the repository indexes **all 102 unique works**:
+The selected catalog above contains **90 entries**. It is a reading map, not a claim of complete
+coverage of the current manuscript.
 
-> [Browse the complete Physical RSI paper reference index](docs/paper-reference-index.md)
+> [Browse the earlier-snapshot reference index](docs/paper-reference-index.md)
 
-The full index is separate from the conceptual map on this page so that completeness does not bury
-the paper's argument. Inclusion in the bibliography does not imply that a work demonstrates
-Physical RSI; the L1-L5 evidence standard still applies.
+That index records 105 bibliography entries consolidated into 102 unique works for an earlier
+manuscript. Its coverage claim—and the retained header badges—must not be transferred to v33.
+A complete current index requires a new reconciliation of references and versions.
+
+Keeping the bibliography separate prevents completeness from burying the argument. Inclusion in
+either list does not establish Physical RSI; the current L0–L5 criteria apply to demonstrated workflows.
 
 <a id="contributing"></a>
 
 ## Contributing <sub><a href="#readme-top">top</a></sub>
 
-For a new paper, include its canonical title, primary link, year, the object that changes, the
-physical evidence used, whether the change persists, and the comparison that supports the claimed
-capability. Use this reviewable entry format:
+For a new paper, include its canonical title, primary link, cited version and year, the object that
+changes, what is inherited, the source of feedback, human involvement, and the comparison supporting
+the claim. Use this reviewable entry format:
 
 ```markdown
 1. **Paper Title**
-   [[Paper](https://arxiv.org/abs/YYMM.NNNNN)] | arXiv:YYMM.NNNNN
-   `Capability-L3` `Grounding-Physical` `Target-Policy`
-   *Evidence:* physical outcome -> admitted experience -> persistent update -> later-round effect
-   *Boundary:* verifier and training procedure remain fixed
+   [[Paper](https://arxiv.org/abs/YYMM.NNNNN)] | cited version and year
+   *Workflow:* the specific experiment being assessed
+   *Update:* Θ / H / Adapt / Train / Ver; what persists and is used later
+   *Grounding:* real / physics simulation / imagination / digital; deployment recorded separately
+   *Task scope:* same κ or changed κ; source and target tasks
+   *Human role:* setup / reset / labeling / correction / editing / selection / authorization
+   *Evidence:* retained gain, attribution control, and independent evaluation
+   *Level:* justified under L0–L5, or not yet assigned
+   *Boundary:* what the experiment does not establish
 ```
 
-Simulation-only and digital RSI work are welcome when their scope is stated explicitly. A title or
-abstract using "self-improving" is not enough: the entry must identify where the loop closes and
-what is inherited.
+Simulation and digital studies are welcome when their scope is explicit. A title using
+"self-improving" is not enough: identify where the loop closes, what is inherited, and whether
+later capability gain or improved improvement effectiveness is actually measured.
 
-Please open an issue or pull request for additions and corrections. The repository is intentionally
-lightweight: the README carries the conceptual map, and the paper index carries bibliographic
-coverage.
+Please open an issue or pull request for additions and corrections. The README carries the
+conceptual map; the reference index carries version-specific bibliographic coverage.
 
 <a id="data-provenance-and-validation"></a>
 
 ## Data Provenance and Validation <sub><a href="#readme-top">top</a></sub>
 
-This repository was checked against the supplied 37-page manuscript rather than assembled from
-search results alone.
+The body of this README is aligned to the supplied 54-page manuscript. The opening material above
+**Content** is intentionally retained from the earlier README and has not been migrated in this edit.
 
-| Check | Result |
+| Item | Scope |
 | --- | --- |
-| Source snapshot | `IEEE_TPAMI__Physical_RSI-2.pdf` |
-| Source SHA-256 | `dcb0083e70ad39183935074d5a41e26c03539c6779032c5557b8d6699f43e4a8` |
-| Bibliography reconciliation | 105 records -> 102 unique works |
-| Consolidated versions | AutoRT, Robometer, and Darwin Godel Machine |
-| arXiv coverage | 87 identifiers parsed from the manuscript; all 87 occur in the full index |
-| Featured-to-index check | 65 README entries; all map to the 102-work index |
-| Figure provenance | Figures 3, 5, and 14 extracted from the supplied manuscript |
-| Repository policy | The source PDF is excluded by `.gitignore`; the original manuscript figures and explicitly documented chapter-update renderings are tracked. |
-| Last audit | 2026-09-30 |
+| Current manuscript | *Who Improves the Robot? Toward Physical Recursive Self-Improvement* |
+| Source snapshot | `IEEE_TPAMI__Physical_RSI-33.pdf` |
+| Source SHA-256 | `5841ba7da398549142ef89c36f48c06b19166b0c6504a524b73303bac4efd65d` |
+| Framework and method alignment | Sections 2–5; workflow-specific level assignments follow the manuscript rather than a fresh audit of every cited experiment. |
+| Verification and evaluation | Sections 6–7 and Table 4; benchmark groups describe evaluation roles, not proven RSI levels. |
+| Catalog scope | Earlier entries retained, selected v33 references added, and matched records updated; no claim of full v33 bibliography coverage. |
+| Reference index | Earlier snapshot; not reconciled against v33. |
+| Harness chapter resources | The adaptation guide, reference supplement, and four associated chapter figures retain their 2026-10-11 snapshot. |
+| Figure provenance | Original Figures 1, 2, and 10 cropped from pages 4, 9, and 26 of v33; no diagram content redrawn. |
+| Repository policy | The source PDF is excluded by `*.pdf`; README images are separate assets. Earlier figures and the separately documented harness chapter renderings are retained. |
+| Alignment date | 2026-10-12 |
 
-Counts describe this manuscript snapshot. Future additions to the living catalog should be labeled
-as repository extensions rather than silently included in the paper's bibliography count.
+The draft still contains terminology and cross-reference inconsistencies. This page follows formal
+Definitions 1–2 and Section 5.2 for simulation/real-world grounding, and Sections 2.3 and 5.4 for
+autonomy. These choices should be revisited when the manuscript is finalized.
+
+Links follow the supplied materials; their current online availability has not been independently
+checked. Future additions should be labeled as catalog extensions, not silently included in a
+paper-wide coverage count.
 
 <a id="license"></a>
 
 ## License <sub><a href="#readme-top">top</a></sub>
 
-This repository is released under the [MIT License](LICENSE).
+This repository is released under the [MIT License](LICENSE). Linked papers and third-party
+materials remain subject to their respective licenses.
