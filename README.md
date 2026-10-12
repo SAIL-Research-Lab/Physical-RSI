@@ -332,8 +332,8 @@ conditions remains a gap identified in the manuscript's reviewed resources.
 
 Browse by **research topic and resource type**, not by the section in which a paper is cited.
 Each work has one primary home; a category is a reading aid, not a capability-level assignment.
-The **90-entry selected catalog** retains the earlier collection and representative additions from v33;
-it is not the manuscript's complete bibliography or a new primary-paper audit.
+The **116-entry selected catalog** retains the earlier collection and representative additions from v33;
+it is not the manuscript's complete bibliography or a full primary-paper audit.
 Linked titles, authors, and cited years retain the compact style of the original collection.
 Entries are ordered by cited year within each list; preprint and publication years may differ.
 
@@ -499,48 +499,80 @@ safety-specific monitors remain in [Safety and Assurance](#catalog-safety).
 
 ### Benchmarks, Datasets, and Evaluation Resources
 
-A single home for the catalog's benchmark-related references, including works cited in the
-learning, harness, safety, or meta-improvement discussion. The subgroups distinguish task suites,
-shared datasets, physical evaluation platforms, feedback assessment, and development benchmarks.
-Supporting evaluation frameworks are included explicitly: not every entry is a standalone benchmark,
-and a paper listed for its benchmark may also contribute a model or method.
-This consolidates the current selection; it does **not** cover every resource in v33 Table 4.
+A single home for benchmark-related references, regardless of where they appear in the manuscript.
+The **47 entries** below cover all **38 resources named in v33 Table 4**, plus nine other benchmark,
+dataset, and evaluation-resource entries. These include GemBench from the task discussion, DROID
+from the introduction, and HarnessDev, RSI-Exam, and PAST-Bench from Section 6.3.
+See the [resource-to-paper coverage audit](docs/v33-benchmark-coverage.md) for the complete mapping
+and the distinction between Table 4 entries and additional resources.
+
+The subgroups distinguish task suites and datasets, robustness and physical-world evaluation,
+feedback reliability, robot development, and digital research. Supporting frameworks and shared
+datasets are included explicitly: not every entry is a standalone benchmark. A paper may contribute
+both a method and a benchmark; resource aliases identify the benchmark without duplicating the paper.
+Cited years follow v33 and may differ from first preprint dates.
 
 #### Robot Task Suites and Shared Datasets
 
-- [RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies](https://arxiv.org/abs/2604.09860) by Jenai Xuning Yang et al. 2026.
 - [RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots](https://arxiv.org/abs/2603.04356) by Soroush Nasiriany et al. 2026.
+- [RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies](https://arxiv.org/abs/2604.09860) by Jenai Xuning Yang et al. 2026.
+- [EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents](https://proceedings.mlr.press/v267/yang25f.html) by Rui Yang et al. 2025.
+- [ManiSkill3: GPU Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI](https://arxiv.org/abs/2410.00425) by Stone Tao et al. 2025.
+- [Towards Generalizable Vision-Language Robotic Manipulation: A Benchmark and LLM-guided 3D Policy](https://arxiv.org/abs/2410.01345) by Ricardo Garcia et al. 2025. *Benchmark resource: GemBench; discussed in v33 Section 2 (p. 10).*
+- [VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks](https://openaccess.thecvf.com/content/ICCV2025/html/Zhang_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Robotics_Manipulation_with_Long-Horizon_ICCV_2025_paper.html) by Shiduo Zhang et al. 2025.
+- [BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation](https://arxiv.org/abs/2403.09227) by Chengshu Li et al. 2024.
+- [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](https://www.roboticsproceedings.org/rss20/p120.html) by Alexander Khazatsky et al. 2024. *Shared dataset cited in the v33 introduction; not a Table 4 benchmark.*
 - [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](https://arxiv.org/abs/2310.08864) by the Open X-Embodiment Collaboration. 2024.
 - [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://arxiv.org/abs/2306.03310) by Bo Liu et al. 2023.
+- [VIMA: Robot Manipulation with Multimodal Prompts](https://proceedings.mlr.press/v202/jiang23b.html) by Yunfan Jiang et al. 2023. *Benchmark resource: VIMA-Bench.*
+- [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks](https://arxiv.org/abs/2112.03227) by Oier Mees et al. 2022.
+- [What Matters in Learning from Offline Human Demonstrations for Robot Manipulation](https://arxiv.org/abs/2108.03298) by Ajay Mandlekar et al. 2021. *Resource: robomimic.*
 - [Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning](https://proceedings.mlr.press/v100/yu20a.html) by Tianhe Yu et al. 2020.
+- [robosuite: A Modular Simulation Framework and Benchmark for Robot Learning](https://arxiv.org/abs/2009.12293) by Yuke Zhu et al. 2020.
+- [RLBench: The Robot Learning Benchmark & Learning Environment](https://arxiv.org/abs/1909.12271) by Stephen James et al. 2019.
 
-#### Physical-World Evaluation Platforms
+#### Robustness and Physical-World Evaluation
 
-- [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://proceedings.mlr.press/v305/atreya25a.html) by Pranav Atreya et al. 2025.
+- [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies](https://arxiv.org/abs/2607.04434) by Tianxing Chen et al. 2026.
+- [RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation](https://proceedings.mlr.press/v306/chen26j.html) by Tianxing Chen et al. 2026.
+- [VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models](https://proceedings.mlr.press/v306/zhang26cp.html) by Borong Zhang et al. 2026.
 - [AutoEval: Autonomous Evaluation of Generalist Robot Manipulation Policies in the Real World](https://arxiv.org/abs/2503.24278v1) by Zhiyuan Zhou et al. 2025.
+- [LIBERO-Plus: In-depth Robustness Analysis of Vision-Language-Action Models](https://arxiv.org/abs/2510.13626) by Senyu Fei et al. 2025.
+- [LIBERO-PRO: Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization](https://arxiv.org/abs/2510.03827) by Xueyang Zhou et al. 2025.
+- [REALM: A Real-to-Sim Validated Benchmark for Generalization in Robotic Manipulation](https://arxiv.org/abs/2512.19562) by Martin Sedlacek et al. 2025.
+- [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://proceedings.mlr.press/v305/atreya25a.html) by Pranav Atreya et al. 2025.
+- [RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins](https://arxiv.org/abs/2504.13059) by Yao Mu et al. 2025.
+- [Evaluating Real-World Robot Manipulation Policies in Simulation](https://arxiv.org/abs/2405.05941) by Xuanlin Li et al. 2024. *Evaluation resource: SIMPLER.*
+- [THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation](https://arxiv.org/abs/2402.08191) by Wilbert Pumacay et al. 2024.
 
 #### Feedback Reliability and Model-Based Evaluation
 
-- [GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation](https://arxiv.org/abs/2607.02642) by the GigaWorld Team. 2026.
-- [SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation](https://arxiv.org/abs/2606.18610) by Wei-Cheng Tseng et al. 2026.
-- [Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons](https://arxiv.org/abs/2603.02115) by Anthony Liang et al. 2026. *Benchmark resource in v33: RBM-EVAL.*
-- [FailBench: How Reliable Are VLMs at Judging Robot Task Success?](https://arxiv.org/abs/2609.03611v1) by Zaruhi Navasardyan et al. 2026.
 - [dWorldEval: Scalable Robotic Policy Evaluation via Discrete Diffusion World Model](https://arxiv.org/abs/2604.22152) by Yaxuan Li et al. 2026.
+- [FailBench: How Reliable Are VLMs at Judging Robot Task Success?](https://arxiv.org/abs/2609.03611v1) by Zaruhi Navasardyan et al. 2026.
+- [GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation](https://arxiv.org/abs/2607.02642) by the GigaWorld Team. 2026.
+- [Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons](https://arxiv.org/abs/2603.02115) by Anthony Liang et al. 2026. *Benchmark resource in v33: RBM-EVAL.*
 - [RoboReward: General-Purpose Vision-Language Reward Models for Robotics](https://arxiv.org/abs/2601.00675) by Tony Lee et al. 2026. *Benchmark resource in v33: RoboRewardBench.*
+- [SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation](https://arxiv.org/abs/2606.18610) by Wei-Cheng Tseng et al. 2026.
 - [WorldEval: World Model as Real-World Robot Policies Evaluator](https://arxiv.org/abs/2505.19017) by Yaxuan Li et al. 2025.
 
 #### Robot Engineering and Development Benchmarks
 
 - [CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation](https://proceedings.mlr.press/v306/fu26u.html) by Letian Fu et al. 2026. *Benchmark resource in v33: CaP-Bench.*
 - [From Digital to Physical: Digital Agents as Autonomous Coaches for Physical Intelligence](https://arxiv.org/abs/2601.21570) by Zixing Lei et al. 2026. *Associated with the EmboCoach-Bench entry in the manuscript; preserve the paper/benchmark version distinction.*
+- [RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers](https://arxiv.org/abs/2609.34210) by Haitong Ma et al. 2026.
 
 #### Digital Research and Improvement Benchmarks
 
-- [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](https://arxiv.org/abs/2609.01437) by Yuhao Wu et al. 2026.
-- [RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement](https://arxiv.org/abs/2607.25886) by Fanqing Meng et al. 2026.
-- [RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research](https://github.com/aiming-lab/RSI-Exam) by RSI-Exam Team. 2026. *Repository resource cited by the manuscript.*
 - [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026.
+- [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](https://arxiv.org/abs/2609.01437) by Yuhao Wu et al. 2026.
 - [PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents](https://arxiv.org/abs/2608.04003) by Shuhan Xue et al. 2026.
+- [RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research](https://github.com/aiming-lab/RSI-Exam) by RSI-Exam Team. 2026. *Repository resource cited by the manuscript.*
+- [RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement](https://arxiv.org/abs/2607.25886) by Fanqing Meng et al. 2026.
+- [MLGym: A New Framework and Benchmark for Advancing AI Research Agents](https://arxiv.org/abs/2502.14499) by Deepak Nathani et al. 2025. *Benchmark resource: MLGym-Bench.*
+- [MLRC-Bench: Can Language Agents Solve Machine Learning Research Challenges?](https://arxiv.org/abs/2504.09702) by Yunxiang Zhang et al. 2025.
+- [RE-Bench: Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts](https://proceedings.mlr.press/v267/wijk25a.html) by Hjalmar Wijk et al. 2025.
+- [MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation](https://proceedings.mlr.press/v235/huang24y.html) by Qian Huang et al. 2024.
+- [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://arxiv.org/abs/2410.07095) by Jun Shern Chan et al. 2024.
 
 <a id="open-questions"></a>
 
@@ -563,8 +595,10 @@ These are gaps scoped to the reviewed manuscript, not claims that no related wor
 
 ## Paper Reference Coverage <sub><a href="#readme-top">top</a></sub>
 
-The selected catalog above contains **90 entries**. It is a reading map, not a claim of complete
-coverage of the current manuscript.
+The selected catalog above contains **116 entries**, including **47 benchmark, dataset, and
+evaluation-resource entries**. The [v33 benchmark coverage audit](docs/v33-benchmark-coverage.md)
+maps all **38 resources in Table 4** to catalog entries and records nine additional resources.
+This scoped coverage does not imply a complete bibliography of the current manuscript.
 
 > [Browse the earlier-snapshot reference index](docs/paper-reference-index.md)
 
