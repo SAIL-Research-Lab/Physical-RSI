@@ -9,7 +9,7 @@ Titles have minor spacing and capitalization cleanup; the compact citation uses 
 
 External links come from the bibliography. When it supplies no URL or arXiv identifier, the catalog links to the local record instead of inventing a paper URL. Citation locations reflect PDF-linked citations; unlinked mentions and text in figures may be additional. This is a manuscript-alignment index, not independent validation of external publication metadata or experimental claims.
 
-[Browse by research topic](../README.md#paper-catalog) · [Coverage and duplicate groups](#coverage-notes) · [Machine-readable work mapping](v34-catalog-aligned.csv)
+[Browse by research topic](../README.md#paper-catalog) · [Coverage and duplicate groups](#coverage-notes)
 
 <a id="r001"></a>
 
@@ -5442,4 +5442,3 @@ Source links: [Link 1](https://doi.org/10.52202/085713-2483) · [Link 2](https:/
 - Removed 27 supplementary items that were not located in this version’s bibliography; this does not judge their quality or relevance.
 - Kept the six primary research themes, expanded the secondary categories from 27 to 33, and assigned every work one primary home.
 - Updated resource aliases to v34, including RoboCoach-Bench; older v33 notes are not used as current evidence.
-- The [pre-alignment audit](v34-catalog-section-and-reference-audit.md), `v34-catalog-audit.csv`, and `v34-reference-audit.csv` remain historical snapshots of the former 116-entry catalog, not the coverage status after this alignment.
