@@ -84,10 +84,10 @@ Explore the framework, paper collection, and open questions:
 - [Open Questions](#open-questions)
 - [License](#license)
 
-> **Version note.** The sections below follow `IEEE_TPAMI__Physical_RSI-33.pdf` (12 October 2026).
-> The opening introduction and badges are retained from the earlier README; their L1–L5 taxonomy,
-> real-only grounding language, and bibliography counts should not be read as claims about this snapshot.
-> The current framework and coverage are specified below.
+> **Version note.** The three manuscript figures below are reproduced from
+> `IEEE_TPAMI__Physical_RSI-35.pdf` (figures updated on 13 October 2026).
+> The Paper Catalog and reference index remain aligned with the v34 bibliography:
+> 292 source records consolidated into 278 works; they have not been re-audited against v35.
 
 ---
 
@@ -100,9 +100,9 @@ its **improvement procedure `Φ = (Adapt, Train, Ver)`**. Improving task perform
 same as improving the procedure that produces future updates.
 
 <p align="center">
-  <a href="docs/figures/physical-rsi-v33-overview.png"><img src="docs/figures/physical-rsi-v33-overview.png" alt="Physical RSI architecture and L0–L5 framework" width="96%"></a>
+  <a href="docs/figures/physical-rsi-v35-overview.png"><img src="docs/figures/physical-rsi-v35-overview.png" alt="Physical RSI architecture and L0–L5 framework" width="96%"></a>
 </p>
-<p align="center"><sub>Task execution, inherited improvement, and the L0–L5 framework.</sub></p>
+<p align="center"><sub>Figure 1 (v35, p. 4). Task execution, the improvement procedure, safety and control, and the L0–L5 framework.</sub></p>
 
 <a id="capability-map"></a>
 
@@ -117,9 +117,9 @@ The framework separates **what changes** from **where the retained gain transfer
   budgets and protected cross-task evaluation—not merely a changed procedure.
 
 <p align="center">
-  <a href="docs/figures/physical-rsi-v33-update-targets-and-tasks.png"><img src="docs/figures/physical-rsi-v33-update-targets-and-tasks.png" alt="Capability versus meta-level updates, and task identity through skill sequences" width="100%"></a>
+  <a href="docs/figures/physical-rsi-v35-update-targets-and-tasks.png"><img src="docs/figures/physical-rsi-v35-update-targets-and-tasks.png" alt="Capability versus meta-level updates, and task identity through skill sequences" width="100%"></a>
 </p>
-<p align="center"><sub>Update targets and task identity: a new scene alone does not establish a new task.</sub></p>
+<p align="center"><sub>Figure 2 (v35, p. 9). Update targets and task identity: a new scene alone does not establish a new task.</sub></p>
 
 <a id="three-views-of-one-system"></a>
 
@@ -134,16 +134,14 @@ The framework separates **what changes** from **where the retained gain transfer
   processes; see [Benchmarks and Evaluation Resources](#catalog-benchmarks).
 
 <p align="center">
-  <a href="docs/figures/physical-rsi-v33-verification-evaluation.png"><img src="docs/figures/physical-rsi-v33-verification-evaluation.png" alt="Candidate verification and independent evaluation" width="96%"></a>
+  <a href="docs/figures/physical-rsi-v35-verification-evaluation.png"><img src="docs/figures/physical-rsi-v35-verification-evaluation.png" alt="Candidate verification and independent evaluation" width="96%"></a>
 </p>
-<p align="center"><sub>Candidate verification within the improvement loop, with independent evaluation of its outcomes.</sub></p>
+<p align="center"><sub>Figure 10 (v35, p. 26). Candidate construction, implementation, effectiveness, and preservation checks, with independent evaluation and meta-verification.</sub></p>
 
 <a id="paper-catalog"></a>
 
 ## Paper Catalog <sub><a href="#readme-top">top</a></sub>
 
-Browse **278 cited works and resources** from the **v34 manuscript** by research topic.
-The manuscript’s **292 bibliography records** are consolidated into one entry per work by merging **13 duplicate groups**.
 Categories are reading aids, not capability-level assignments. See the [full reference index](docs/paper-reference-index.md) for source records and version details.
 
 <details>
