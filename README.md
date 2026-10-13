@@ -125,7 +125,7 @@ The framework separates **what changes** from **where the retained gain transfer
 
 ## Harness Adaptation, Training, and Verification <sub><a href="#readme-top">top</a></sub>
 
-- **Harness adaptation:** update memory, skills, tools, and workflows using execution feedback.
+- **Harness adaptation:** use execution feedback and improvement history to update memory, skills, tools, and workflows, retaining adopted changes for later execution.
 - **Model training:** turn collected experience into retained model updates.
 - **Safety and control:** constrain trials and reassess safeguards as the system changes.
 - **Verification and evaluation:** decide which changes may be retained, then independently
@@ -193,11 +193,13 @@ Categories are reading aids, not capability-level assignments. See the [full ref
 
 ### Agent Harnesses and Execution
 
-Memory, skills, tools, and workflows used during task execution. Methods that revise how these resources are built belong under Self-Improvement and Meta-Optimization.
+Memory, skills, tools, and workflows used during task execution, together with methods for updating these resources. Meta-improvement changes the procedures that produce such updates; see [Self-Improvement and Meta-Optimization](#catalog-meta-improvement).
 
 <a id="harness-memory"></a>
 
 #### Memory and Knowledge Management
+
+Includes persistent execution guidance and tool documentation, as well as explicit memory systems.
 
 - [Beyond Static Toolsets: Self-Evolving LLM Tool Agents via Continual Documentation Adaptation](https://aclanthology.org/2026.findings-acl.1082/) by Bin Wu et al. 2026.
 - [HomeBody: A humanoid that explores, remembers, and acts on its own](https://tml.stanford.edu/homebody/) by Gio Huh et al. 2026.
@@ -218,7 +220,7 @@ Memory, skills, tools, and workflows used during task execution. Methods that re
 #### Skill Libraries and Tool Construction
 
 - [Act-Observe-Rewrite: Multimodal Coding Agents as In-Context Policy Learners for Robot Manipulation](https://arxiv.org/html/2603.04466v1) by Vaishak Kumar. 2026.
-- [ASPIRE: Agentic Skills Discovery for Robotics](https://arxiv.org/html/2607.00272v1) by Runyu Lu et al. 2026.
+- [ASPIRE: Agentic /Skills Discovery for Robotics](https://arxiv.org/html/2607.00272v1) by Runyu Lu et al. 2026.
 - [Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents](https://arxiv.org/html/2606.30185v1) by Yutao Sun et al. 2026.
 - [EmbodiSkill: Skill-Aware Reflection for Self-Evolving Embodied Agents](https://arxiv.org/html/2605.10332v2) by Ruofei Ju et al. 2026.
 - [EvoSkill: Automated Skill Discovery for Multi-Agent Systems](https://arxiv.org/abs/2603.02766) by Salaheddin Alzubi et al. 2026.
@@ -429,7 +431,7 @@ Self-modification, optimization of improvement procedures, and foundations of se
 
 <a id="meta-harness-optimization"></a>
 
-#### Harness and Memory-Construction Optimization
+#### Harness and Context-Construction Optimization
 
 - [Hierarchical Self-Improvement: A Framework for Task-Specific Evolvable Agent Harnesses](https://arxiv.org/abs/2608.08466v1) by Tailin Zhou. 2026.
 - [Learning to Continually Learn via Meta-learning Agentic Memory Designs](https://arxiv.org/abs/2602.07755v1) by Yiming Xiong et al. 2026.

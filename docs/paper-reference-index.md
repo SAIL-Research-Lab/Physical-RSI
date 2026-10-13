@@ -1075,7 +1075,7 @@ Source links: [Link 1](https://arxiv.org/abs/2512.09796).
 ## R058 — [Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution](https://proceedings.mlr.press/v235/fernando24a.html)
 
 Chrisantha Fernando et al. **2024**. Representative record: `R058`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4.
 
 <details>
@@ -2738,7 +2738,9 @@ Source links: [Link 1](https://arxiv.org/html/2609.28530v1).
 <a id="r147"></a>
 <a id="r148"></a>
 
-## R147 — [ASPIRE: Agentic Skills Discovery for Robotics](https://arxiv.org/html/2607.00272v1)
+## R147 — [ASPIRE: Agentic /Skills Discovery for Robotics](https://arxiv.org/html/2607.00272v1)
+
+Catalog title corrected against the [arXiv record](https://arxiv.org/abs/2607.00272); source bibliography text below is preserved.
 
 Runyu Lu et al. **2026**. Representative record: `R147`.
 Catalog: [Agent Harnesses and Execution → Skill Libraries and Tool Construction](../README.md#harness-skills).
@@ -4263,7 +4265,7 @@ Source links: [Link 1](https://arxiv.org/abs/2311.01455).
 ## R232 — [VERSE: Verified Self-Evolving Optimizer for Agent Harnesses](https://arxiv.org/abs/2610.02616v1)
 
 Zekai Wang et al. **2026**. Representative record: `R232`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4, §6.1.
 
 <details>
@@ -4415,7 +4417,7 @@ Source links: [Link 1](https://arxiv.org/abs/2606.19980).
 ## R240 — [Learning to Continually Learn via Meta-learning Agentic Memory Designs](https://arxiv.org/abs/2602.07755v1)
 
 Yiming Xiong et al. **2026**. Representative record: `R240`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4.
 
 <details>
@@ -4607,7 +4609,7 @@ Source links: [Link 1](https://arxiv.org/abs/2310.06114).
 ## R250 — [SkillOpt: Executive Strategy for Self-Evolving Agent Skills](https://arxiv.org/html/2605.23904v2)
 
 Yifan Yang et al. **2026**. Representative record: `R250`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4.
 
 <details>
@@ -4626,7 +4628,7 @@ Source links: [Link 1](https://arxiv.org/html/2605.23904v2).
 ## R251 — [Meta Context Engineering via Agentic Skill Evolution](https://arxiv.org/abs/2601.21557v2)
 
 Haoran Ye et al. **2026**. Representative record: `R251`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.3, §3.4.
 
 <details>
@@ -4878,7 +4880,7 @@ Source links: [Link 1](https://proceedings.mlr.press/v306/zhang26cp.html).
 ## R265 — [MemEvolve: Meta-Evolution of Agent Memory Systems](https://arxiv.org/html/2512.18746v1)
 
 Guibin Zhang et al. **2025**. Representative record: `R265`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4.
 
 <details>
@@ -4916,7 +4918,7 @@ Source links: [Link 1](https://arxiv.org/html/2606.09498v3).
 ## R267 — [MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents](https://arxiv.org/abs/2602.02474v2)
 
 Haozhen Zhang et al. **2026**. Representative record: `R267`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4.
 
 <details>
@@ -5220,7 +5222,7 @@ Source links: [Link 1](https://openaccess.thecvf.com/content/CVPR2025/html/Zhou_
 ## R283 — [Hierarchical Self-Improvement: A Framework for Task-Specific Evolvable Agent Harnesses](https://arxiv.org/abs/2608.08466v1)
 
 Tailin Zhou. **2026**. Representative record: `R283`.
-Catalog: [Self-Improvement and Meta-Optimization → Harness and Memory-Construction Optimization](../README.md#meta-harness-optimization).
+Catalog: [Self-Improvement and Meta-Optimization → Harness and Context-Construction Optimization](../README.md#meta-harness-optimization).
 Linked citation locations: §3.4.
 
 <details>
@@ -5427,7 +5429,7 @@ Source links: [Link 1](https://doi.org/10.52202/085713-2483) · [Link 2](https:/
 | [ThriftyDAgger: Budget-Aware Novelty and Risk Gating for Interactive Imitation Learning](#r091) | R091, R092 | 1 |
 | [WorldEval: World Model as Real-World Robot Policies Evaluator](#r130) | R130, R131 | 1 |
 | [Pretrained Vision-Language-Action Models Are Surprisingly Resistant to Forgetting in Continual Learning](#r140) | R140, R141 | 1 |
-| [ASPIRE: Agentic Skills Discovery for Robotics](#r147) | R147, R148 | 1 |
+| [ASPIRE: Agentic /Skills Discovery for Robotics](#r147) | R147, R148 | 1 |
 | [Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning](#r149) | R149, R150 | 1 |
 | [Eureka: Human-Level Reward Design via Coding Large Language Models](#r153) | R153, R154 | 1 |
 | [What Matters in Learning from Offline Human Demonstrations for Robot Manipulation](#r155) | R155, R156 | 1 |
