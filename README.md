@@ -674,16 +674,14 @@ Shared datasets, task suites, evaluation protocols, and development platforms. F
 
 ## Open Questions <sub><a href="#readme-top">top</a></sub>
 
-Section 7 identifies open problems beyond autonomous execution and learning:
+Section 7 of the v35 manuscript identifies six open problems, listed in manuscript order:
 
-- **Reliable learning signals:** partial and noisy physical feedback can compound errors across generations.
-- **Cross-component attribution:** similar failures may originate in perception, skills, orchestration, training, or their interactions.
-- **Cumulative knowledge:** skills and improvement histories must remain usable as interfaces and physical conditions change.
-- **Safety under evolving procedures:** inherited revisions may invalidate earlier assumptions, safeguards, or guarantees.
-- **Reward hacking and leakage:** repeated judgments can become optimization targets instead of independent evidence.
-- **Verified recursive gain:** successive procedures need controlled comparisons of the later across-task improvements they produce.
-- **Affordable physical meta-updates:** simulation, imagination, logged experience, and real trials have different costs and grounding limits.
-- **Comparable autonomy:** setup, resets, labeling, takeovers, editing, and update selection need separate records.
+- **Learning from uncertain physical experience:** derive reliable learning signals from partial, noisy, and stochastic feedback without reinforcing errors through inherited training-procedure changes.
+- **Causal attribution across harness components:** distinguish failures in memory, skills, and workflows from their interactions, and isolate the effects of concurrent edits under limited physical trial budgets.
+- **Non-stationarity in the improvement loop:** track changing component dependencies and physical conditions, and reassess past evidence and improvement strategies without excessive revalidation costs.
+- **Reward hacking and evaluation leakage:** independently check physical outcomes, control evaluation feedback, and use fresh or statistically corrected final tests to distinguish real gains from exploitation of imperfect judgments.
+- **Safety across recursive updates:** selectively revalidate assumptions and safeguards as procedures evolve, preserve protected requirements and effective interruption, and account for risk from rejected trials, resets, and recovery.
+- **Benchmarking verified recursive gain:** track autonomous procedure revisions, inheritance, and reuse, and compare successive procedures from the same starting system and experience under matched tasks and resource budgets.
 
 These are gaps scoped to the reviewed manuscript, not claims that no related work exists elsewhere.
 
