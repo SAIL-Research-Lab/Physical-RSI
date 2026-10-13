@@ -11,18 +11,17 @@
 <p align="center">A paper-aligned, evidence-auditable map of recursive improvement in embodied systems.</p>
 
 <p align="center">
-  <a href="#paper-catalog"><img src="https://img.shields.io/badge/featured_catalog-65_papers-2563eb?style=flat-square" alt="65 papers in the featured catalog"></a>
-  <a href="docs/paper-reference-index.md"><img src="https://img.shields.io/badge/bibliography-102%2F102-0f766e?style=flat-square" alt="102 of 102 unique paper references indexed"></a>
+  <a href="#paper-catalog"><img src="https://img.shields.io/badge/catalog-278_works-2563eb?style=flat-square" alt="278 cited works and resources in the v34 catalog"></a>
+  <a href="docs/paper-reference-index.md"><img src="https://img.shields.io/badge/v34_references-292%2F292-0f766e?style=flat-square" alt="All 292 v34 bibliography records indexed across 278 works"></a>
   <a href="#capability-map"><img src="https://img.shields.io/badge/taxonomy-L1--L5-7c3aed?style=flat-square" alt="L1 to L5 capability taxonomy"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-475569?style=flat-square" alt="MIT License"></a>
 </p>
 
 <p align="center">
-  <a href="#the-boundary">Boundary</a>  | 
-  <a href="#capability-map">L1-L5</a>  | 
-  <a href="#featured-evidence-register">Evidence register</a>  | 
-  <a href="#three-views-of-one-system">Research map</a>  | 
-  <a href="#paper-catalog">Paper catalog</a>  | 
+  <a href="#the-boundary">Boundary</a> &nbsp;|&nbsp;
+  <a href="#capability-map">L1-L5</a> &nbsp;|&nbsp;
+  <a href="#three-views-of-one-system">Research map</a> &nbsp;|&nbsp;
+  <a href="#paper-catalog">Paper catalog</a> &nbsp;|&nbsp;
   <a href="docs/paper-reference-index.md">All references</a>
 </p>
 
@@ -75,22 +74,20 @@ entry, you can:
 
 **Content**
 
-The repository is organized to be read from definitions and evidence to methods, papers, and
-open questions:
+Explore the framework, paper collection, and open questions:
 
 - [From Evolution to Physical RSI](#from-evolution-to-physical-rsi)
 - [The Boundary](#the-boundary)
 - [Capability Map](#capability-map)
-- [Featured Evidence Register](#featured-evidence-register)
 - [Harness Adaptation, Training, and Verification](#three-views-of-one-system)
 - [Paper Catalog](#paper-catalog)
 - [Open Questions](#open-questions)
 - [License](#license)
 
-> **Version note.** The sections below follow `IEEE_TPAMI__Physical_RSI-33.pdf` (12 October 2026).
-> The opening introduction and badges are retained from the earlier README; their L1–L5 taxonomy,
-> real-only grounding language, and bibliography counts should not be read as claims about this snapshot.
-> The current framework and coverage are specified below.
+> **Version note.** The three manuscript figures below are reproduced from
+> `IEEE_TPAMI__Physical_RSI-35.pdf` (figures updated on 13 October 2026).
+> The Paper Catalog and reference index remain aligned with the v34 bibliography:
+> 292 source records consolidated into 278 works; they have not been re-audited against v35.
 
 ---
 
@@ -98,622 +95,595 @@ open questions:
 
 ## The Boundary <sub><a href="#readme-top">top</a></sub>
 
-The paper separates the **task-execution system** from the **procedure that improves it**.
-Their roles, rather than whether they are implemented as code, text, or weights, determine what
-has changed and which claim the evidence supports.
-
-| Object                                                       | Role in the improvement system                                                                                                          |
-| ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **Execution system `M = (Θ, H)`**                   | Learned execution models `Θ` and the model-external harness `H`: prompts, memory, skills, tools, and orchestration.                |
-| **Improvement procedure `Φ = (Adapt, Train, Ver)`** | Harness adaptation, data preparation and model training, and verification of candidate updates. These stages may themselves be revised. |
-| **Experience `D`**                                   | Execution records and improvement histories, including attempted changes and their outcomes.                                            |
-| **Protected evaluation `E/Q`**                       | Tasks and scoring rules outside `Φ`, used to evaluate the systems it produces and to judge revisions of `Ver`.                     |
+Physical RSI distinguishes the **execution system `M = (Θ, H)`**—models and their harness—from
+its **improvement procedure `Φ = (Adapt, Train, Ver)`**. Improving task performance is not the
+same as improving the procedure that produces future updates.
 
 <p align="center">
-  <a href="docs/figures/physical-rsi-v33-overview.png"><img src="docs/figures/physical-rsi-v33-overview.png" alt="Physical RSI architecture and L0–L5 framework" width="96%"></a>
+  <a href="docs/figures/physical-rsi-v35-overview.png"><img src="docs/figures/physical-rsi-v35-overview.png" alt="Physical RSI architecture and L0–L5 framework" width="96%"></a>
 </p>
-<p align="center"><sub><strong>Figure 1.</strong> Task execution, the improvement procedure, safety and control, and the L0–L5 framework.</sub></p>
-
-Four claims that are often collapsed should be kept separate:
-
-| Claim                                 | What must be shown                                                                                                                                                                  |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Inheritance**                 | An accepted change persists beyond its originating episode and is used later.                                                                                                       |
-| **Retained capability gain**    | The inherited change contributes to better later task performance.                                                                                                                  |
-| **Meta-level self-inheritance** | The procedure produces a revision of its own stages, which is retained and used in later improvement.                                                                               |
-| **Recursive gain across tasks** | Successive revised procedures produce better subsequent systems than their predecessors from matched starting systems and experience, under equal budgets and protected evaluation. |
-
-Replanning within an execution is not inheritance. Revising a procedure is not proof that it
-improves more effectively. A persuasive comparison accounts for robot trials, resets, hardware wear,
-compute, search, and human effort—not only the final successor's score.
-
-**Grounding and deployment are different records.** Definitions 1–2 and Section 5.2 allow grounding
-through physics simulation or real interaction. Simulated feedback is not evidence of hardware
-safety; learned-model imagination alone does not meet the grounding condition. Deploying a frozen
-result on a robot does not retroactively make its earlier revisions depend on real-robot feedback.
+<p align="center"><sub>Figure 1 (v35, p. 4). Task execution, the improvement procedure, safety and control, and the L0–L5 framework.</sub></p>
 
 <a id="capability-map"></a>
 
 ## Capability Map <sub><a href="#readme-top">top</a></sub>
 
-L1–L4 cross two dimensions: **the update target** and **the scope of the demonstrated gain**.
-They are not a simple ladder from human assistance to autonomy. L5 builds on L4 and adds verified
-recursive gain. A level applies to a specified improvement workflow and evaluation protocol—not
-to every experiment in a paper.
+The framework separates **what changes** from **where the retained gain transfers**:
 
-| Scope of gain          | Capability-level update to `M = (Θ, H)`                                                                                                               | Meta-level update to `Φ`                                                                                                                                  |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Same task**    | **L1:** an autonomously inherited capability update yields a retained same-task gain, with the improvement procedure fixed.                        | **L2:** an autonomously revised and inherited procedure is reused for same-task improvement, with retained capability gain.                            |
-| **Across tasks** | **L3:** source-task experience produces an inherited capability change that contributes to target-task gain, with the improvement procedure fixed. | **L4:** a procedure revision formed through source-task improvement is inherited and used for improvement across tasks, with retained capability gain. |
-
-- **L0 — no autonomous retained-improvement loop in the assessed workflow.** This includes
-  execution-only correction and, under the paper's autonomy rule, retained updates that depend on
-  human intervention or labeling during improvement.
-- **L5 — verified recursive gain across tasks.** Beyond L4, successive inherited revisions of `Φ`
-  must produce better subsequent improvements than their predecessors from matched starting
-  systems and experience, under equal budgets and protected evaluation.
-
-**Procedure change is not sufficient for L5.** Revising training code, a curriculum, or an acceptance
-rule establishes a changed mechanism only when the revision is retained and used. Its superiority
-requires a separate comparison of the subsequent systems produced by the old and new procedures.
-The manuscript's Figure 3 reports **no confirmed L5 case among its selected systems**.
-
-### What counts as another task?
-
-The manuscript describes a task through its required **skill sequence `κ`** and its **instance
-parameters `ξ`**. A change in object pose or scene difficulty does not establish across-task transfer
-if the required sequence remains unchanged. A new skill or a new ordering or composition of existing
-skills changes `κ`.
-
-- Grasping a cup from two different exposed positions: potentially the **same task**, with different `ξ`.
-- Grasping a cup versus opening a cabinet and then grasping it: **different tasks**.
-- `navigate → open → grasp` versus `grasp → navigate → open`: **different skill sequences**.
+- **L0:** no autonomous retained-improvement loop.
+- **L1 / L3:** inherited execution-system updates improve the same task / transfer across tasks.
+- **L2 / L4:** inherited improvement-procedure updates support same-task / cross-task improvement.
+- **L5:** successive procedure revisions produce better subsequent improvements under matched
+  budgets and protected cross-task evaluation—not merely a changed procedure.
 
 <p align="center">
-  <a href="docs/figures/physical-rsi-v33-update-targets-and-tasks.png"><img src="docs/figures/physical-rsi-v33-update-targets-and-tasks.png" alt="Capability versus meta-level updates, and task identity through skill sequences" width="100%"></a>
+  <a href="docs/figures/physical-rsi-v35-update-targets-and-tasks.png"><img src="docs/figures/physical-rsi-v35-update-targets-and-tasks.png" alt="Capability versus meta-level updates, and task identity through skill sequences" width="100%"></a>
 </p>
-<p align="center"><sub><strong>Manuscript Figure 2.</strong> Update targets and task identity. New scenes or embodiments should not automatically be counted as new tasks.</sub></p>
-
-Cross-task evidence must also show that the retained source change is actually used and contributes
-to target performance. Running the same fixed procedure independently on many tasks is not enough.
-
-<a id="featured-evidence-register"></a>
-
-## Featured Evidence Register <sub><a href="#readme-top">top</a></sub>
-
-The entries below follow the manuscript's selected protocols in Section 2.3 and Figure 3.
-They separate the inherited object from the setting that supplies its feedback. The register is
-selective and does not replace the underlying experiments or their autonomy conditions.
-
-| Selected workflow                                                                                                            | Reading under the current framework                           | Evidence and boundary                                                                                                                                                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ConRFT](https://arxiv.org/abs/2502.05450), operator-assisted learning                                                          | **L0 reference workflow**                               | Human corrections contribute to retained learning. This is useful robot improvement, but not autonomous improvement under the manuscript's level-assignment rule.                                                                                                 |
-| [DoReMi](https://sites.google.com/view/doremi-paper), execution recovery                                                        | **L0 reference workflow**                               | Detecting a mismatch and replanning during execution does not by itself establish a retained update to `M` or `Φ`.                                                                                                                                           |
-| [SOAR](https://arxiv.org/abs/2407.20635) and [SELFI](https://proceedings.mlr.press/v270/hirose25a.html), autonomous robot learning | **L1 in the selected workflows**                        | Real-robot experience supports retained capability updates. A new scene or further training round is not automatically a new `κ` or an updated improvement procedure.                                                                                          |
-| [ENPIRE](https://arxiv.org/abs/2606.19980), pin-insertion training-code revision                                                | **L2 in the selected same-task protocol**               | Robot outcomes guide revisions to training code and recipes. The selected experiment does not establish across-task procedure improvement or the successive matched gains required for L5.                                                                        |
-| [ASPIRE](https://arxiv.org/abs/2607.00272), retained library transfer                                                           | **L3 in the selected simulation protocol**              | Guidance accumulated on LIBERO-90 is applied to held-out long-horizon tasks without further debugging or task-specific library updates. The retained library belongs to `H`; separate real-robot transfer does not change the source of its discovery feedback. |
-| [RPG](https://arxiv.org/abs/2610.02204), skill and prompt improvement                                                           | **L3 in the manuscript's selected workflow**            | Simulation practice updates the execution system, which is then frozen for real deployment. Retaining an improved skill library is not the same as revising the method that builds the library.                                                                   |
-| [Hyperagents](https://arxiv.org/html/2603.19461v1), transferable meta-improvement                                               | **L4 comparator in Figure 3; methodological precedent** | The manuscript uses this work to discuss editable improvement procedures and transfer. Its digital/meta-level evidence should not be relabeled as a demonstration of real-robot L5.                                                                               |
-
-**Autonomy needs its own record.** Human setup, scene resets, hardware repair, and authorization for
-physical operation should be reported separately from human labeling, corrective intervention,
-code edits, or update selection. The latter can determine what is inherited and therefore affect
-the level claim; the former do not change the level by themselves, but still contribute cost and risk.
+<p align="center"><sub>Figure 2 (v35, p. 9). Update targets and task identity: a new scene alone does not establish a new task.</sub></p>
 
 <a id="three-views-of-one-system"></a>
 
 ## Harness Adaptation, Training, and Verification <sub><a href="#readme-top">top</a></sub>
 
-Harness adaptation and model training are two pathways through the same improvement system.
-Safety constrains both; verification decides what can be inherited; independent evaluation asks
-whether the retained changes helped. Sections 3–6 organize these complementary roles.
-
-### 1. Harness adaptation
-
-The harness carries execution resources across tasks: memory, skill implementations, interfaces,
-and orchestration or recovery logic. Its update loop connects physical evidence to later use:
-
-> **execution evidence → diagnosis and edit scope → candidate change → verification → inheritance**
-
-| Question                                                | Update target                                                  | Representative work                                                                                                                                                          |
-| ------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **What execution resource should change?**        | Memory, programs, skills, prompts, or workflows in `H`.      | [ASPIRE](https://arxiv.org/abs/2607.00272), [RPG](https://arxiv.org/abs/2610.02204), [RoboFoundry](https://arxiv.org/html/2609.32862v1), [KnowBody](https://arxiv.org/html/2609.28530v1) |
-| **How should later harness changes be produced?** | The diagnosis, construction, or selection method in `Adapt`. | Digital precedents include[STOP](https://arxiv.org/pdf/2310.02304v3), [MemSkill](https://arxiv.org/abs/2602.02474v2), and [VERSE](https://arxiv.org/abs/2610.02616v1).                |
-
-Adding a skill changes an execution resource. Changing the method that discovers or selects future
-skills targets the improvement procedure. Digital examples help explain this distinction; their
-inclusion does not establish physical grounding.
-
-### 2. Model training
-
-Training connects collected and selected experience to inherited model updates:
-
-> **experience preparation → IL / SSL / RL → model update → verification → later interaction**
-
-The paper reviews data preparation, imitation learning, self-supervised learning, reinforcement
-learning, and VLA, world, and reward models. [SOAR](https://arxiv.org/abs/2407.20635) and
-[SELFI](https://proceedings.mlr.press/v270/hirose25a.html) illustrate continued robot learning;
-[EmbodiRSI](https://arxiv.org/abs/2609.38905) and [F4R](https://arxiv.org/abs/2609.35575v2)
-provide adaptation examples; [ENPIRE](https://arxiv.org/abs/2606.19980) illustrates training-code revision.
-
-Better weights under a fixed objective do not establish a better improvement procedure. A reward
-or world model used only during training may belong to `Φ`, but fitting it to a prescribed target is
-not automatically meta-improvement. Identify a retained change to the objective, update rule,
-curriculum, training configuration, or decision procedure, and assess its later effect.
-
-### 3. Safety and control
-
-Safety must be reassessed across updates, rather than checked only for the final policy.
-
-| Decision                          | Required distinction                                                                                             |
-| --------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Attempt a trial**         | Check operating assumptions, action constraints, uncertainty, and feasible stopping or recovery.                 |
-| **Accept an update**        | Decide whether the candidate should be inherited; check affected interfaces, capabilities, and safeguards.       |
-| **Authorize operation**     | Establish the conditions under which the system may operate physically; acceptance alone does not grant release. |
-| **Assess accumulated risk** | Include rejected trials, resets, recovery, interventions, and hardware wear—not only successful execution.      |
-
-A safe final policy does not show that its learning process was safe. Earlier guarantees remain
-usable only while their assumptions and statistical bounds remain valid. The paper reviews
-component guarantees under stated conditions, not a safety guarantee for unrestricted Physical RSI.
-
-### 4. Verification and evaluation
-
-**Verification asks what may be retained. Evaluation asks what its later use achieved.**
-Section 6 separates these roles: `Ver` belongs to `Φ`; protected `E/Q` assesses the resulting system.
+- **Harness adaptation:** use execution feedback and improvement history to update memory, skills, tools, and workflows, retaining adopted changes for later execution.
+- **Model training:** turn collected experience into retained model updates.
+- **Safety and control:** constrain trials and reassess safeguards as the system changes.
+- **Verification and evaluation:** decide which changes may be retained, then independently
+  measure their later benefit.
+- **Benchmarks:** assess task performance, robustness, feedback reliability, and development
+  processes; see [Benchmarks and Evaluation Resources](#catalog-benchmarks).
 
 <p align="center">
-  <a href="docs/figures/physical-rsi-v33-verification-evaluation.png"><img src="docs/figures/physical-rsi-v33-verification-evaluation.png" alt="Candidate verification and independent evaluation" width="96%"></a>
+  <a href="docs/figures/physical-rsi-v35-verification-evaluation.png"><img src="docs/figures/physical-rsi-v35-verification-evaluation.png" alt="Candidate verification and independent evaluation" width="96%"></a>
 </p>
-<p align="center"><sub><strong>Figure 10.</strong> Candidate construction, implementation, effectiveness and preservation checks, and the independent evaluator.</sub></p>
-
-| Verification check                | Deciding question                                                                            |
-| --------------------------------- | -------------------------------------------------------------------------------------------- |
-| **Implementation validity** | Can the candidate run with the required syntax, interfaces, formats, and outputs?            |
-| **Repair effectiveness**    | Does it address the targeted failure under the tested conditions?                            |
-| **Capability preservation** | Does it retain earlier successful behavior and revalidate dependent knowledge?               |
-| **Meta-verification**       | If `Ver` changes, do independent outcomes of the systems it accepts justify that revision? |
-
-Passing an implementation check establishes testability, not improvement. More accepted updates
-under a revised verifier do not establish that the verifier is better.
-
-Improvement evaluation follows three questions:
-
-1. **Performance and retention:** what improves over rounds, and which earlier capabilities remain?
-2. **Attribution and transfer:** what retained change causes the gain, and does it transfer to a new `κ`?
-3. **Efficiency and autonomy:** what interaction, compute, human assistance, and physical risk produced it?
-
-For L5, compare successive versions of `Φ` from the same starting execution system and initial
-experience, with equal budgets, matched safety and stopping conditions, and protected across-task
-evaluation. Use repeated trials and uncertainty estimates. Report the cost of developing a revision
-separately from the cost of using it to produce later improvements.
-
-Two forms of independence matter. **Control independence** prevents a candidate from changing or
-bypassing the protected evaluator. **Information independence** prevents adaptive feedback from
-turning the final test into an optimization target. Keeping `E/Q` outside `Φ` is not enough if its
-decisions repeatedly guide later proposals. Use fresh evidence or appropriate statistical correction;
-if the evaluation set changes, retain a fixed anchor or re-evaluate earlier generations.
-
-### 5. Benchmark resources
-
-Section 6.3 and Table 4 group resources by what they assess, not by an assigned RSI level.
-This selected map also includes process-oriented resources discussed in the text.
-
-| Family                      | Evaluation focus                                      | Representative resources                                                               |
-| --------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| **Embodied**          | Task performance and generalization                   | Meta-World, LIBERO, ManiSkill3, BEHAVIOR-1K, RoboCasa365                               |
-| **Embodied**          | Robustness and physical evaluation                    | LIBERO-PRO, SIMPLER, RoboTwin, RoboArena                                               |
-| **Embodied**          | Feedback and evaluation reliability                   | FailBench, RoboRewardBench, WorldEval, dWorldEval, SC3-Eval, RBM-EVAL                  |
-| **Embodied**          | Robot engineering and development                     | CaP-Bench within CaP-X, EmboCoach-Bench as named in the manuscript, RLE-Bench          |
-| **Primarily digital** | AI research, training algorithms, and data strategies | AI4AI-Bench, RSIBench-Data, MLAgentBench, MLE-bench, MLGym-Bench, MLRC-Bench, RE-Bench |
-| **Primarily digital** | Method or harness development and retained experience | RSI-Exam, HarnessDev, PAST-Bench                                                       |
-
-These resources probe different parts of the problem. An iterative agent benchmark is not, by that
-fact alone, a complete Physical RSI evaluation. Verified recursive gain across tasks under matched
-conditions remains a gap identified in the manuscript's reviewed resources.
+<p align="center"><sub>Figure 10 (v35, p. 26). Candidate construction, implementation, effectiveness, and preservation checks, with independent evaluation and meta-verification.</sub></p>
 
 <a id="paper-catalog"></a>
 
 ## Paper Catalog <sub><a href="#readme-top">top</a></sub>
 
-### Model Training
-
-Training is a continuing, gated process rather than a one-off offline stage:
-
-> **experience collection -> evaluation and credit -> parameter update -> verification and consolidation**
-
-#### 1. Data Preparation
-
-Experience generation and selection determine what the learner practices and which trajectories become training data.
-
-##### Task, environment, and practice generation
-
--**[Self-Improving Robots: End-to-End Autonomous Visuomotor Reinforcement Learning](https://proceedings.mlr.press/v229/sharma23b.html)** (2023) — Autonomous real-world practice connects visuomotor policy learning with reset and training infrastructure.
-
--**[Find Something You Can&#39;t Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models](https://arxiv.org/abs/2609.32069v1)** (2026) — Scene-conditioned, weakness-aware task selection directs real-world practice; residual RL improves a frozen VLA.
-
--**[GenSim: Generating Robotic Simulation Tasks via Large Language Models](https://arxiv.org/abs/2310.01361)** (2024) — LLMs generate robotic simulation tasks to expand the experience available for policy learning.
-
--**[GenSim2: Scaling Robot Data Generation with Multi-modal and Reasoning LLMs](https://arxiv.org/abs/2410.03645)** (2024) — Multimodal and reasoning LLMs scale simulated task construction and robot-data generation.
-
--**[CurricuLLM: Automatic Task Curricula Design for Learning Complex Robot Skills using Large Language Models](https://arxiv.org/abs/2409.18382)** (2024) — LLMs organize task curricula for learning increasingly complex robot skills.
-
--**[RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation](https://arxiv.org/abs/2311.01455)** (2024) — Generative simulation constructs tasks, scenes, rewards, and demonstrations for automated robot learning.
-
--**[Scaling Sim-to-Real VLA Reinforcement Learning with Generative 3D Worlds](https://arxiv.org/abs/2603.18532)** (2026) — Generative 3D environments broaden simulation coverage for sim-to-real VLA reinforcement learning.
-
--**[SimWorld Studio: Automatic Environment Generation with Evolving Coding Agent for Embodied Agent Learning](https://arxiv.org/abs/2605.09423)** (2026) — An evolving coding agent generates simulation environments for embodied-agent training.
-
--**[HomeBody: A Humanoid That Explores, Remembers, and Acts on Its Own](https://tml.stanford.edu/homebody/)** (2026) — Observation- and SLAM-derived digital twins support spatial reasoning and execution; this is an environment-preparation precedent.
-
-##### Experience selection, human guidance, and recovery
-
--**[MAGMA-GEN: Validated Recovery Supervision from Ambiguous Failures via Counterfactual Re-Execution](https://arxiv.org/abs/2609.20056)** (2026) — Coach-proposed recovery actions undergo matched-state counterfactual re-execution, generating validated supervision from the policy's failed rollouts.
-
--**[Robot Learning on the Job: Human-in-the-Loop Autonomy and Learning During Deployment](https://arxiv.org/abs/2211.08416)** (2023) — Human interventions and deployment experience support continuing robot-policy learning.
-
--**[Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning](https://arxiv.org/abs/2410.21845)** (2025) — Human-guided real-world RL combines demonstrations, corrections, and online interaction for dexterous manipulation.
-
--**[ThriftyDAgger: Budget-Aware Novelty and Risk Gating for Interactive Imitation Learning](https://arxiv.org/abs/2109.08273)** (2021) — Novelty and risk gates allocate a limited human-query budget during interactive imitation learning.
-
--**[Zero2Skill: Bootstrapping Robot Skills through Autonomous Data Collection, Training, and Deployment](https://arxiv.org/abs/2607.14047v3)** (2026) — A collection–training–deployment workflow bootstraps robot skills with human correction memory.
-
--**[EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration](https://arxiv.org/abs/2607.19745)** (2026) — Human recovery demonstrations supply supervision for learning from failure states.
-
--**[Autonomous Improvement of Instruction Following Skills via Foundation Models](https://arxiv.org/abs/2407.20635)** (2024) — Foundation-model-guided autonomous collection admits successful robot experience for subsequent policy improvement.
-
--**[FAR: Failure-Aware Retry for Test-Time Recovery and Continual Policy Improvement](https://arxiv.org/abs/2607.01111)** (2026) — Failure-aware retries recover execution and return successful recovery experience to continual policy training.
-
--**[Self-Evolving Learning for Embodied AI with Criticality Model](https://arxiv.org/abs/2607.28251)** (2026) — An updated criticality predictor focuses experience collection on failure-prone states.
-
-##### Adaptive simulation distributions and exploration
-
--**[Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience](https://arxiv.org/abs/1810.05687)** (2019) — Real-world experience updates simulation-randomization distributions for later policy training.
-
--**[Data-Efficient Domain Randomization With Bayesian Optimization](https://doi.org/10.1109/LRA.2021.3052391)** (2021) — Real-world policy returns guide Bayesian optimization of domain-randomization distributions.
-
--**[Neural Posterior Domain Randomization](https://proceedings.mlr.press/v164/muratore22a.html)** (2022) — Neural posterior inference estimates simulator-parameter distributions from observed experience.
-
--**[Planning to Explore via Self-Supervised World Models](https://arxiv.org/abs/2005.05960)** (2020) — World-model uncertainty guides exploration and the collection of informative experience.
-
-#### 2. Training Methods
-
-Pretraining establishes behavioral and perceptual priors; imitation, self-supervision, and reinforcement learning incorporate subsequent experience.
-
-##### Overview
-
--**[Training Methods and Generation Technologies for Embodied Intelligent Robot Manipulation Skill Models: A Systematic Review](https://www.techscience.com/cmc/v89n1/68409)** (2026) — A review of robot manipulation training, skill generation, motion control, and deployment challenges.
-
--**[Vision-Language-Action Models for Robotics: A Review Towards Real-World Applications](http://dx.doi.org/10.1109/ACCESS.2025.3609980)** (2025) — A review of VLA architectures, training strategies, and challenges in real-world deployment.
-
--**[World Model for Robot Learning: A Comprehensive Survey](https://arxiv.org/abs/2605.00080)** (2026) — A review of predictive models for policy learning, planning, learned simulation, evaluation, and data generation.
-
--**[Towards AI That Improves Itself: A Survey of Recursive Self-Improvement](https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf)** (year not specified in PSI.bib) — A general RSI framework covering model/data evolution, retained updates, and improvement of research processes.
-
--**[Recursive Self-Improvement in AI: A Survey](https://www.preprints.org/manuscript/202609.2680/v1)** (2026, preprint) — A mechanism-oriented review connecting self-training, AutoML, meta-learning, and editable improvement procedures.
-
-##### Imitation learning
-
--**[ReGuide: From Test-Time Guidance to Self-Improving Diffusion Policies](https://arxiv.org/abs/2606.28939)** (2026) — Successful phase-guided recovery rollouts are reused for iterative diffusion-policy fine-tuning or retraining in simulation.
-
--**[RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation](https://openreview.net/forum?id=vsDnJ2WR4x)** (2023) — A generalist manipulation model uses demonstrations and self-generated data for later training and adaptation.
-
--**[What Matters in Learning from Offline Human Demonstrations for Robot Manipulation](https://arxiv.org/abs/2108.03298)** (2021) — Studies dataset and algorithm choices for learning manipulation policies from offline human demonstrations.
-
--**[OpenVLA: An Open-Source Vision-Language-Action Model](https://arxiv.org/abs/2406.09246)** (2024) — An open VLA supports action-token prediction and parameter-efficient or full model adaptation.
-
--**[FAST: Efficient Action Tokenization for Vision-Language-Action Models](https://arxiv.org/abs/2501.09747)** (2025) — Compressed action tokens make autoregressive VLA training more efficient.
-
--**[Diffusion Policy: Visuomotor Policy Learning via Action Diffusion](https://arxiv.org/abs/2303.04137)** (2024) — Action-distribution learning through diffusion supplies a generative behavior-cloning policy.
-
--**[π₀: A Vision-Language-Action Flow Model for General Robot Control](https://arxiv.org/abs/2410.24164)** (2024 preprint; RSS 2025) — Flow matching learns continuous action chunks on top of pretrained vision-language representations.
-
--**[One-Step Diffusion Policy: Fast Visuomotor Policies via Diffusion Distillation](https://arxiv.org/abs/2410.21257)** (2024) — Teacher-policy distillation replaces iterative diffusion sampling with a one-step action generator.
-
--**[Generative Adversarial Imitation Learning](https://arxiv.org/abs/1606.03476)** (2016) — Adversarial distribution matching provides an alternative imitation-learning objective.
-
--**[One-Shot Imitation from Observing Humans via Domain-Adaptive Meta-Learning](https://arxiv.org/abs/1802.01557)** (2018) — Domain-adaptive meta-learning supplies a precedent for learning an imitation objective from cross-domain demonstrations.
-
-##### Self-supervised learning
-
--**[Real-World Robot Learning with Masked Visual Pre-training](https://arxiv.org/abs/2210.03109)** (2022) — Masked visual reconstruction provides representations for downstream robot-policy learning.
-
--**[Latent Action Pretraining from Videos](https://arxiv.org/abs/2410.11758)** (2025) — Latent actions learned from videos reduce dependence on expert action labels during pretraining.
-
--**[Structured World Models from Human Videos](https://arxiv.org/abs/2308.10901)** (2023) — Human-video predictive priors are adapted with robot experience for world-model-based learning.
-
--**[DayDreamer: World Models for Physical Robot Learning](https://proceedings.mlr.press/v205/wu23c.html)** (2023) — Real robot trajectories update a world model that supplies imagined experience for policy learning.
-
--**[VLAW: Iterative Co-Improvement of Vision-Language-Action Policy and World Model](https://arxiv.org/abs/2602.12063)** (2026) — Real rollouts refine a video world model, which generates supplemental data for iterative VLA improvement.
-
--**[RoboTTT: Context Scaling for Robot Policies](https://arxiv.org/abs/2607.15275)** (2026) — Test-time training scales policy context; fast-weight updates support adaptation during execution.
-
--**[Automated Self-Supervised Learning for Graphs](https://arxiv.org/abs/2106.05470)** (2022) — Searches combinations and weights of self-supervised objectives for graphs; a digital methodological precedent.
-
-##### Reinforcement learning
-
--**[Embodied Learning under Policy and Dynamics Shifts](https://doi.org/10.1093/nsr/nwag506)** (2026) — OMPO corrects policy and dynamics shifts when reusing historical replay for continual RL adaptation on control and manipulation benchmarks.
-
--**[SELFI: Autonomous Self-Improvement with RL for Vision-Based Navigation around People](https://proceedings.mlr.press/v270/hirose25a.html)** (2025) — Autonomous real-world interaction improves vision-based navigation around people.
-
--**[Lifelong Autonomous Improvement of Navigation Foundation Models in the Wild](https://proceedings.mlr.press/v270/stachowicz25a.html)** (2025) — Deployment experience continually adapts navigation foundation models in real environments.
-
--**[Continuously Improving Mobile Manipulation with Autonomous Real-World RL](https://proceedings.mlr.press/v270/mendonca25a.html)** (2025) — Autonomous real-world RL supports continuing improvement of mobile-manipulation policies.
-
--**[Learning While Deploying: Fleet-Scale Reinforcement Learning for Generalist Robot Policies](https://arxiv.org/abs/2605.00416)** (2026) — Fleet-scale deployment experience feeds reinforcement learning of generalist robot policies.
-
--**[Cal-QL: Calibrated Offline RL Pre-Training for Efficient Online Fine-Tuning](https://arxiv.org/abs/2303.05479)** (2024) — Calibrated offline RL pretraining provides a starting point for efficient online fine-tuning.
-
--**[ConRFT: A Reinforced Fine-tuning Method for VLA Models via Consistency Policy](https://arxiv.org/abs/2502.05450)** (2025) — Consistency-policy fine-tuning combines prior data, online robot interaction, and human corrections.
-
--**[π*₀.₆: a VLA That Learns From Experience](https://arxiv.org/abs/2511.14759)** (2025) — RECAP combines demonstrations, deployment rollouts, and expert interventions through advantage-conditioned VLA learning.
-
--**[Diffusion Policy Policy Optimization](https://arxiv.org/abs/2409.00588)** (2024) — Reinforcement learning fine-tunes diffusion policies through their denoising process.
-
--**[Steering Your Diffusion Policy with Latent Space Reinforcement Learning](https://arxiv.org/abs/2506.15799)** (2025) — A learned latent-space controller steers a frozen diffusion policy.
-
--**[EvoHIL: Self-Evolving Reward and Flow-Matched Policy Optimization for Robust Human-in-the-Loop Reinforcement Learning](https://arxiv.org/abs/2608.03872)** (2026) — Human-confirmed outcomes adapt the reward model alongside flow-matched policy optimization.
-
--**[Efficient Language-instructed Skill Acquisition via Reward-Policy Co-Evolution](https://arxiv.org/abs/2412.13492)** (2024) — Iterative reward-code and policy co-evolution supports language-instructed skill acquisition.
-
--**[Discovering State-of-the-Art Reinforcement Learning Algorithms](https://doi.org/10.1038/s41586-025-09761-x)** (2025) — Meta-learning discovers policy and prediction update rules on digital RL benchmarks.
-
--**[Differentiable Evolutionary Reinforcement Learning](https://arxiv.org/abs/2512.13399)** (2026) — Policy-validation performance trains a meta-optimizer that generates future reward structures in digital tasks.
-
-#### 3. Learning Models
-
-The same learning paradigms can update action generation, predictive dynamics, or the signals that guide future learning.
-
-##### Vision-language-action models
-
--**[SEES: A Self-Evolving Embodied System via Failure-Guided VLA Policy Adaptation](https://arxiv.org/abs/2609.32698)** (2026) — Failure bottlenecks trigger targeted simulation tasks and RL updates to shared VLA adapters, supporting transfer across related skills.
-
--**[RedFlow: Redirect Failure into Action-level Corrections for Flow-matching VLA Policy](https://arxiv.org/abs/2607.27782)** (2026) — Offline post-training uses fixed rollouts, matched execution contexts, and higher-quality action chunks to derive corrective targets for flow-matching VLAs.
-
--**[Zeva-Ego: Egocentric Mid-Training with In-Context Causal Learning for Robot Manipulation](https://arxiv.org/abs/2609.24411)** (2026) — Action-centered supervision from egocentric video supports VLA mid-training; deployment-time causal adaptation uses interaction feedback without parameter updates.
-
--**[RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://proceedings.mlr.press/v229/zitkovich23a.html)** (2023) — Action-token training transfers web-scale vision-language knowledge into robot control.
-
--**[Octo: An Open-Source Generalist Robot Policy](https://doi.org/10.15607/RSS.2024.XX.090)** (2024) — A generalist robot policy uses a diffusion action head and supports downstream adaptation.
-
--**[RDT-1B: a Diffusion Foundation Model for Bimanual Manipulation](https://arxiv.org/abs/2410.07864)** (2025) — A diffusion foundation model supplies continuous action generation for bimanual manipulation.
-
--**[Knowledge Insulating Vision-Language-Action Models: Train Fast, Run Fast, Generalize Better](https://doi.org/10.52202/085713-3439)** (2025) — Gradient isolation separates discrete-action backbone training from the continuous-action expert.
-
--**[RT-H: Action Hierarchies using Language](https://doi.org/10.15607/RSS.2024.XX.049)** (2024) — Language-conditioned action hierarchies structure high-level interpretation and low-level control.
-
--**[Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2502.19417)** (2025) — Hierarchical VLAs coordinate open-ended instruction interpretation with action generation.
-
--**[GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](https://arxiv.org/abs/2503.14734)** (2025) — An open humanoid foundation model combines high-level vision-language reasoning with action generation.
-
--**[RL Token: Bootstrapping Online RL with Vision-Language-Action Models](https://arxiv.org/abs/2604.23073)** (2026) — A compact RL-token interface supports online actor–critic learning around a pretrained VLA.
-
-##### World models and world-action models
-
--**[Self-Improving Robot Policy with Compositional World Model](https://www.roboticsproceedings.org/rss22/p012.html)** (2026) — A compositional world model supports repeated policy optimization through imagined rollouts.
-
--**[World-VLA-Loop: Closed-Loop Learning of Video World Model and VLA Policy](https://arxiv.org/abs/2602.06508)** (2026) — Improved-policy rollouts refine a video world model used for subsequent VLA post-training.
-
--**[Learning Universal Policies via Text-Guided Video Generation](https://arxiv.org/abs/2302.00111)** (2023) — Text-guided video generation and inverse dynamics connect predicted outcomes to robot actions.
-
--**[TD-MPC2: Scalable, Robust World Models for Continuous Control](https://arxiv.org/abs/2310.16828)** (2024) — Latent world-model learning supports scalable planning and continuous control.
-
--**[WorldEval: World Model as Real-World Robot Policies Evaluator](https://arxiv.org/abs/2505.19017)** (2025) — A world model predicts policy outcomes for evaluation; its role differs from direct policy training.
-
--**[Learning Interactive Real-World Simulators](https://arxiv.org/abs/2310.06114)** (2024) — An interactive generative simulator supplies synthetic experience for policy learning.
-
--**[Ctrl-World: A Controllable Generative World Model for Robot Manipulation](https://arxiv.org/abs/2510.10125)** (2026) — Action-conditioned, multi-view predictions support policy ranking and synthetic-data fine-tuning.
-
--**[Motus2: A Self-Evolving General World Model for Dexterous Manipulation](https://arxiv.org/abs/2608.30237)** (2026) — Shared weights expose policy, simulator, and evaluator interfaces in a unified decision-and-learning loop.
-
--**[WAM-RL: World-Action Model Reinforcement Learning with Reconstruction Rewards and Online Video SFT](https://arxiv.org/abs/2606.17906)** (2026) — World-action-model RL combines reconstruction rewards with online video supervised fine-tuning.
-
-##### Reward models and value learning
-
--**[LIV: Language-Image Representations and Rewards for Robotic Control](https://arxiv.org/abs/2306.00958)** (2023) — Language-image representations provide task-progress and reward signals for robotic control.
-
--**[RoboReward: General-Purpose Vision-Language Reward Models for Robotics](https://arxiv.org/abs/2601.00675)** (2026) — General-purpose vision-language reward modeling supplies task-outcome feedback.
-
--**[Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons](https://arxiv.org/abs/2603.02115)** (2026) — Trajectory comparisons train a general-purpose robotic reward model.
-
--**[SARM2: Multi-Task Stage Aware Reward Modeling for Self Improving Robotic Manipulation](https://arxiv.org/abs/2606.10305)** (2026) — Stage estimation and value learning provide dense rewards for subsequent VLA policy improvement.
-
--**[DenseReward: Dense Reward Learning via Failure Synthesis for Robotic Manipulation](https://arxiv.org/abs/2607.13033)** (2026) — Synthesized failure examples support dense reward learning for manipulation.
-
--**[Robo-Dopamine: General Process Reward Modeling for High-Precision Robotic Manipulation](https://arxiv.org/abs/2512.23703)** (2025) — Process reward modeling supplies fine-grained feedback for high-precision manipulation.
-
--**[PEBBLE: Feedback-Efficient Interactive Reinforcement Learning via Relabeling Experience and Unsupervised Pre-training](https://arxiv.org/abs/2106.05091)** (2021) — Preference-based reward updates alternate with policy learning and replay-experience relabeling.
-
--**[Flora: Sample-Efficient Preference-Based Rl Via Low-Rank Style Adaptation of Reward Functions](https://doi.org/10.1109/ICRA55743.2025.11127633)** (2025) — Low-rank reward adaptation incorporates new preferences while limiting interference with prior reward knowledge.
-
--**[Beyond Imitation: Self-Improving Robot Policies via Off-Policy Q-Planning](https://arxiv.org/abs/2608.21204)** (2026) — Successful and failed rollouts update a Q-function for action selection while behavior-cloning weights remain frozen.
-
-#### 4. Knowledge Transfer and Training Procedure Improvement
-
-Transfer retains useful capabilities across tasks; procedure improvement changes how later data or model updates are produced.
-
-##### Cross-task transfer and retention
-
--**[SRSA: Skill Retrieval and Adaptation for Robotic Assembly Tasks](https://arxiv.org/abs/2503.04538)** (2025) — Retrieved source policies initialize and accelerate learning for new assembly tasks.
-
--**[EXTRACT: Efficient Policy Learning by Extracting Transferable Robot Skills from Offline Data](https://proceedings.mlr.press/v270/zhang25c.html)** (2025) — Offline robot experience yields transferable skills for efficient downstream policy learning.
-
--**[PRISE: LLM-Style Sequence Compression for Learning Temporal Action Abstractions in Control](https://arxiv.org/abs/2402.10450)** (2024) — Sequence compression learns reusable temporal action abstractions.
-
--**[LOTUS: Continual Imitation Learning for Robot Manipulation Through Unsupervised Skill Discovery](https://arxiv.org/abs/2311.02058)** (2024) — Unsupervised skill discovery and skill selection support continual imitation learning.
-
--**[Sparse Diffusion Policy: A Sparse, Reusable, and Flexible Policy for Robot Learning](https://arxiv.org/abs/2407.01531)** (2024) — Sparse policy modules support reuse and flexible adaptation across robot tasks.
-
--**[Knowledge Diversion for Efficient Morphology Control and Policy Transfer](https://arxiv.org/abs/2512.09796)** (2025) — Shared and task-specific controller components support efficient transfer across morphologies and tasks.
-
--**[Towards Human-like Physical Intelligence: Lifelong Vision-Language-Action Learning for Robotic Manipulation](https://arxiv.org/abs/2607.14852)** (2026) — Lifelong VLA learning studies the incorporation of new manipulation capabilities while retaining earlier knowledge.
-
--**[Robust Finetuning of Vision-Language-Action Robot Policies via Parameter Merging](https://arxiv.org/abs/2512.08333)** (2026) — Parameter merging balances new-task fine-tuning with retention of pretrained VLA behavior.
-
--**[Pretrained Vision-Language-Action Models are Surprisingly Resistant to Forgetting in Continual Learning](https://arxiv.org/abs/2603.03818)** (2026) — Examines resistance to forgetting during continual adaptation of pretrained VLAs.
-
--**[Can Vision-Language-Action Models Learn from Real-World Data Continually without Forgetting?](https://arxiv.org/abs/2605.26820)** (2026) — Studies continual real-world VLA learning and preservation of previously learned capabilities.
-
-##### Data-preparation improvement
-
--**[RoboCoach: World Models as Active Coaches for Compositional Robot Skills](https://arxiv.org/abs/2609.39685)** (2026) — Imagined subtask failures guide demonstration requests and selective expert-adapter updates under matched data budgets.
-
--**[Curating Demonstrations using Online Experience](https://arxiv.org/abs/2503.03707)** (2025) — Online policy experience helps score and curate demonstrations for later learning.
-
--**[CUPID: Curating Data your Robot Loves with Influence Functions](https://arxiv.org/abs/2506.19121)** (2025) — Influence functions estimate which robot demonstrations are useful for the learner.
-
--**[DataMIL: Selecting Data for Robot Imitation Learning with Datamodels](https://arxiv.org/abs/2505.09603)** (2026) — Datamodels select prior data by predicted downstream-policy benefit rather than visual similarity alone.
-
--**[Re-Mix: Optimizing Data Mixtures for Large Scale Imitation Learning](https://arxiv.org/abs/2408.14037)** (2024) — Learner-dependent mixture optimization adjusts how multiple data sources contribute to imitation learning.
-
--**[RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement](https://arxiv.org/abs/2607.25886)** (2026) — A digital benchmark tests feedback-driven revision of training-data strategies under a fixed post-training stack.
-
-##### Training-method and workflow improvement
-
--**[Eureka: Human-Level Reward Design via Coding Large Language Models](https://arxiv.org/abs/2310.12931)** (2024) — LLMs revise reward code using training feedback; reward-design search is distinct from changing the search procedure.
-
--**[EvoTrainer: Co-Evolving LLM Policies and Training Harnesses for Autonomous Agentic Reinforcement Learning](https://arxiv.org/abs/2606.03108)** (2026) — Digital-task feedback co-evolves LLM policies, diagnostics, and retained training-harness strategies.
-
--**[ENPIRE: Agentic Robot Policy Self-Improvement in the Real World](https://arxiv.org/abs/2606.19980)** (2026) — Real-robot rollouts guide retained revisions to training infrastructure, algorithm code, and recipes.
-
--**[HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning](https://arxiv.org/abs/2606.08610)** (2026) — Agents automate simulation RL through gated stages, reusable artifacts, and experience from earlier training runs.
-
-### Safety, Assurance, and Failure Monitoring
-
-Safety-related works are collected here across training, control, execution, deployment, and
-evaluation integrity. Failure detection is not a safety guarantee; digital reward-integrity
-safeguards are not physical-safety evidence. Benchmark resources remain in the benchmark group.
-
-#### Learning, Control, and Integrity Safeguards
-
-- [PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation](https://arxiv.org/abs/2606.08414) by Lingxuan Wu et al. 2026.
-- [BenchShield: Formal Model-Backed Instrumentation for Reward Integrity in LLM-Agent Evaluation Infrastructure](https://arxiv.org/abs/2609.11028) by Shenghan Zheng et al. 2026.
+Categories are reading aids, not capability-level assignments. See the [full reference index](docs/paper-reference-index.md) for source records and version details.
+
+<details>
+<summary><strong>Browse by topic</strong></summary>
+
+- [Agent Harnesses and Execution](#catalog-agent-harnesses)
+  - [Memory and Knowledge Management](#harness-memory)
+  - [Skill Libraries and Tool Construction](#harness-skills)
+  - [Planning and Workflows](#harness-workflows)
+  - [Failure Diagnosis and Execution Recovery](#harness-recovery)
+- [Model Training and Adaptation](#catalog-model-training)
+  - [Data Preparation and Generation](#training-data)
+  - [Imitation Learning and Generalist Policies](#training-imitation)
+  - [Reinforcement Learning and Autonomous Practice](#training-rl)
+  - [Human-in-the-Loop and Interactive Learning](#training-human-feedback)
+  - [Self-Supervised and Representation Learning](#training-representations)
+  - [World Models for Policy Learning](#training-world-models)
+  - [Reward Models and Learning Feedback](#training-reward-models)
+  - [Continual Adaptation and Knowledge Transfer](#training-transfer)
+  - [Robot Learning Surveys and Foundations](#training-foundations)
+- [Self-Improvement and Meta-Optimization](#catalog-meta-improvement)
+  - [Self-Modifying Systems and Recursive Improvement](#meta-recursive-systems)
+  - [Harness and Memory-Construction Optimization](#meta-harness-optimization)
+  - [Training Procedures, Curricula, and Algorithm Optimization](#meta-training-optimization)
+  - [Self-Improvement and AutoML Foundations and Surveys](#meta-foundations)
+- [Safety and Assurance](#catalog-safety)
+  - [Safe Exploration and Constrained Learning](#safety-learning)
+  - [Safe Transfer and Update Acceptance](#safety-transfer)
+  - [Runtime Control and Failure Monitoring](#safety-runtime)
+  - [Oversight and Integrity Protection](#safety-oversight)
+  - [Safety Surveys and Risk Taxonomies](#safety-foundations)
+- [Verification and Evaluation Methods](#catalog-verification)
+  - [Robot Policy Verification and Candidate Selection](#verification-robot-policies)
+  - [Learned Evaluators and Meta-Verification](#verification-learned-evaluators)
+  - [Evaluation Protocols and Statistical Reliability](#verification-protocols)
+- [Benchmarks, Datasets, and Platforms](#catalog-benchmarks)
+  - [Shared Robot Datasets](#benchmarks-datasets)
+  - [Task and Long-Horizon Learning Benchmarks](#benchmarks-tasks)
+  - [Robustness and Transfer Evaluation](#benchmarks-robustness)
+  - [Real-Robot and Sim-and-Real Evaluation Platforms](#benchmarks-real-robot)
+  - [Feedback and Reward Evaluation](#benchmarks-feedback)
+  - [World-Model-Based Evaluation](#benchmarks-world-models)
+  - [Robot Engineering Benchmarks](#benchmarks-engineering)
+  - [Research Agent and Self-Improvement Benchmarks](#benchmarks-research-agents)
+
+</details>
+
+<a id="catalog-agent-harnesses"></a>
+
+### Agent Harnesses and Execution
+
+Memory, skills, tools, and workflows used during task execution, together with methods for updating these resources. Meta-improvement changes the procedures that produce such updates; see [Self-Improvement and Meta-Optimization](#catalog-meta-improvement).
+
+<a id="harness-memory"></a>
+
+#### Memory and Knowledge Management
+
+Includes persistent execution guidance and tool documentation, as well as explicit memory systems.
+
+- [Beyond Static Toolsets: Self-Evolving LLM Tool Agents via Continual Documentation Adaptation](https://aclanthology.org/2026.findings-acl.1082/) by Bin Wu et al. 2026.
+- [HomeBody: A humanoid that explores, remembers, and acts on its own](https://tml.stanford.edu/homebody/) by Gio Huh et al. 2026.
+- [Kintsugi: Learning Policies by Repairing Executable Knowledge Bases](https://arxiv.org/html/2605.09487v1) by Teng Cao et al. 2026.
+- [Know Your Body: A Harness for Direct and Self-Improving Robot Control with VLMs](https://arxiv.org/html/2609.28530v1) by Zeyu Lou et al. 2026.
+- [PhysMem: Scaling Test-Time Memory for Embodied Physical Reasoning](https://arxiv.org/html/2602.20323v6) by Haoyang Li et al. 2026.
+- [RoboTTT: Context Scaling for Robot Policies](https://arxiv.org/abs/2607.15275) by Yunfan Jiang et al. 2026.
+- [WikiSkill: Compiling Agent Experience into Persistent Knowledge for Skill Evolution](https://arxiv.org/html/2608.27454v1) by Liyan Tang et al. 2026.
+- [AutoGuide: Automated Generation and Selection of Context-Aware Guidelines for Large Language Model Agents](https://arxiv.org/html/2403.08978v2) by Yao Fu et al. 2024.
+- [AutoManual: Constructing Instruction Manuals by LLM Agents via Interactive Environmental Learning](https://arxiv.org/html/2405.16247v4) by Minghao Chen et al. 2024.
+- [Distilling and Retrieving Generalizable Knowledge for Robot Manipulation via Language Corrections](https://arxiv.org/html/2311.10678v2) by Lihan Zha et al. 2024.
+- [DynaMem: Online Dynamic Spatio-Semantic Memory for Open World Mobile Manipulation](https://arxiv.org/abs/2411.04999) by Peiqi Liu et al. 2024.
+- [ExpeL: LLM Agents Are Experiential Learners](https://arxiv.org/html/2308.10144v3) by Andrew Zhao et al. 2024.
+- [Reflexion: Language Agents with Verbal Reinforcement Learning](https://arxiv.org/abs/2303.11366) by Noah Shinn et al. 2023.
+
+<a id="harness-skills"></a>
+
+#### Skill Libraries and Tool Construction
+
+- [Act-Observe-Rewrite: Multimodal Coding Agents as In-Context Policy Learners for Robot Manipulation](https://arxiv.org/html/2603.04466v1) by Vaishak Kumar. 2026.
+- [ASPIRE: Agentic /Skills Discovery for Robotics](https://arxiv.org/html/2607.00272v1) by Runyu Lu et al. 2026.
+- [Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents](https://arxiv.org/html/2606.30185v1) by Yutao Sun et al. 2026.
+- [EmbodiSkill: Skill-Aware Reflection for Self-Evolving Embodied Agents](https://arxiv.org/html/2605.10332v2) by Ruofei Ju et al. 2026.
+- [EvoSkill: Automated Skill Discovery for Multi-Agent Systems](https://arxiv.org/abs/2603.02766) by Salaheddin Alzubi et al. 2026.
+- [Playful Agentic Robot Learning](https://arxiv.org/html/2606.19419v1) by Junyi Zhang et al. 2026.
+- [RACaP: Agentic Reasoning, Acting, and Coding as Policies for Evolvable Robot Learning](https://arxiv.org/html/2609.29394v1) by Zexi Li et al. 2026.
+- [Reconstruct, Practice, Go Real: Guided Self-Improvement for Embodied Agents](https://arxiv.org/abs/2610.02204) by Yen-Jen Wang et al. 2026.
+- [SkillAdam: Stable and Efficient Skill Evolution for Agents](https://arxiv.org/html/2609.08944v1) by Gaoyuan Li et al. 2026.
+- [SkillWeaver: Web Agents can Self-Improve by Discovering and Honing Skills](https://arxiv.org/abs/2504.07079) by Boyuan Zheng et al. 2025.
+- [ViReSkill: Vision-Grounded Replanning with Skill Memory for LLM-Based Planning in Lifelong Robot Learning](https://arxiv.org/html/2509.24219v1) by Tomoyuki Kagaya et al. 2025.
+- [CRAFT: Customizing LLMs by Creating and Retrieving from Specialized Toolsets](https://arxiv.org/abs/2309.17428) by Lifan Yuan et al. 2024.
+- [Lifelong Robot Library Learning: Bootstrapping Composable and Generalizable Skills for Embodied Control with Language Models](https://arxiv.org/html/2406.18746v2) by Georgios Tziafas and Hamidreza Kasaei. 2024.
+- [ReGAL: Refactoring Programs to Discover Generalizable Abstractions](https://arxiv.org/html/2401.16467v2) by Elias Stengel-Eskin et al. 2024.
+- [CREATOR: Tool Creation for Disentangling Abstract and Concrete Reasoning of Large Language Models](https://aclanthology.org/2023.findings-emnlp.462/) by Cheng Qian et al. 2023.
+- [Large Language Models as Tool Makers](https://arxiv.org/abs/2305.17126) by Tianle Cai et al. 2023.
+- [SkiROS2: A skill-based Robot Control Platform for ROS](https://arxiv.org/abs/2306.17030) by Matthias Mayr et al. 2023.
+- [Code as Policies: Language Model Programs for Embodied Control](https://arxiv.org/abs/2209.07753) by Jacky Liang et al. 2022.
+
+<a id="harness-workflows"></a>
+
+#### Planning and Workflows
+
+- [Don’t Drop the BATON: Long-Horizon Robot Manipulation via Agentic Subtask Exploration and Transition-aware Memory](https://arxiv.org/html/2608.16889v3) by Bingxin Xu et al. 2026.
+- [Harness VLA: Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents](https://arxiv.org/html/2607.08448v5) by Yixian Zhang et al. 2026.
+- [HarnessPAI: An Evolving Harness for Physical AI](https://arxiv.org/html/2609.29166v1) by Xin Wang et al. 2026.
+- [Living-Harness Is an Interactive-Agent Evolver](https://arxiv.org/html/2607.26598v2) by Yuetian Du et al. 2026.
+- [RHO: Your Coding Agent is Secretly a Roboticist](https://arxiv.org/abs/2606.16458) by Karim Elmaaroufi et al. 2026.
+- [RoboFoundry: System-as-Policy Evolution for Self-Learning Embodied Agents](https://arxiv.org/html/2609.32862v1) by Jingsong Liang et al. 2026.
+- [Self-Harness: Harnesses That Improve Themselves](https://arxiv.org/html/2606.09498v3) by Hangfan Zhang et al. 2026.
+- [AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents](https://arxiv.org/abs/2401.12963) by Michael Ahn et al. 2024.
+- [Do As I Can, Not As I Say: Grounding Language in Robotic Affordances](https://arxiv.org/abs/2204.01691) by Michael Ahn et al. 2022.
+- [Behavior Trees in Robotics and AI: An Introduction](https://doi.org/10.1201/9780429489105) by Michele Colledanchise and Petter Ögren. 2018.
+
+<a id="harness-recovery"></a>
+
+#### Failure Diagnosis and Execution Recovery
+
+- [From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws](https://arxiv.org/html/2606.06324v2) by Mengzhuo Chen et al. 2026.
+- [DoReMi: Grounding Language Model by Detecting and Recovering from Plan-Execution Misalignment](https://sites.google.com/view/doremi-paper) by Yanjiang Guo et al. 2024.
+
+<a id="catalog-robot-learning"></a>
+<a id="catalog-learning-resources"></a>
+<a id="catalog-model-training"></a>
+
+### Model Training and Adaptation
+
+Data preparation, learning methods, and learned models for robot improvement, including human-assisted learning, autonomous practice, and continual transfer.
+
+<a id="training-data"></a>
+
+#### Data Preparation and Generation
+
+- [DataMIL: Selecting Data for Robot Imitation Learning with Datamodels](https://arxiv.org/abs/2505.09603) by Shivin Dass et al. 2026.
+- [FAR: Failure-Aware Retry for Test-Time Recovery and Continual Policy Improvement](https://arxiv.org/abs/2607.01111) by Haoran Hao et al. 2026.
+- [Scaling sim-to-real vla reinforcement learning with generative 3d worlds](https://arxiv.org/abs/2603.18532) by Andrew Choi et al. 2026.
+- [Self-Evolving Learning for Embodied AI with Criticality Model](https://arxiv.org/abs/2607.28251) by Linxuan He et al. 2026.
+- [SimWorld Studio: Automatic Environment Generation with Evolving Coding Agent for Embodied Agent Learning](https://arxiv.org/abs/2605.09423) by Haoqiang Kang et al. 2026.
+- [Zero2Skill: Bootstrapping Robot Skills through Autonomous Data Collection, Training, and Deployment](https://arxiv.org/abs/2607.14047v3) by Boyuan Wang et al. 2026.
+- [Cupid: Curating data your robot loves with influence functions](https://arxiv.org/abs/2506.19121) by Christopher Agia et al. 2025.
+- [Curating demonstrations using online experience](https://arxiv.org/abs/2503.03707) by Annie S. Chen et al. 2025.
+- [GenSim2: Scaling Robot Data Generation with Multi-Modal and Reasoning LLMs](https://arxiv.org/abs/2410.03645) by Pu Hua et al. 2024.
+- [GenSim: Generating Robotic Simulation Tasks via Large Language Models](https://arxiv.org/abs/2310.01361) by Lirui Wang et al. 2024.
+- [Re-Mix: Optimizing Data Mixtures for Large Scale Imitation Learning](https://arxiv.org/abs/2408.14037) by Joey Hejna et al. 2024.
+- [RoboGen: Towards Unleashing Infinite Data for Automated Robot Learning via Generative Simulation](https://proceedings.mlr.press/v235/wang24cc.html) by Yufei Wang et al. 2024.
+- [Neural posterior domain randomization](https://proceedings.mlr.press/v164/muratore22a.html) by Fabio Muratore et al. 2022.
+- [Data-efficient domain randomization with bayesian optimization](https://doi.org/10.1109/LRA.2021.3052391) by Fabio Muratore et al. 2021.
+
+<a id="training-imitation"></a>
+
+#### Imitation Learning and Generalist Policies
+
+- [EgoRecovery: Acquiring Failure Recovery Ability through Human Recovery Demonstration](https://arxiv.org/abs/2607.19745) by Zuhao Ge et al. 2026.
+- [π0: A Vision-Language-Action Flow Model for General Robot Control](https://arxiv.org/abs/2410.24164) by Kevin Black et al. 2026.
+- [FAST: Efficient Action Tokenization for Vision-Language-Action Models](https://arxiv.org/abs/2501.09747) by Karl Pertsch et al. 2025.
+- [GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](https://arxiv.org/abs/2503.14734) by NVIDIA et al. 2025.
+- [Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models](https://arxiv.org/abs/2502.19417) by Lucy Xiaoyang Shi et al. 2025.
+- [Mobile ALOHA: Learning bimanual mobile manipulation using low-cost whole-body teleoperation](https://proceedings.mlr.press/v270/fu25b.html) by Zipeng Fu et al. 2025.
+- [RDT-1B: A Diffusion Foundation Model for Bimanual Manipulation](https://arxiv.org/abs/2410.07864) by Songming Liu et al. 2025.
+- [π*0.6: A VLA That Learns from Experience](https://arxiv.org/abs/2511.14759) by Ali Amin et al. 2025.
+- [Diffusion policy: Visuomotor policy learning via action diffusion](https://arxiv.org/abs/2303.04137) by Cheng Chi et al. 2024.
+- [Octo: An Open-Source Generalist Robot Policy](https://doi.org/10.15607/RSS.2024.XX.090) by Dibya Ghosh et al. 2024.
+- [One-step diffusion policy: Fast visuomotor policies via diffusion distillation](https://arxiv.org/abs/2410.21257) by Zhendong Wang et al. 2024.
+- [OpenVLA: An Open-Source Vision-Language-Action Model](https://arxiv.org/abs/2406.09246) by Moo Jin Kim et al. 2024.
+- [RT-H: Action Hierarchies using Language](https://doi.org/10.15607/RSS.2024.XX.049) by Suneel Belkhale et al. 2024.
+- [Sparse Diffusion Policy: A Sparse, Reusable, and Flexible Policy for Robot Learning](https://arxiv.org/abs/2407.01531) by Yixiao Wang et al. 2024.
+- [Learning universal policies via text-guided video generation](https://arxiv.org/abs/2302.00111) by Yilun Du et al. 2023.
+- [RoboCat: A Self-Improving Generalist Agent for Robotic Manipulation](https://openreview.net/forum?id=vsDnJ2WR4x) by Konstantinos Bousmalis et al. 2023.
+- [RT-2: Vision-language-action models transfer web knowledge to robotic control](https://proceedings.mlr.press/v229/zitkovich23a.html) by Brianna Zitkovich et al. 2023.
+- [One-shot imitation from observing humans via domain-adaptive meta-learning](https://arxiv.org/abs/1802.01557) by Tianhe Yu et al. 2018.
+- [Robotic Pick-and-Place of Novel Objects in Clutter with Multi-Affordance Grasping and Cross-Domain Image Matching](https://doi.org/10.1109/ICRA.2018.8461044) by Andy Zeng et al. 2018.
+- [Generative adversarial imitation learning](https://arxiv.org/abs/1606.03476) by Jonathan Ho and Stefano Ermon. 2016.
+
+<a id="training-rl"></a>
+
+#### Reinforcement Learning and Autonomous Practice
+
+- [Beyond imitation: Self-improving robot policies via off-policy q-planning](https://arxiv.org/abs/2608.21204) by Varun Giridhar et al. 2026.
+- [Differentiable evolutionary reinforcement learning](https://arxiv.org/abs/2512.13399) by Sitao Cheng et al. 2026.
+- [Find Something You Can’t Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models](https://arxiv.org/abs/2609.32069v1) by Yuan Fang et al. 2026.
+- [Learning while deploying: Fleet-scale reinforcement learning for generalist robot policies](https://arxiv.org/abs/2605.00416) by Yi Wang et al. 2026.
+- [RL Token: Bootstrapping Online RL with Vision-Language-Action Models](https://arxiv.org/abs/2604.23073) by Charles Xu et al. 2026.
+- [SOP: A Scalable Online Post-Training System for Vision-Language-Action Models](https://arxiv.org/abs/2601.03044v1) by Mingjie Pan et al. 2026.
+- [WAM-RL: World-Action Model Reinforcement Learning with Reconstruction Rewards and Online Video SFT](https://arxiv.org/abs/2606.17906) by Zezhong Qian et al. 2026.
+- [Continuously improving mobile manipulation with autonomous real-world rl](https://proceedings.mlr.press/v270/mendonca25a.html) by Russell Mendonca et al. 2025.
+- [Lifelong autonomous improvement of navigation foundation models in the wild](https://proceedings.mlr.press/v270/stachowicz25a.html) by Kyle Stachowicz et al. 2025.
+- [Self-improving embodied foundation models](https://doi.org/10.52202/085713-3762) by Seyed Kamyar Seyed Ghasemipour et al. 2025.
+- [SELFI: Autonomous Self-Improvement with RL for Vision-Based Navigation around People](https://proceedings.mlr.press/v270/hirose25a.html) by Noriaki Hirose et al. 2025.
+- [Steering your diffusion policy with latent space reinforcement learning](https://arxiv.org/abs/2506.15799) by Andrew Wagenmaker et al. 2025.
+- [Autonomous Improvement of Instruction Following Skills via Foundation Models](https://arxiv.org/abs/2407.20635) by Zhiyuan Zhou et al. 2024.
+- [Cal-QL: Calibrated Offline RL Pre-Training for Efficient Online Fine-Tuning](https://arxiv.org/abs/2303.05479) by Mitsuhiko Nakamoto et al. 2024.
+- [Diffusion policy policy optimization](https://arxiv.org/abs/2409.00588) by Allen Z. Ren et al. 2024.
+- [Efficient Language-instructed Skill Acquisition via Reward-Policy Co-Evolution](https://arxiv.org/abs/2412.13492) by Changxin Huang et al. 2024.
+- [Self-Improving Robots: End-to-End Autonomous Visuomotor Reinforcement Learning](https://proceedings.mlr.press/v229/sharma23b.html) by Archit Sharma et al. 2023.
+- [A State-Distribution Matching Approach to Non-Episodic Reinforcement Learning](https://proceedings.mlr.press/v162/sharma22a.html) by Archit Sharma et al. 2022.
+
+<a id="training-human-feedback"></a>
+
+#### Human-in-the-Loop and Interactive Learning
+
+- [EvoHIL: Self-Evolving Reward and Flow-Matched Policy Optimization for Robust Human-in-the-Loop Reinforcement Learning](https://arxiv.org/abs/2608.03872) by Shuoqin Zhang et al. 2026.
+- [ConRFT: A Reinforced Fine-Tuning Method for VLA Models via Consistency Policy](https://www.roboticsproceedings.org/rss21/p019.html) by Yuhui Chen et al. 2025.
+- [Precise and Dexterous Robotic Manipulation via Human-in-the-Loop Reinforcement Learning](https://arxiv.org/abs/2410.21845) by Jianlan Luo et al. 2025.
+- [Real-world Reinforcement Learning from Suboptimal Interventions](https://arxiv.org/abs/2512.24288v1) by Yinuo Zhao et al. 2025.
+- [Fleet-DAgger: Interactive Robot Fleet Learning with Scalable Human Supervision](https://proceedings.mlr.press/v205/hoque23a.html) by Ryan Hoque et al. 2023.
+- [Robot learning on the job: Human-in-the-loop autonomy and learning during deployment](https://arxiv.org/abs/2211.08416) by Huihan Liu et al. 2023.
+- [ThriftyDAgger: Budget-Aware Novelty and Risk Gating for Interactive Imitation Learning](https://proceedings.mlr.press/v164/hoque22a.html) by Ryan Hoque et al. 2022.
+- [HG-DAgger: Interactive Imitation Learning with Human Experts](https://arxiv.org/abs/1810.02890) by Michael Kelly et al. 2019.
+
+<a id="training-representations"></a>
+
+#### Self-Supervised and Representation Learning
+
+- [Latent action pretraining from videos](https://arxiv.org/abs/2410.11758) by Seonghyeon Ye et al. 2025.
+- [LIV: Language-Image Representations and Rewards for Robotic Control](https://arxiv.org/abs/2306.00958) by Yecheng Jason Ma et al. 2023.
+- [Automated Self-Supervised Learning for Graphs](https://arxiv.org/abs/2106.05470) by Wei Jin et al. 2022.
+- [Real-world robot learning with masked visual pre-training](https://arxiv.org/abs/2210.03109) by Ilija Radosavovic et al. 2022.
+
+<a id="training-world-models"></a>
+
+#### World Models for Policy Learning
+
+- [Ctrl-World: A Controllable Generative World Model for Robot Manipulation](https://arxiv.org/abs/2510.10125) by Yanjiang Guo et al. 2026.
+- [Motus2: A Self-Evolving General World Model for Dexterous Manipulation](https://arxiv.org/abs/2608.30237) by Hongzhe Bi et al. 2026.
+- [Self-Improving Robot Policy with Compositional World Model](https://doi.org/10.15607/RSS.2026.XXII.012) by Jiazhi Yang et al. 2026. *Method: RISE.*
+- [VLAW: Iterative Co-Improvement of Vision-Language-Action Policy and World Model](https://arxiv.org/abs/2602.12063) by Yanjiang Guo et al. 2026.
+- [World-VLA-Loop: Closed-Loop Learning of Video World Model and VLA Policy](https://arxiv.org/abs/2602.06508) by Xiaokang Liu et al. 2026.
+- [Learning interactive real-world simulators](https://arxiv.org/abs/2310.06114) by Sherry Yang et al. 2024.
+- [TD-MPC2: Scalable, Robust World Models for Continuous Control](https://arxiv.org/abs/2310.16828) by Nicklas Hansen et al. 2024.
+- [Daydreamer: World models for physical robot learning](https://proceedings.mlr.press/v205/wu23c.html) by Philipp Wu et al. 2023.
+- [Structured world models from human videos](https://arxiv.org/abs/2308.10901) by Russell Mendonca et al. 2023.
+- [Planning to explore via self-supervised world models](https://arxiv.org/abs/2005.05960) by Ramanan Sekar et al. 2020.
+
+<a id="training-reward-models"></a>
+
+#### Reward Models and Learning Feedback
+
+- [DenseReward: Dense Reward Learning via Failure Synthesis for Robotic Manipulation](https://arxiv.org/abs/2607.13033) by Yu Fang et al. 2026.
+- [SARM2: Multi-Task Stage Aware Reward Modeling for Self Improving Robotic Manipulation](https://arxiv.org/abs/2606.10305) by Qianzhong Chen et al. 2026.
+- [FLORA: Sample-Efficient Preference-Based RL via Low-Rank Style Adaptation of Reward Functions](https://doi.org/10.1109/ICRA55743.2025.11127633) by Daniel Marta et al. 2025.
+- [Robo-Dopamine: General Process Reward Modeling for High-Precision Robotic Manipulation](https://arxiv.org/abs/2512.23703) by Huajie Tan et al. 2025.
+- [PEBBLE: Feedback-Efficient Interactive Reinforcement Learning via Relabeling Experience and Unsupervised Pre-training](https://arxiv.org/abs/2106.05091) by Kimin Lee et al. 2021.
+
+<a id="training-transfer"></a>
+
+#### Continual Adaptation and Knowledge Transfer
+
+- [Can vision-language-action models learn from real-world data continually without forgetting?](https://arxiv.org/abs/2605.26820) by Jiarun Zhu et al. 2026.
+- [EmbodiRSI: Recursive Self-Improvement for Data-Efficient Robot Adaptation](https://arxiv.org/abs/2609.38905) by Haoran Lang et al. 2026.
+- [F4R: Failure-Driven Recognition, Reconstruction, Refinement, and Redeployment for Continual Robot Self-Improvement](https://arxiv.org/abs/2609.35575v2) by Zhuoyuan Yu et al. 2026.
+- [Pretrained Vision-Language-Action Models Are Surprisingly Resistant to Forgetting in Continual Learning](https://arxiv.org/abs/2603.03818) by Huihan Liu et al. 2026.
+- [Robust Finetuning of Vision-Language-Action Robot Policies via Parameter Merging](https://arxiv.org/abs/2512.08333) by Yajat Yadav et al. 2026.
+- [Towards human-like physical intelligence: Lifelong vision-language-action learning for robotic manipulation](https://arxiv.org/abs/2607.14852) by Yao He et al. 2026.
+- [EXTRACT: Efficient Policy Learning by Extracting Transferable Robot Skills from Offline Data](https://proceedings.mlr.press/v270/zhang25c.html) by Jesse Zhang et al. 2025.
+- [Knowledge diversion for efficient morphology control and policy transfer](https://arxiv.org/abs/2512.09796) by Fu Feng et al. 2025.
+- [Knowledge Insulating Vision-Language-Action Models: Train Fast, Run Fast, Generalize Better](https://doi.org/10.52202/085713-3439) by Danny Driess et al. 2025.
+- [SRSA: Skill Retrieval and Adaptation for Robotic Assembly Tasks](https://arxiv.org/abs/2503.04538) by Yijie Guo et al. 2025.
+- [LOTUS: Continual Imitation Learning for Robot Manipulation through Unsupervised Skill Discovery](https://arxiv.org/abs/2311.02058) by Weikang Wan et al. 2024.
+- [PRISE: LLM-Style Sequence Compression for Learning Temporal Action Abstractions in Control](https://arxiv.org/abs/2402.10450) by Ruijie Zheng et al. 2024.
+
+<a id="training-foundations"></a>
+
+#### Robot Learning Surveys and Foundations
+
+- [World model for robot learning: A comprehensive survey](https://arxiv.org/abs/2605.00080) by Bohan Hou et al. 2026.
+- [Vision-Language-Action Models for Robotics: A Review towards Real-World Applications](https://doi.org/10.1109/access.2025.3609980) by Kento Kawaharazuka et al. 2025.
+- [A comprehensive survey of continual learning: Theory, method and application](https://doi.org/10.1109/TPAMI.2024.3367329) by Liyuan Wang et al. 2024.
+- [Continual Learning for Robotics: Definition, Framework, Learning Strategies, Opportunities and Challenges](https://doi.org/10.1016/j.inffus.2019.12.004) by Timothée Lesort et al. 2020.
+- [The ingredients of real-world robotic reinforcement learning](https://openreview.net/forum?id=rJe2syrtvS) by Henry Zhu et al. 2020.
+- [Challenges of real-world reinforcement learning](https://openreview.net/pdf?id=S1xtR52NjN) by Gabriel Dulac-Arnold et al. 2019.
+- [Continual Lifelong Learning with Neural Networks: A Review](https://doi.org/10.1016/j.neunet.2019.01.012) by German I. Parisi et al. 2019.
+
+<a id="catalog-meta-improvement"></a>
+
+### Self-Improvement and Meta-Optimization
+
+Self-modification, optimization of improvement procedures, and foundations of self-evolving systems. Inclusion is not evidence of physical grounding or verified recursive gain.
+
+<a id="meta-recursive-systems"></a>
+
+#### Self-Modifying Systems and Recursive Improvement
+
+- [Hyperagents](https://arxiv.org/html/2603.19461v1) by Jenny Zhang et al. 2026.
+- [SelfSearch: Reward-Free Search for Self-Improving Agents](https://arxiv.org/html/2609.37968v2) by Jungwoo Yang et al. 2026.
+- [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](https://arxiv.org/abs/2505.22954) by Jenny Zhang et al. 2025.
+- [Godel Agent: A Self-Referential Agent Framework for Recursively Self-Improvement](https://doi.org/10.18653/v1/2025.acl-long.1354) by Xunjian Yin et al. 2025.
+- [Self-adapting language models](https://doi.org/10.52202/085713-2483) by Adam Zweiger et al. 2025.
+- [Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation](https://arxiv.org/pdf/2310.02304v3) by Eric Zelikman et al. 2024.
+- [Goedel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements](https://arxiv.org/abs/cs/0309048v5) by Jürgen Schmidhuber. 2003.
+
+<a id="meta-harness-optimization"></a>
+
+#### Harness and Context-Construction Optimization
+
+- [Hierarchical Self-Improvement: A Framework for Task-Specific Evolvable Agent Harnesses](https://arxiv.org/abs/2608.08466v1) by Tailin Zhou. 2026.
+- [Learning to Continually Learn via Meta-learning Agentic Memory Designs](https://arxiv.org/abs/2602.07755v1) by Yiming Xiong et al. 2026.
+- [MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents](https://arxiv.org/abs/2602.02474v2) by Haozhen Zhang et al. 2026.
+- [Meta Context Engineering via Agentic Skill Evolution](https://arxiv.org/abs/2601.21557v2) by Haoran Ye et al. 2026.
+- [SkillOpt: Executive Strategy for Self-Evolving Agent Skills](https://arxiv.org/html/2605.23904v2) by Yifan Yang et al. 2026.
+- [VERSE: Verified Self-Evolving Optimizer for Agent Harnesses](https://arxiv.org/abs/2610.02616v1) by Zekai Wang et al. 2026.
+- [MemEvolve: Meta-Evolution of Agent Memory Systems](https://arxiv.org/html/2512.18746v1) by Guibin Zhang et al. 2025.
+- [Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution](https://proceedings.mlr.press/v235/fernando24a.html) by Chrisantha Fernando et al. 2024.
+
+<a id="meta-training-optimization"></a>
+
+#### Training Procedures, Curricula, and Algorithm Optimization
+
+- [ENPIRE: Agentic Robot Policy Self-Improvement in the Real World](https://arxiv.org/abs/2606.19980) by Wenli Xiao et al. 2026.
+- [EvoTrainer: Co-Evolving LLM Policies and Training Harnesses for Autonomous Agentic Reinforcement Learning](https://arxiv.org/abs/2606.03108) by Guhong Chen et al. 2026.
+- [HARBOR: A Harness Framework for Agentic Robot Reinforcement Learning](https://arxiv.org/abs/2606.08610) by Zechu Li et al. 2026.
+- [AlphaEvolve: A coding agent for scientific and algorithmic discovery](https://arxiv.org/abs/2506.13131) by Alexander Novikov et al. 2025.
+- [Discovering State-of-the-Art Reinforcement Learning Algorithms](https://doi.org/10.1038/s41586-025-09761-x) by Junhyuk Oh et al. 2025. *Method: DiscoRL.*
+- [CurricuLLM: Automatic Task Curricula Design for Learning Complex Robot Skills using Large Language Models](https://arxiv.org/abs/2409.18382) by Kanghyun Ryu et al. 2024.
+- [Eureka: Human-Level Reward Design via Coding Large Language Models](https://arxiv.org/abs/2310.12931) by Yecheng Jason Ma et al. 2024.
+- [Auto-sklearn 2.0: Hands-free AutoML via Meta-learning](docs/paper-reference-index.md#r059) by Matthias Feurer et al. 2022. *Bibliography record; no external link supplied in v34.*
+- [Closing the sim-to-real loop: Adapting simulation randomization with real world experience](https://arxiv.org/abs/1810.05687) by Yevgen Chebotar et al. 2019.
+
+<a id="meta-foundations"></a>
+
+#### Self-Improvement and AutoML Foundations and Surveys
+
+- [A Survey of Self-Evolving Agents: What, When, How, and Where to Evolve on the Path to Artificial Super Intelligence](https://openreview.net/forum?id=CTr3bovS5F) by Huan-ang Gao et al. 2026.
+- [AI4AI survey: From long-horizon agents to recursive self-improvement—definitions, reliable horizons, and open problems](https://doi.org/10.20944/preprints202608.2108.v1) by Kai Wu et al. 2026.
+- [Diving into reliable self-evolving agents: A survey](https://www.preprints.org/manuscript/202609.0913) by Kaiqi Wang et al. 2026.
+- [From AGI to ASI](https://arxiv.org/abs/2606.12683v2) by Tim Genewein et al. 2026.
+- [Generalized Agent Iteration: One Formal Framework for Iterative Policy Improvement and Recursive Self-Improvement](docs/paper-reference-index.md#r206) by Hongyao Tang et al. 2026. *Bibliography record; no external link supplied in v34.*
+- [Recursive self-improvement in AI: From bounded self-refinement to autonomous research loops](https://arxiv.org/abs/2607.07663) by Mingguang Chen et al. 2026.
+- [Self-Evolving AI for Humanoids: Mechanisms, Safety, and Evaluation of Post-Deployment Self-Improvement](https://arxiv.org/abs/2609.13236) by Loc X. Nguyen et al. 2026.
+- [Self-improvements in modern agentic systems: A survey](https://arxiv.org/abs/2607.13104) by Zhe Ren et al. 2026.
+- [Self-improving agents in the era of experience: A survey of self- to meta-evolution](https://openreview.net/pdf?id=IUltZSgLMm) by Che Jiang et al. 2026.
+- [The last AI built by humans: Toward genuine recursive self-improvement](https://arxiv.org/abs/2609.11873) by Yi Duan et al. 2026.
+- [The path to recursive self-improving agents: Foundation, framework, and future directions](https://doi.org/10.20944/preprints202608.0051.v1) by Shuaiqi Liu et al. 2026.
+- [A comprehensive survey of self-evolving AI agents: A new paradigm bridging foundation models and lifelong agentic systems](https://arxiv.org/abs/2508.07407) by Jinyuan Fang et al. 2025.
+- [AutoML: A Survey of the State-of-the-Art](https://doi.org/10.1016/j.knosys.2020.106622) by Xin He et al. 2021.
+- [Automated Machine Learning: Methods, Systems, Challenges](https://doi.org/10.1007/978-3-030-05318-5) by Frank Hutter et al. 2019.
+
+<a id="catalog-safety"></a>
+
+### Safety and Assurance
+
+Safety during learning, acceptance, and deployment, including runtime safeguards, oversight, and integrity of the improvement process.
+
+<a id="safety-learning"></a>
+
+#### Safe Exploration and Constrained Learning
+
+- [CBF-RL: Safety Filtering Reinforcement Learning in Training with Control Barrier Functions](https://arxiv.org/abs/2510.14959) by Lizhi Yang et al. 2026.
+- [Safe Continual Reinforcement Learning in Non-stationary Environments](https://arxiv.org/abs/2604.19737) by Austin Coursey et al. 2026.
+- [ROSCOM: Robust Safe Reinforcement Learning on Stochastic Constraint Manifolds](https://doi.org/10.1109/TASE.2024.3431530) by Shangding Gu et al. 2025.
 - [Safe Continual Domain Adaptation after Sim2Real Transfer of Reinforcement Learning Policies in Robotics](https://arxiv.org/abs/2503.10949) by Josip Josifovski et al. 2025.
-- [Preventing Undesirable Behavior of Intelligent Machines](https://doi.org/10.1126/science.aag3311) by Philip S. Thomas et al. 2019.
-- [Control Barrier Function Based Quadratic Programs for Safety Critical Systems](https://doi.org/10.1109/TAC.2016.2638961) by Aaron D. Ames et al. 2017.
+- [SafeVLA: Towards Safety Alignment of Vision-Language-Action Model via Constrained Learning](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e185c7be603426028c32ae1003a59d78-Abstract-Conference.html) by Borong Zhang et al. 2025.
+- [Balance Reward and Safety Optimization for Safe Reinforcement Learning: A Perspective of Gradient Manipulation](https://doi.org/10.1609/aaai.v38i19.30102) by Shangding Gu et al. 2024.
+- [COptiDICE: Offline Constrained Reinforcement Learning via Stationary Distribution Correction Estimation](https://openreview.net/forum?id=FLA55mBee6Q) by Jongmin Lee et al. 2022.
+- [End-to-End Safe Reinforcement Learning through Barrier Functions for Safety-Critical Continuous Control Tasks](https://ojs.aaai.org/index.php/AAAI/article/view/4213) by Richard Cheng et al. 2019.
+- [Safe Exploration in Continuous Action Spaces](https://arxiv.org/abs/1801.08757) by Gal Dalal et al. 2018.
 - [Constrained Policy Optimization](https://proceedings.mlr.press/v70/achiam17a.html) by Joshua Achiam et al. 2017.
+- [Safe Modelbased Reinforcement Learning with Stability Guarantees](https://papers.nips.cc/paper_files/paper/2017/hash/766ebcd59621e305170616ba3d3dac32-Abstract.html) by Felix Berkenkamp et al. 2017.
+- [Safe Controller Optimization for Quadrotors with Gaussian Processes](https://doi.org/10.1109/ICRA.2016.7487170) by Felix Berkenkamp et al. 2016.
+- [Safe Exploration in Finite Markov Decision Processes with Gaussian Processes](https://papers.nips.cc/paper_files/paper/2016/hash/9a49a25d845a483fae4be7e341368e36-Abstract.html) by Matteo Turchetta et al. 2016.
+- [Risk-Sensitive and Robust Decision-Making: a CVaR Optimization Approach](https://proceedings.neurips.cc/paper/2015/hash/64223ccf70bbb65a3a4aceac37e21016-Abstract.html) by Yinlam Chow et al. 2015.
+
+<a id="safety-transfer"></a>
+
+#### Safe Transfer and Update Acceptance
+
+- [Robust Transfer of Safety-Constrained Reinforcement Learning Agents](https://proceedings.iclr.cc/paper_files/paper/2025/file/e59bf9a9077c361ed57180fc79c5b8d8-Paper-Conference.pdf) by Markel Zubia et al. 2025.
+- [Sim-to-Lab-to-Real: Safe Reinforcement Learning with Shielding and Generalization Guarantees](https://doi.org/10.1016/j.artint.2022.103811) by Kai-Chieh Hsu et al. 2023.
+- [Towards Safe Policy Improvement for Non-Stationary MDPs](https://proceedings.neurips.cc/paper/2020/hash/680390c55bbd9ce416d1d69a9ab4760d-Abstract.html) by Yash Chandak et al. 2020.
+- [Preventing Undesirable Behavior of Intelligent Machines](https://doi.org/10.1126/science.aag3311) by Philip S. Thomas et al. 2019.
+- [Safe Policy Improvement with Baseline Bootstrapping](https://proceedings.mlr.press/v97/laroche19a.html) by Romain Laroche et al. 2019.
+- [Verifiably Safe Off-Model Reinforcement Learning](https://doi.org/10.1007/978-3-030-17462-0_28) by Nathan Fulton and André Platzer. 2019.
 - [High Confidence Policy Improvement](https://proceedings.mlr.press/v37/thomas15.html) by Philip S. Thomas et al. 2015.
 
-#### Failure Monitoring and Deployment Checks
+<a id="safety-runtime"></a>
 
-- [VLA-FAIL: Efficient Task Failure Detection for Finetuned Vision-Language-Action Models](https://arxiv.org/abs/2606.21386) by Florian Seligmann et al. 2026.
-- [ROBOGATE: Adaptive Failure Discovery for Safe Robot Policy Deployment via Two-Stage Boundary-Focused Sampling](https://arxiv.org/abs/2603.22126) by Azuki Kim. 2026.
-- [SAFE: Multitask Failure Detection for Vision-Language-Action Models](https://arxiv.org/abs/2506.09937) by Qiao Gu et al. 2025.
+#### Runtime Control and Failure Monitoring
+
+- [Failure Identification in Imitation Learning Via Statistical and Semantic Filtering](https://arxiv.org/abs/2604.13788v1) by Quentin Rolland et al. 2026.
+- [Code-as-Monitor: Constraint-Aware Visual Programming for Reactive and Proactive Robotic Failure Detection](https://openaccess.thecvf.com/content/CVPR2025/html/Zhou_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reactive_and_Proactive_Robotic_Failure_CVPR_2025_paper.html) by Enshen Zhou et al. 2025.
+- [Failure Prediction at Runtime for Generative Robot Policies](https://arxiv.org/abs/2510.09459) by Ralf Römer et al. 2025.
+- [Realizable Continuous-Space Shields for Safe Reinforcement Learning](https://proceedings.mlr.press/v283/kim25c.html) by Kyungmin Kim et al. 2025.
+- [SAFE: Multitask Failure Detection for Vision-Language-Action Models](https://proceedings.neurips.cc/paper_files/paper/2025/hash/392d0d05e2f514063e6ce6f8b370834c-Abstract-Conference.html) by Qiao Gu et al. 2025.
 - [Unpacking Failure Modes of Generative Policies: Runtime Monitoring of Consistency and Progress](https://proceedings.mlr.press/v270/agia25a.html) by Christopher Agia et al. 2025.
-- [Code-as-Monitor: Constraint-Aware Visual Programming for Reactive and Proactive Robotic Failure Detection](https://arxiv.org/abs/2412.04455) by Enshen Zhou et al. 2024.
+- [Evaluating Uncertainty-Based Failure Detection for Closed-Loop LLM Planners](https://arxiv.org/abs/2406.00430) by Zhi Zheng et al. 2024.
+- [Failure Prediction with Statistical Guarantees for Vision-Based Robot Control](https://www.roboticsproceedings.org/rss18/p042.pdf) by Alec Farid et al. 2022.
+- [A Predictive Safety Filter for Learning-Based Control of Constrained Nonlinear Dynamical Systems](https://doi.org/10.1016/j.automatica.2021.109597) by Kim Peter Wabersich and Melanie N. Zeilinger. 2021.
+- [A Predictive Safety Filter for Learning-Based Racing Control](https://doi.org/10.1109/LRA.2021.3097073) by Ben Tearle et al. 2021.
+- [Measurement-Robust Control Barrier Functions: Certainty in Safety with Uncertainty in State](https://arxiv.org/abs/2104.14030) by Ryan K. Cosner et al. 2021.
+- [Recovery RL: Safe Reinforcement Learning With Learned Recovery Zones](https://ieeexplore.ieee.org/document/9392290/) by Brijen Thananjeyan et al. 2021.
+- [Neural Simplex Architecture](https://www3.cs.stonybrook.edu/~stoller/papers/nfm2020.pdf) by Dung T. Phan et al. 2020.
+- [A General Safety Framework for Learning-Based Control in Uncertain Robotic Systems](https://doi.org/10.1109/TAC.2018.2876389) by Jaime F. Fisac et al. 2019.
+- [SOTER: A Runtime Assurance Framework for Programming Safe Robotics Systems](https://escholarship.org/uc/item/78g5j78r) by Ankush Desai et al. 2019.
+- [Leave no trace: Learning to reset for safe and autonomous reinforcement learning](https://openreview.net/forum?id=S1vuO-bCW) by Benjamin Eysenbach et al. 2018.
+- [Safe reinforcement learning via shielding](https://doi.org/10.1609/aaai.v32i1.11797) by Mohammed Alshiekh et al. 2018.
+- [Control Barrier Function Based Quadratic Programs for Safety Critical Systems](https://doi.org/10.1109/TAC.2016.2638961) by Aaron D. Ames et al. 2017.
+- [Safety Barrier Certificates for Collisions-Free Multirobot Systems](https://doi.org/10.1109/TRO.2017.2659727) by Li Wang et al. 2017.
+
+<a id="safety-oversight"></a>
+
+#### Oversight and Integrity Protection
+
+- [Reward Hacking Challenges Oversight of Autonomous Research Agents](https://arxiv.org/abs/2609.28614) by Yue Huang et al. 2026.
+- [Not What You’ve Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/abs/2302.12173) by Kai Greshake et al. 2023.
+- [Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners](https://proceedings.mlr.press/v229/ren23a.html) by Allen Z. Ren et al. 2023.
+- [The Off-Switch Game](https://www.ijcai.org/Proceedings/2017/0032) by Dylan Hadfield-Menell et al. 2017.
+- [Safely Interruptible Agents](https://auai.org/uai2016/proceedings/papers/68.pdf) by Laurent Orseau and Stuart Armstrong. 2016.
+
+<a id="safety-foundations"></a>
+
+#### Safety Surveys and Risk Taxonomies
+
+- [Evolutionary safety of recursive self-improving AI: Taxonomy, risk discovery, and evaluation](https://arxiv.org/abs/2609.31186) by Chang Gong et al. 2026.
+- [A Review of Safe Reinforcement Learning: Methods, Theories, and Applications](https://doi.org/10.1109/TPAMI.2024.3457538) by Shangding Gu et al. 2024.
 
 <a id="catalog-verification"></a>
 
 ### Verification and Evaluation Methods
 
-Verifier design, test-time verification, and learned evaluators. This group separates methods
-for constructing or using judgments from benchmark resources for testing those judgments;
-safety-specific monitors remain in [Safety and Assurance](#catalog-safety).
+Candidate checks, learned judgments, and evaluation methodology. Methods live here; dedicated benchmarks and evaluation platforms have their primary home in the resource category.
 
-#### Robot Policy Verification
+<a id="verification-robot-policies"></a>
+
+#### Robot Policy Verification and Candidate Selection
 
 - [No Free Checker: A Survey of Verifiers for Robot Policies](https://arxiv.org/abs/2609.09250) by Yang Wan et al. 2026.
-- [RoVer: Robot Reward Model as Test-Time Verifier for Vision-Language-Action Model](https://arxiv.org/abs/2510.10975) by Mingtong Dai et al. 2025.
-- [RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models](https://arxiv.org/abs/2506.17811) by Jacky Kwok et al. 2025.
+- [Visual Verification Enables Inference-Time Steering and Autonomous Policy Improvement](https://arxiv.org/abs/2606.18247) by Mingtong Zhang and Dhruv Shah. 2026.
 
-#### Evaluator Learning and Self-Verification in Digital Systems
+<a id="verification-learned-evaluators"></a>
 
-- [Self-Trained Verification for Training- and Test-Time Self-Improvement](https://arxiv.org/abs/2605.30290) by Chen Henry Wu and Aditi Raghunathan. 2026.
-- [Self-Taught Evaluators](https://arxiv.org/abs/2408.02666) by Tianlu Wang et al. 2024.
-- [Meta-Rewarding Language Models: Self-Improving Alignment with LLM-as-a-Meta-Judge](https://arxiv.org/abs/2407.19594) by Tianhao Wu et al. 2024.
+#### Learned Evaluators and Meta-Verification
+
+- [Self-rewarding language models](https://proceedings.mlr.press/v235/yuan24d.html) by Weizhe Yuan et al. 2024.
+
+<a id="verification-protocols"></a>
+
+#### Evaluation Protocols and Statistical Reliability
+
+- [A survey on evaluation of embodied AI](https://doi.org/10.20944/preprints202608.2328.v2) by Liyu Hou et al. 2026.
+- [Doubly Robust Off-policy Value Evaluation for Reinforcement Learning](https://proceedings.mlr.press/v48/jiang16.html) by Nan Jiang and Lihong Li. 2016.
+- [Generalization in Adaptive Data Analysis and Holdout Reuse](https://proceedings.neurips.cc/paper/2015/hash/bad5f33780c42f2588878a9d07405083-Abstract.html) by Cynthia Dwork et al. 2015.
 
 <a id="catalog-benchmarks"></a>
 
-### Benchmarks, Datasets, and Evaluation Resources
+### Benchmarks, Datasets, and Platforms
 
-A single home for benchmark-related references, regardless of where they appear in the manuscript.
-The **47 entries** below cover all **38 resources named in v33 Table 4**, plus nine other benchmark,
-dataset, and evaluation-resource entries. These include GemBench from the task discussion, DROID
-from the introduction, and HarnessDev, RSI-Exam, and PAST-Bench from Section 6.3.
-See the [resource-to-paper coverage audit](docs/v33-benchmark-coverage.md) for the complete mapping
-and the distinction between Table 4 entries and additional resources.
+Shared datasets, task suites, evaluation protocols, and development platforms. For dual-role papers, the resource role determines their primary home; manuscript resource aliases are noted below.
 
-The subgroups distinguish task suites and datasets, robustness and physical-world evaluation,
-feedback reliability, robot development, and digital research. Supporting frameworks and shared
-datasets are included explicitly: not every entry is a standalone benchmark. A paper may contribute
-both a method and a benchmark; resource aliases identify the benchmark without duplicating the paper.
-Cited years follow v33 and may differ from first preprint dates.
+<a id="benchmarks-datasets"></a>
 
-#### Robot Task Suites and Shared Datasets
+#### Shared Robot Datasets
+
+- [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](https://doi.org/10.15607/RSS.2024.XX.120) by Alexander Khazatsky et al. 2024.
+- [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](https://arxiv.org/abs/2310.08864) by Open X-Embodiment Collaboration. 2024.
+
+<a id="benchmarks-tasks"></a>
+
+#### Task and Long-Horizon Learning Benchmarks
 
 - [RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots](https://arxiv.org/abs/2603.04356) by Soroush Nasiriany et al. 2026.
-- [RoboLab: A High-Fidelity Simulation Benchmark for Analysis of Task Generalist Policies](https://arxiv.org/abs/2604.09860) by Jenai Xuning Yang et al. 2026.
 - [EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents](https://proceedings.mlr.press/v267/yang25f.html) by Rui Yang et al. 2025.
 - [ManiSkill3: GPU Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI](https://arxiv.org/abs/2410.00425) by Stone Tao et al. 2025.
-- [Towards Generalizable Vision-Language Robotic Manipulation: A Benchmark and LLM-guided 3D Policy](https://arxiv.org/abs/2410.01345) by Ricardo Garcia et al. 2025. *Benchmark resource: GemBench; discussed in v33 Section 2 (p. 10).*
+- [Towards Generalizable Vision-Language Robotic Manipulation: A Benchmark and LLM-guided 3D Policy](https://arxiv.org/abs/2410.01345) by Ricardo Garcia et al. 2025. *Benchmark: GemBench.*
 - [VLABench: A Large-Scale Benchmark for Language-Conditioned Robotics Manipulation with Long-Horizon Reasoning Tasks](https://openaccess.thecvf.com/content/ICCV2025/html/Zhang_VLABench_A_Large-Scale_Benchmark_for_Language-Conditioned_Robotics_Manipulation_with_Long-Horizon_ICCV_2025_paper.html) by Shiduo Zhang et al. 2025.
 - [BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation](https://arxiv.org/abs/2403.09227) by Chengshu Li et al. 2024.
-- [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](https://www.roboticsproceedings.org/rss20/p120.html) by Alexander Khazatsky et al. 2024. *Shared dataset cited in the v33 introduction; not a Table 4 benchmark.*
-- [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](https://arxiv.org/abs/2310.08864) by the Open X-Embodiment Collaboration. 2024.
 - [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://arxiv.org/abs/2306.03310) by Bo Liu et al. 2023.
-- [VIMA: Robot Manipulation with Multimodal Prompts](https://proceedings.mlr.press/v202/jiang23b.html) by Yunfan Jiang et al. 2023. *Benchmark resource: VIMA-Bench.*
-- [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks](https://arxiv.org/abs/2112.03227) by Oier Mees et al. 2022.
+- [VIMA: Robot Manipulation with Multimodal Prompts](https://proceedings.mlr.press/v202/jiang23b.html) by Yunfan Jiang et al. 2023. *Benchmark: VIMA-Bench.*
+- [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks](https://doi.org/10.1109/LRA.2022.3180108) by Oier Mees et al. 2022.
 - [What Matters in Learning from Offline Human Demonstrations for Robot Manipulation](https://arxiv.org/abs/2108.03298) by Ajay Mandlekar et al. 2021. *Resource: robomimic.*
 - [Meta-World: A Benchmark and Evaluation for Multi-Task and Meta Reinforcement Learning](https://proceedings.mlr.press/v100/yu20a.html) by Tianhe Yu et al. 2020.
 - [robosuite: A Modular Simulation Framework and Benchmark for Robot Learning](https://arxiv.org/abs/2009.12293) by Yuke Zhu et al. 2020.
-- [RLBench: The Robot Learning Benchmark &amp; Learning Environment](https://arxiv.org/abs/1909.12271) by Stephen James et al. 2019.
+- [RLBench: The Robot Learning Benchmark & Learning Environment](https://arxiv.org/abs/1909.12271) by Stephen James et al. 2019.
 
-#### Robustness and Physical-World Evaluation
+<a id="benchmarks-robustness"></a>
 
-- [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies](https://arxiv.org/abs/2607.04434) by Tianxing Chen et al. 2026.
+#### Robustness and Transfer Evaluation
+
 - [RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation](https://proceedings.mlr.press/v306/chen26j.html) by Tianxing Chen et al. 2026.
 - [VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models](https://proceedings.mlr.press/v306/zhang26cp.html) by Borong Zhang et al. 2026.
-- [AutoEval: Autonomous Evaluation of Generalist Robot Manipulation Policies in the Real World](https://arxiv.org/abs/2503.24278v1) by Zhiyuan Zhou et al. 2025.
 - [LIBERO-Plus: In-depth Robustness Analysis of Vision-Language-Action Models](https://arxiv.org/abs/2510.13626) by Senyu Fei et al. 2025.
-- [LIBERO-PRO: Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization](https://arxiv.org/abs/2510.03827) by Xueyang Zhou et al. 2025.
+- [LIBERO-PRO: Towards Robust and Fair Evaluation of Vision-Language-Action Models Beyond Memorization](https://arxiv.org/abs/2510.03827) by X. Zhou et al. 2025.
 - [REALM: A Real-to-Sim Validated Benchmark for Generalization in Robotic Manipulation](https://arxiv.org/abs/2512.19562) by Martin Sedlacek et al. 2025.
-- [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://proceedings.mlr.press/v305/atreya25a.html) by Pranav Atreya et al. 2025.
 - [RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins](https://arxiv.org/abs/2504.13059) by Yao Mu et al. 2025.
-- [Evaluating Real-World Robot Manipulation Policies in Simulation](https://arxiv.org/abs/2405.05941) by Xuanlin Li et al. 2024. *Evaluation resource: SIMPLER.*
+- [Evaluating Real-World Robot Manipulation Policies in Simulation](https://arxiv.org/abs/2405.05941) by Xuanlin Li et al. 2024.
 - [THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation](https://arxiv.org/abs/2402.08191) by Wilbert Pumacay et al. 2024.
 
-#### Feedback Reliability and Model-Based Evaluation
+<a id="benchmarks-real-robot"></a>
+
+#### Real-Robot and Sim-and-Real Evaluation Platforms
+
+- [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies](https://arxiv.org/abs/2607.04434) by Tianxing Chen et al. 2026.
+- [AutoEval: Autonomous Evaluation of Generalist Robot Manipulation Policies in the Real World](https://arxiv.org/abs/2503.24278v1) by Zhiyuan Zhou et al. 2025.
+- [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://proceedings.mlr.press/v305/atreya25a.html) by Pranav Atreya et al. 2025.
+
+<a id="benchmarks-feedback"></a>
+
+#### Feedback and Reward Evaluation
+
+- [FailBench: How Reliable Are VLMs at Judging Robot Task Success?](https://arxiv.org/abs/2609.03611v1) by Zaruhi Navasardyan et al. 2026.
+- [Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons](https://arxiv.org/abs/2603.02115) by Anthony Liang et al. 2026. *Benchmark: RBM-EVAL.*
+- [RoboReward: General-Purpose Vision-Language Reward Models for Robotics](https://arxiv.org/abs/2601.00675) by Tony Lee et al. 2026. *Benchmark: RoboRewardBench.*
+
+<a id="benchmarks-world-models"></a>
+
+#### World-Model-Based Evaluation
 
 - [dWorldEval: Scalable Robotic Policy Evaluation via Discrete Diffusion World Model](https://arxiv.org/abs/2604.22152) by Yaxuan Li et al. 2026.
-- [FailBench: How Reliable Are VLMs at Judging Robot Task Success?](https://arxiv.org/abs/2609.03611v1) by Zaruhi Navasardyan et al. 2026.
-- [GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation](https://arxiv.org/abs/2607.02642) by the GigaWorld Team. 2026.
-- [Robometer: Scaling General-Purpose Robotic Reward Models via Trajectory Comparisons](https://arxiv.org/abs/2603.02115) by Anthony Liang et al. 2026. *Benchmark resource in v33: RBM-EVAL.*
-- [RoboReward: General-Purpose Vision-Language Reward Models for Robotics](https://arxiv.org/abs/2601.00675) by Tony Lee et al. 2026. *Benchmark resource in v33: RoboRewardBench.*
 - [SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation](https://arxiv.org/abs/2606.18610) by Wei-Cheng Tseng et al. 2026.
 - [WorldEval: World Model as Real-World Robot Policies Evaluator](https://arxiv.org/abs/2505.19017) by Yaxuan Li et al. 2025.
 
-#### Robot Engineering and Development Benchmarks
+<a id="benchmarks-engineering"></a>
 
-- [CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation](https://proceedings.mlr.press/v306/fu26u.html) by Letian Fu et al. 2026. *Benchmark resource in v33: CaP-Bench.*
-- [From Digital to Physical: Digital Agents as Autonomous Coaches for Physical Intelligence](https://arxiv.org/abs/2601.21570) by Zixing Lei et al. 2026. *Associated with the EmboCoach-Bench entry in the manuscript; preserve the paper/benchmark version distinction.*
+#### Robot Engineering Benchmarks
+
+- [CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation](https://proceedings.mlr.press/v306/fu26u.html) by Letian Fu et al. 2026. *Benchmark: CaP-Bench (CaP-X).*
+- [From Digital to Physical: Digital Agents as Autonomous Coaches for Physical Intelligence](https://arxiv.org/abs/2601.21570) by Zixing Lei et al. 2026. *Benchmark name in v34 Table 4: RoboCoach-Bench.*
 - [RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers](https://arxiv.org/abs/2609.34210) by Haitong Ma et al. 2026.
 
-#### Digital Research and Improvement Benchmarks
+<a id="benchmarks-research-agents"></a>
 
-- [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026.
+#### Research Agent and Self-Improvement Benchmarks
+
+- [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026. *Benchmark: AI4AI-Bench.*
 - [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](https://arxiv.org/abs/2609.01437) by Yuhao Wu et al. 2026.
+- [OpenRSI Index](https://index.openrsi.foundation/) by OpenRSI Foundation. 2026.
 - [PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents](https://arxiv.org/abs/2608.04003) by Shuhan Xue et al. 2026.
-- [RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research](https://github.com/aiming-lab/RSI-Exam) by RSI-Exam Team. 2026. *Repository resource cited by the manuscript.*
+- [RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research](https://github.com/aiming-lab/RSI-Exam) by RSI-Exam Team. 2026.
 - [RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement](https://arxiv.org/abs/2607.25886) by Fanqing Meng et al. 2026.
-- [MLGym: A New Framework and Benchmark for Advancing AI Research Agents](https://arxiv.org/abs/2502.14499) by Deepak Nathani et al. 2025. *Benchmark resource: MLGym-Bench.*
+- [RSIGym: A Flexible Environment for Recursive Self-Improvement](https://arxiv.org/abs/2610.10310) by Fanqing Meng et al. 2026.
+- [MLGym: A New Framework and Benchmark for Advancing AI Research Agents](https://arxiv.org/abs/2502.14499) by Deepak Nathani et al. 2025. *Benchmark: MLGym-Bench.*
 - [MLRC-Bench: Can Language Agents Solve Machine Learning Research Challenges?](https://arxiv.org/abs/2504.09702) by Yunxiang Zhang et al. 2025.
-- [RE-Bench: Evaluating Frontier AI R&amp;D Capabilities of Language Model Agents against Human Experts](https://proceedings.mlr.press/v267/wijk25a.html) by Hjalmar Wijk et al. 2025.
+- [RE-Bench: Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts](https://proceedings.mlr.press/v267/wijk25a.html) by Hjalmar Wijk et al. 2025.
 - [MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation](https://proceedings.mlr.press/v235/huang24y.html) by Qian Huang et al. 2024.
-- [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://arxiv.org/abs/2410.07095) by Jun Shern Chan et al. 2024.
 
 <a id="open-questions"></a>
 
 ## Open Questions <sub><a href="#readme-top">top</a></sub>
 
-Section 7 identifies open problems beyond autonomous execution and learning:
+Section 7 of the v35 manuscript identifies six open problems, listed in manuscript order:
 
-- **Reliable learning signals:** partial and noisy physical feedback can compound errors across generations.
-- **Cross-component attribution:** similar failures may originate in perception, skills, orchestration, training, or their interactions.
-- **Cumulative knowledge:** skills and improvement histories must remain usable as interfaces and physical conditions change.
-- **Safety under evolving procedures:** inherited revisions may invalidate earlier assumptions, safeguards, or guarantees.
-- **Reward hacking and leakage:** repeated judgments can become optimization targets instead of independent evidence.
-- **Verified recursive gain:** successive procedures need controlled comparisons of the later across-task improvements they produce.
-- **Affordable physical meta-updates:** simulation, imagination, logged experience, and real trials have different costs and grounding limits.
-- **Comparable autonomy:** setup, resets, labeling, takeovers, editing, and update selection need separate records.
+- **Learning from uncertain physical experience:** derive reliable learning signals from partial, noisy, and stochastic feedback without reinforcing errors through inherited training-procedure changes.
+- **Causal attribution across harness components:** distinguish failures in memory, skills, and workflows from their interactions, and isolate the effects of concurrent edits under limited physical trial budgets.
+- **Non-stationarity in the improvement loop:** track changing component dependencies and physical conditions, and reassess past evidence and improvement strategies without excessive revalidation costs.
+- **Reward hacking and evaluation leakage:** independently check physical outcomes, control evaluation feedback, and use fresh or statistically corrected final tests to distinguish real gains from exploitation of imperfect judgments.
+- **Safety across recursive updates:** selectively revalidate assumptions and safeguards as procedures evolve, preserve protected requirements and effective interruption, and account for risk from rejected trials, resets, and recovery.
+- **Benchmarking verified recursive gain:** track autonomous procedure revisions, inheritance, and reuse, and compare successive procedures from the same starting system and experience under matched tasks and resource budgets.
 
 These are gaps scoped to the reviewed manuscript, not claims that no related work exists elsewhere.
 
