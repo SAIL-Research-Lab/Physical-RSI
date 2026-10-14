@@ -95,7 +95,7 @@ same as improving the procedure that produces future updates.
 <p align="center">
   <a href="docs/figures/physical-rsi-v35-overview.png"><img src="docs/figures/physical-rsi-v35-overview.png" alt="Physical RSI architecture and L0–L5 framework" width="96%"></a>
 </p>
-<p align="center"><sub>Figure 1 (v35, p. 4). Task execution, the improvement procedure, safety and control, and the L0–L5 framework.</sub></p>
+<p align="center"><sub>Task execution, the improvement procedure, safety and control, and the L0–L5 framework.</sub></p>
 
 <a id="capability-map"></a>
 
@@ -112,7 +112,7 @@ The framework separates **what changes** from **where the retained gain transfer
 <p align="center">
   <a href="docs/figures/physical-rsi-v35-update-targets-and-tasks.png"><img src="docs/figures/physical-rsi-v35-update-targets-and-tasks.png" alt="Capability versus meta-level updates, and task identity through skill sequences" width="100%"></a>
 </p>
-<p align="center"><sub>Figure 2 (v35, p. 9). Update targets and task identity: a new scene alone does not establish a new task.</sub></p>
+<p align="center"><sub>Update targets and task identity: a new scene alone does not establish a new task.</sub></p>
 
 <a id="three-views-of-one-system"></a>
 
@@ -125,12 +125,12 @@ The framework separates **what changes** from **where the retained gain transfer
 - **Verification and evaluation:** decide which changes may be retained, then independently
   measure their later benefit.
 - **Benchmarks:** assess task performance, robustness, feedback reliability, and development
-  processes; see [Benchmarks and Evaluation Resources](#catalog-benchmarks).
+  processes.
 
-<p align="center">
+<!-- <p align="center">
   <a href="docs/figures/physical-rsi-v35-verification-evaluation.png"><img src="docs/figures/physical-rsi-v35-verification-evaluation.png" alt="Candidate verification and independent evaluation" width="96%"></a>
 </p>
-<p align="center"><sub>Figure 10 (v35, p. 26). Candidate construction, implementation, effectiveness, and preservation checks, with independent evaluation and meta-verification.</sub></p>
+<p align="center"><sub>Candidate construction, implementation, effectiveness, and preservation checks, with independent evaluation and meta-verification.</sub></p> -->
 
 <a id="paper-catalog"></a>
 
@@ -641,7 +641,7 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 
 <a id="benchmarks-research-agents"></a>
 
-#### Research Agent and Self-Improvement Benchmarks
+#### RSI related Benchmarks
 
 - [AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement](https://arxiv.org/abs/2608.20318) by Yizhe Chi et al. 2026. *Benchmark: AI4AI-Bench.*
 - [HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?](https://arxiv.org/abs/2609.01437) by Yuhao Wu et al. 2026.
