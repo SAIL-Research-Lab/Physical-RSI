@@ -11,9 +11,9 @@
 <p align="center">A paper-aligned, evidence-auditable map of recursive improvement in embodied systems.</p>
 
 <p align="center">
+  <a href="Paper"><img src="https://arxiv.org/pdf/2610.18842" alt="Paper"></a>
   <a href="#paper-catalog"><img src="https://img.shields.io/badge/catalog-301_works-2563eb?style=flat-square" alt="301 works and resources in the paper catalog"></a>
-  <a href="#capability-map"><img src="https://img.shields.io/badge/taxonomy-L1--L5-7c3aed?style=flat-square" alt="L1 to L5 capability taxonomy"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-475569?style=flat-square" alt="MIT License"></a>
+  <a href="#capability-map"><img src="https://img.shields.io/badge/taxonomy-L1--L5-7c3aed?style=flat-square" alt="L1 to L5 capability taxonomy"></a> 
 </p>
 
 <p align="center">
