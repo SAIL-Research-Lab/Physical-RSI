@@ -136,6 +136,8 @@ The framework separates **what changes** from **where the retained gain transfer
 
 ## Paper Catalog <sub><a href="#readme-top">top</a></sub>
 
+Some works span multiple functions and topics; each is listed once under the category that best reflects its primary contribution.
+
 <details>
 <summary><strong>Browse by topic</strong></summary>
 
