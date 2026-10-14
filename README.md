@@ -676,6 +676,29 @@ Section 7 of the v35 manuscript identifies six open problems, listed in manuscri
 
 These are gaps scoped to the reviewed manuscript, not claims that no related work exists elsewhere.
 
+## Citation
+If you find the repository useful, please cite the study
+``` Bash
+@misc{zhou2026physicalrsi,
+  title         = {{Who Improves the Robot? Toward Physical Recursive Self-Improvement}},
+  author        = {Hai Zhou and Fan Yang and Zeyi Chen and Lejun Zhang
+                   and Chenyang Fu and Jianping Li and Jiayi Zhu
+                   and Xianyang Liu and Yingxuan Yang and Lili Meng
+                   and Lu Wang and Xinyang Han and Jiankai Sun
+                   and Weirui Ye and Guanchu Wang and Wanhua Li
+                   and Ming Zhou and Boyi Li and Ming Jin and Kun Shao
+                   and Muhao Chen and Guang Chen and Lei Ma
+                   and Joey Tianyi Zhou and Costas Spanos and Xia Hu
+                   and Mac Schwager and Weinan Zhang and Qian Feng
+                   and Shangding Gu},
+  year          = {2026},
+  eprint        = {2610.18842},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2610.18842}
+}
+```
+
 <a id="license"></a>
 
 ## License <sub><a href="#readme-top">top</a></sub>
