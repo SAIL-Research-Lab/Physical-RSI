@@ -80,6 +80,7 @@ Explore the framework, paper collection, and open questions:
 - [Harness Adaptation, Training, and Verification](#three-views-of-one-system)
 - [Paper Catalog](#paper-catalog)
 - [Open Questions](#open-questions)
+- [Citation](#citation)
 - [License](#license)
 
 ---
