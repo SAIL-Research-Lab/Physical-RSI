@@ -34,7 +34,7 @@
 
 <a id="latest-papers"></a>
 
-## 🆕 Latest Papers <sub><a href="#readme-top">top</a></sub>
+## 🔥 Latest Papers <sub><a href="#readme-top">top</a></sub>
 
 | First posted | Paper | Focus |
 | --- | --- | --- |
