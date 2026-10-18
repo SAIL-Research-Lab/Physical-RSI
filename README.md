@@ -12,13 +12,14 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2610.18842"><img src="https://img.shields.io/badge/arXiv-2610.18842-b31b1b?style=flat-square" alt="Paper"></a>
-  <a href="#paper-catalog"><img src="https://img.shields.io/badge/catalog-301_works-2563eb?style=flat-square" alt="301 works and resources in the paper catalog"></a>
-  <a href="#capability-map"><img src="https://img.shields.io/badge/taxonomy-L1--L5-7c3aed?style=flat-square" alt="L1 to L5 capability taxonomy"></a>
+  <a href="#paper-catalog"><img src="https://img.shields.io/badge/catalog-324_works-2563eb?style=flat-square" alt="324 works and resources in the paper catalog"></a>
+  <a href="#capability-map"><img src="https://img.shields.io/badge/taxonomy-L0--L5-7c3aed?style=flat-square" alt="L0 to L5 capability taxonomy"></a>
 </p>
 
 <p align="center">
+  <a href="#latest-papers">Latest papers</a> &nbsp;|&nbsp;
   <a href="#the-boundary">Boundary</a> &nbsp;|&nbsp;
-  <a href="#capability-map">L1-L5</a> &nbsp;|&nbsp;
+  <a href="#capability-map">L0-L5</a> &nbsp;|&nbsp;
   <a href="#three-views-of-one-system">Research map</a> &nbsp;|&nbsp;
   <a href="#paper-catalog">Paper catalog</a>
 </p>
@@ -30,6 +31,20 @@
 </p>
 <p align="center"><em>Life is not repetition, but creation. Duration carries the whole of reality: a boundless river flowing toward a horizon with no predetermined end.</em><br>
 <sub>Darwin's <a href="https://commons.wikimedia.org/wiki/File:Darwin_Tree_1837.png">first evolutionary tree</a> (1837), beside Haeckel's <a href="https://commons.wikimedia.org/wiki/File:Pedigree_of_man_(Haeckel_1874).jpg"><em>Pedigree of Man</em></a> (1874). Both works are public domain.</sub></p>
+
+<a id="latest-papers"></a>
+
+## 🔥 Latest Papers <sub><a href="#readme-top">top</a></sub>
+
+| First posted | Paper | Focus |
+| --- | --- | --- |
+| 2026-10-13 | [EmbodiedEvo](#paper-2610-18867) | Reusable Skills and Lessons from robot execution |
+| 2026-10-09 | [RSI-Anything](#paper-2610-13912) | World-model-guided improvement across computational and scientific tasks |
+| 2026-10-08 | [Embodied Turing Machines](#paper-2610-12369) | Stateful code and shared control libraries |
+| 2026-10-07 | [EmbodiedRSI](#paper-2610-10498) | Hypothesis-guided exploration and code–skill evolution |
+| 2026-10-07 | [Video Prediction Policy 2](#paper-2610-10270) | Video prediction and world-action modeling |
+| 2026-10-06 | [PhysEvo](#paper-2610-08995) | Execution tools, skills, and diagnostic-tool revision |
+| 2026-09-29 | [RoboHarn-Evo](#paper-2609-37583) | Hierarchical physical knowledge and continued interaction |
 
 <a id="from-evolution-to-physical-rsi"></a>
 
@@ -48,10 +63,11 @@ admitted, and inheritance returns accepted changes to the next improvement cycle
 
 The analogy deliberately stops there. Natural selection does not owe us a protected objective,
 an audit trail, or a matched resource budget. An engineered recursive system does. A robot may
-collect more data, recover from a failed grasp, or fine-tune a policy after deployment, but these
-remain forms of adaptation until a retained change reaches the mechanism that generates,
-evaluates, or selects later updates. The recursion becomes *physical* only when real interaction
-has a causal role in deciding what mechanism changes or survives.
+collect more data, recover from a failed grasp, or fine-tune a policy after deployment. Retained
+capability gains may arise from updates to its execution system. Physical RSI additionally
+requires inherited revisions of the improvement procedure and independently verified gains in
+subsequent improvement across tasks. Grounding may come from real interaction or physics
+simulation; report which source drives each inherited change.
 
 This repository is for **Physical Recursive Self-Improvement** research, where we study how
 physical interaction can drive retained changes in embodied systems and the processes that improve
@@ -74,6 +90,7 @@ entry, you can:
 
 Explore the framework, paper collection, and open questions:
 
+- [🆕 Latest Papers](#latest-papers)
 - [From Evolution to Physical RSI](#from-evolution-to-physical-rsi)
 - [The Boundary](#the-boundary)
 - [Capability Map](#capability-map)
@@ -188,6 +205,10 @@ Some works span multiple functions and topics; each is listed once under the cat
 
 #### Self-Modifying Systems and Recursive Improvement
 
+<a id="paper-2610-13912"></a>
+
+- [RSI-Anything: Unlocking Recursive Self-Improvement with World Models](https://arxiv.org/abs/2610.13912v1) by Taoyong Cui et al. 2026. *Predictive selection, retained policy/workflow updates, and conditional world-model adaptation in computational and scientific tasks.*
+- [MetaRSI / RSI2: A Meta-Recursive Self-Improving System for Recursive Self-Improving Systems Themselves](https://arxiv.org/abs/2609.06396v2) by Zihan Tan et al. 2026. *Data, harness, and model operators with an editable scheduler; evaluated on digital coding and science/mathematics tasks.*
 - [Hyperagents](https://arxiv.org/html/2603.19461v1) by Jenny Zhang et al. 2026.
 - [SelfSearch: Reward-Free Search for Self-Improving Agents](https://arxiv.org/html/2609.37968v2) by Jungwoo Yang et al. 2026.
 - [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](https://arxiv.org/abs/2505.22954) by Jenny Zhang et al. 2026.
@@ -231,6 +252,9 @@ Memory, skills, tools, and workflows used during task execution, together with m
 
 Includes persistent execution guidance and tool documentation, as well as explicit memory systems.
 
+<a id="paper-2609-37583"></a>
+
+- [RoboHarn-Evo: Evolving Hierarchical Physical Knowledge for Self-Improving Robotic Manipulation](https://arxiv.org/abs/2609.37583v2) by Shifeng Bao et al. 2026. *Task- and action-level knowledge is revised from interaction and reused on held-out configurations.*
 - [Beyond Static Toolsets: Self-Evolving LLM Tool Agents via Continual Documentation Adaptation](https://aclanthology.org/2026.findings-acl.1082/) by Bin Wu et al. 2026.
 - [HomeBody: A humanoid that explores, remembers, and acts on its own](https://tml.stanford.edu/homebody/) by Gio Huh et al. 2026.
 - [Know Your Body: A Harness for Direct and Self-Improving Robot Control with VLMs](https://arxiv.org/html/2609.28530v1) by Zeyu Lou et al. 2026.
@@ -250,6 +274,13 @@ Includes persistent execution guidance and tool documentation, as well as explic
 
 #### Skill Libraries and Tool Construction
 
+<a id="paper-2610-18867"></a>
+
+- [EmbodiedEvo: Self-Evolving Coding Agent For Physical Intelligence](https://arxiv.org/abs/2610.18867v2) by Wenyi Li et al. 2026. *Freezes Playground-acquired code Skills and diagnostic Lessons for fresh agents in unseen RoboDojo-Sim scenes.*
+
+<a id="paper-2610-12369"></a>
+
+- [Embodied Turing Machines: Stateful Code for Robot Recursive Self-Improvement](https://arxiv.org/abs/2610.12369v1) by Kairui Hu et al. 2026. *Method: Code-Only-as-Policy (COAP); coding agents improve a shared library offline, with fixed code controlling runtime execution.*
 - [Act-Observe-Rewrite: Multimodal Coding Agents as In-Context Policy Learners for Robot Manipulation](https://arxiv.org/html/2603.04466v1) by Vaishak Kumar. 2026.
 - [ASPIRE: Agentic /Skills Discovery for Robotics](https://arxiv.org/html/2607.00272v1) by Runyu Lu et al. 2026.
 - [Dynamo: Dynamic Skill-Tool Evolution for Vision-Language Agents](https://arxiv.org/html/2606.30185v1) by Yutao Sun et al. 2026.
@@ -275,6 +306,18 @@ Includes persistent execution guidance and tool documentation, as well as explic
 
 #### Planning and Workflows
 
+<a id="paper-2610-10498"></a>
+
+- [EmbodiedRSI: Active Continual Robot Learning Through Hypothesis-Guided Co-Evolution](https://arxiv.org/abs/2610.10498v1) by Python Song et al. 2026. *Hypothesis graphs, value-of-information experiment selection, code–skill co-evolution, and reward-grounded memory management.*
+
+<a id="paper-2610-08995"></a>
+
+- [PhysEvo: Astra Can Act, Let It](https://arxiv.org/abs/2610.08995v1) by Wenqing Tian et al. 2026. *Retained revisions to execution tools, skills, and meta-agent diagnostic utilities around a frozen model.*
+- [Self-Evolving Coding Agents: From Digital Programs to Physical-World Intelligence](https://arxiv.org/abs/2609.35432v1) by Hongcheng Gao et al. 2026. *Method: Physical Coding / HexaAnything; separate harness, tool, and initial trace-to-model improvements from the broader co-evolution roadmap.*
+- [AdaHVLA: Adaptive Harnesses for Long-Horizon Vision-Language-Action Execution](https://arxiv.org/abs/2609.29204v1) by Junyi Tang et al. 2026. *Retains coordination-code revisions and their supporting evidence; changing the execution harness does not alone establish a better improvement procedure.*
+- [Show-Harness: Just a VLM Agent Can Play Robots](https://arxiv.org/abs/2609.10522v1) by Yanzhe Chen et al. 2026. *Semantic robot-control interfaces and GUI-based demonstration collection.*
+- [Zetta ζ: An Efficient Closed-Loop Embodied Harness for Self-Evolving Physical Intelligence](https://arxiv.org/abs/2608.16590v1) by Xin Ding et al. 2026. *Runtime critics, recovery skills, and validation-gated harness updates around a frozen policy.*
+- [RoboHarness: Memory-Driven Orchestration of Heterogeneous Robot Policies for Long-Horizon Planning](https://arxiv.org/abs/2607.18060v3) by Jinbang Huang et al. 2026. *Capability-aware policy routing, Memory Bridge handoffs, and execution-log-driven refinement.*
 - [Don’t Drop the BATON: Long-Horizon Robot Manipulation via Agentic Subtask Exploration and Transition-aware Memory](https://arxiv.org/html/2608.16889v3) by Bingxin Xu et al. 2026.
 - [Harness VLA: Steering Frozen VLAs into Reliable Manipulation Primitives via Memory-Guided Agents](https://arxiv.org/html/2607.08448v5) by Yixian Zhang et al. 2026.
 - [HarnessPAI: An Evolving Harness for Physical AI](https://arxiv.org/html/2609.29166v1) by Xin Wang et al. 2026.
@@ -313,6 +356,8 @@ Data preparation, learning methods, and learned models for robot improvement, in
 
 #### Data Preparation and Generation
 
+- [Skill-Space Shooting for Autonomous Robot Policy Improvement](https://arxiv.org/abs/2609.38178v1) by Zihang Rui et al. 2026. *Demonstrated skills supply autonomously selected corrective trials for policy training; policy-only evaluation separates retained learning from online repair assistance.*
+- [RoboClaw: An Agentic Framework for Scalable Long-Horizon Robotic Tasks](https://arxiv.org/abs/2603.11558v1) by Ruiying Li et al. 2026. *Forward/inverse action pairs support self-resetting real-robot collection and iterative policy refinement; initial demonstrations and later interventions remain part of the protocol.*
 - [RoboCoach: World Models as Active Coaches for Compositional Robot Skills](https://arxiv.org/abs/2609.39685) by Jiajun Liu et al. 2026.
 - [DataMIL: Selecting Data for Robot Imitation Learning with Datamodels](https://arxiv.org/abs/2505.09603) by Shivin Dass et al. 2026.
 - [Scaling sim-to-real vla reinforcement learning with generative 3d worlds](https://arxiv.org/abs/2603.18532) by Andrew Choi et al. 2026.
@@ -374,6 +419,7 @@ Data preparation, learning methods, and learned models for robot improvement, in
 
 #### Reinforcement Learning and Autonomous Practice
 
+- [Robot Self-Improvement via Human-Video Dynamics Models](https://arxiv.org/abs/2606.21406v1) by Hanzhi Chen et al. 2026. *Method: DGAC; robot-adapted dynamics and value models turn failed states into corrective policy supervision, following initial target-task teleoperation.*
 - [Beyond imitation: Self-improving robot policies via off-policy q-planning](https://arxiv.org/abs/2608.21204) by Varun Giridhar et al. 2026.
 - [Embodied Learning under Policy and Dynamics Shifts](https://doi.org/10.1093/nsr/nwag506) by Yu Luo et al. 2026. *Method: OMPO.*
 - [Find Something You Can’t Do: Agentic Real-World Reinforcement Learning for Self-Improving VLA Models](https://arxiv.org/abs/2609.32069v1) by Yuan Fang et al. 2026.
@@ -414,7 +460,11 @@ Data preparation, learning methods, and learned models for robot improvement, in
 
 #### Self-Supervised and Representation Learning
 
+<a id="paper-2610-10270"></a>
+
+- [Video Prediction Policy 2: Predict Better, Act Better](https://arxiv.org/abs/2610.10270v3) by Yanjiang Guo et al. 2026. *Method: VPP2; manipulation-video pretraining, visual-planner distillation, and world-action modeling.*
 - [RoboTTT: Context Scaling for Robot Policies](https://arxiv.org/abs/2607.15275) by Yunfan Jiang et al. 2026.
+- [Self-Improving Loops for Visual Robotic Planning](https://arxiv.org/abs/2506.06658v3) by Calvin Luo et al. 2025. *Method: SILVR; inspected version: v3. Successful self-produced trajectories fine-tune a video planner; the improvement recipe is not thereby shown to evolve.*
 - [Latent action pretraining from videos](https://arxiv.org/abs/2410.11758) by Seonghyeon Ye et al. 2025.
 - [Learning interactive real-world simulators](https://arxiv.org/abs/2310.06114) by Sherry Yang et al. 2024.
 - [LIV: Language-Image Representations and Rewards for Robotic Control](https://arxiv.org/abs/2306.00958) by Yecheng Jason Ma et al. 2023.
@@ -475,6 +525,7 @@ Safety during learning, acceptance, and deployment, including runtime safeguards
 
 #### Safe Exploration and Constrained Learning
 
+- [PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation](https://arxiv.org/abs/2606.08414v1) by Lingxuan Wu et al. 2026. *Constraint-gradient post-training of diffusion policies with a progressively tightened safety curriculum.*
 - [CBF-RL: Safety Filtering Reinforcement Learning in Training with Control Barrier Functions](https://arxiv.org/abs/2510.14959) by Lizhi Yang et al. 2026.
 - [Safe Continual Reinforcement Learning in Non-stationary Environments](https://arxiv.org/abs/2604.19737) by Austin Coursey et al. 2026.
 - [ROSCOM: Robust Safe Reinforcement Learning on Stochastic Constraint Manifolds](https://doi.org/10.1109/TASE.2024.3431530) by Shangding Gu et al. 2025.
@@ -591,6 +642,8 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 
 #### Task Learning, Performance, and Generalization
 
+- [RoboQuest: Generalist Physical Agents that Search, Inspect and Test](https://arxiv.org/abs/2610.10388v1) by Liu Renhang et al. 2026. *Tests goal-directed search, inspection, and interactive testing within an episode; cross-episode inheritance requires an additional protocol.*
+- [EmbodiedMemory-Bench: Benchmarking Embodied Memory for Long-Horizon Embodied Tasks](https://arxiv.org/abs/2609.28236v1) by Lizhou Liang et al. 2026. *Tests memory-conditioned action and experience generalization; it does not alone show improvement of the memory-construction procedure.*
 - [RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots](https://arxiv.org/abs/2603.04356) by Soroush Nasiriany et al. 2026.
 - [EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents](https://proceedings.mlr.press/v267/yang25f.html) by Rui Yang et al. 2025.
 - [ManiSkill3: GPU Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI](https://arxiv.org/abs/2410.00425) by Stone Tao et al. 2025.
@@ -611,6 +664,7 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 
 #### Robustness and Physical-World Evaluation
 
+- [EmbodiedGovBench: A Benchmark for Governance, Recovery, and Upgrade Safety in Embodied Agent Systems](https://arxiv.org/abs/2604.11174v1) by Xue Qin et al. 2026. *Governance measurement framework with prototype instantiations; released artifacts and empirical coverage require separate checks.*
 - [RoboTwin 2.0: A Scalable Data Generator and Benchmark with Strong Domain Randomization for Robust Bimanual Robotic Manipulation](https://proceedings.mlr.press/v306/chen26j.html) by Tianxing Chen et al. 2026.
 - [VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models](https://proceedings.mlr.press/v306/zhang26cp.html) by Borong Zhang et al. 2026.
 - [RoboDojo: A Unified Sim-and-Real Benchmark for Comprehensive Evaluation of Generalist Robot Manipulation Policies](https://arxiv.org/abs/2607.04434) by Tianxing Chen et al. 2026.
@@ -619,6 +673,7 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 - [REALM: A Real-to-Sim Validated Benchmark for Generalization in Robotic Manipulation](https://arxiv.org/abs/2512.19562) by Martin Sedlacek et al. 2025.
 - [AutoEval: Autonomous Evaluation of Generalist Robot Manipulation Policies in the Real World](https://arxiv.org/abs/2503.24278v1) by Zhiyuan Zhou et al. 2025.
 - [RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies](https://proceedings.mlr.press/v305/atreya25a.html) by Pranav Atreya et al. 2025.
+- [AGENTSAFE: Benchmarking the Safety of Embodied Agents on Hazardous Instructions](https://arxiv.org/abs/2506.14697) by Zonghao Ying et al. 2025. *Simulated safety assessment across perception, planning, and execution; distinct from the SAFE failure detector in Runtime Control and Failure Monitoring.*
 - [Evaluating Real-World Robot Manipulation Policies in Simulation](https://arxiv.org/abs/2405.05941) by Xuanlin Li et al. 2024. *Benchmark: SIMPLER.*
 - [THE COLOSSEUM: A Benchmark for Evaluating Generalization for Robotic Manipulation](https://arxiv.org/abs/2402.08191) by Wilbert Pumacay et al. 2024.
 
@@ -638,6 +693,7 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 
 #### Robot Engineering and Development
 
+- [Embodied-BenchForge: A Closed-Loop Agentic Workflow for Embodied Benchmark Construction](https://arxiv.org/abs/2609.13082v1) by Baoyang Jiang et al. 2026. *Constructs and repairs benchmark artifacts with dependency tracking; development-time verification is distinct from protected final evaluation.*
 - [CaP-X: A Framework for Benchmarking and Improving Coding Agents for Robot Manipulation](https://proceedings.mlr.press/v306/fu26u.html) by Letian Fu et al. 2026. *Benchmark: CaP-Bench (CaP-X).*
 - [From Digital to Physical: Digital Agents as Autonomous Coaches for Physical Intelligence](https://arxiv.org/abs/2601.21570) by Zixing Lei et al. 2026. *Benchmark: RoboCoach-Bench.*
 - [RLE-Bench: A Qualifying Exam for Coding Agents as Robot Learning Engineers](https://arxiv.org/abs/2609.34210) by Haitong Ma et al. 2026.

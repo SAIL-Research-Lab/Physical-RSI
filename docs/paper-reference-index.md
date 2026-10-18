@@ -3,6 +3,10 @@
 This index aligns the repository with `IEEE_TPAMI__Physical_RSI-34.pdf` (54 pages; bibliography on PDF pages 31–54).
 It covers **all 292 bibliography records**, consolidated into **278 works and resources** after merging **13 duplicate groups** (14 excess records). Each consolidated work appears once in the [Paper Catalog](../README.md#paper-catalog).
 
+These counts describe the fixed v34 bibliography snapshot. The live README catalog also includes
+subsequent literature supplements, including additions reviewed on 18 October 2026. Such additions
+do not receive v34 audit identifiers or change the bibliography counts recorded here.
+
 Entries follow the manuscript bibliography order. `R001`–`R292` are audit identifiers assigned in that order, not reference numbers printed in the PDF. Duplicate records share a work entry and retain their individual identifiers, BibTeX keys, pages, and extracted reference text below.
 
 Titles have minor spacing and capitalization cleanup; the compact citation uses the year and authors of the indicated representative record. A publication record is preferred over its duplicate preprint when unambiguous. The Gödel Machines entry follows the manuscript’s 2003 report, rather than the 2007 chapter formerly linked in the catalog.
@@ -5416,9 +5420,9 @@ Source links: [Link 1](https://doi.org/10.52202/085713-2483) · [Link 2](https:/
 | Original bibliography records | 292 |
 | Duplicate groups | 13 |
 | Excess records merged | 14 |
-| Consolidated catalog entries | 278 |
+| Consolidated v34 index entries | 278 |
 | Bibliography records represented in the index | 292 / 292 |
-| Catalog entries without a v34 bibliography record | 0 |
+| Entries in this index without a v34 bibliography record | 0 |
 
 ### Duplicate groups
 
