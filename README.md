@@ -84,7 +84,7 @@ entry, you can:
 
 - fork this repository and open a pull request;
 - [report an issue](https://github.com/SAIL-Research-Lab/Physical-RSI/issues);
-- or email <shangding.gu@berkeley.edu>.
+- or email <shangding.gu@sjtu.edu.cn>.
 
 **Content**
 
