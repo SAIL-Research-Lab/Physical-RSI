@@ -736,8 +736,8 @@ These are gaps scoped to the reviewed manuscript, not claims that no related wor
 ## Citation
 If you find the repository useful, please cite the study
 ``` Bash
-@misc{zhou2026physicalrsi,
-  title         = {{Who Improves the Robot? Toward Physical Recursive Self-Improvement}},
+@article{zhou2026improves,
+  title={Who Improves the Robot? Toward Physical Recursive Self-Improvement},
   author        = {Hai Zhou and Fan Yang and Zeyi Chen and Lejun Zhang
                    and Chenyang Fu and Jianping Li and Jiayi Zhu
                    and Xianyang Liu and Yingxuan Yang and Lili Meng
@@ -748,11 +748,9 @@ If you find the repository useful, please cite the study
                    and Joey Tianyi Zhou and Costas Spanos and Xia Hu
                    and Mac Schwager and Weinan Zhang and Qian Feng
                    and Shangding Gu},
-  year          = {2026},
-  eprint        = {2610.18842},
-  archivePrefix = {arXiv},
-  primaryClass  = {cs.AI},
-  url           = {https://arxiv.org/abs/2610.18842}
+  journal={arXiv preprint arXiv:2610.18842},
+  year={2026},
+  url= {https://arxiv.org/abs/2610.18842}
 }
 ```
 
