@@ -139,7 +139,7 @@ The framework separates **what changes** from **where the retained gain transfer
 - **Harness adaptation:** use execution feedback and improvement history to update memory, skills, tools, and workflows, retaining adopted changes for later execution.
 - **Model training:** collect and select experience, evaluate outcomes and assign credit,
   update model parameters, then verify and consolidate accepted changes.
-- **Safety and control:** constrain trials and reassess safeguards as the system changes.
+- **[Safety and control](docs/safety_and_control.md):** constrain trials and reassess safeguards as the execution system, improvement procedure, and environment change.
 - **Verification and evaluation:** decide which changes may be retained, then independently
   measure their later benefit.
 - **Benchmarks:** assess task performance, robustness, feedback reliability, and development
@@ -519,11 +519,15 @@ Data preparation, learning methods, and learned models for robot improvement, in
 
 ### Safety and Assurance
 
-Safety during learning, acceptance, and deployment, including runtime safeguards, oversight, and integrity of the improvement process.
+Safety must hold during experience collection, update acceptance, and deployment as both the execution system and its improvement procedure evolve. Retaining an update, authorizing physical operation, and establishing recursive gain require different evidence.
+
+The **[Safety and Control guide](docs/safety_and_control.md)** follows Section 5 of the paper, explaining what the cited methods support, which assumptions can fail after an update, and what must be reassessed. It also connects safety-related work cataloged under training and verification. See its [evidence table](docs/safety_and_control.md#safety-evidence-across-generations) for a summary of checks before reusing earlier results.
 
 <a id="safety-learning"></a>
 
 #### Safe Exploration and Constrained Learning
+
+Constrain the learning process as well as the final policy. Expected-cost control does not exclude individual violations, and retaining task performance does not by itself preserve safety under changing conditions.
 
 - [PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation](https://arxiv.org/abs/2606.08414v1) by Lingxuan Wu et al. 2026. *Constraint-gradient post-training of diffusion policies with a progressively tightened safety curriculum.*
 - [CBF-RL: Safety Filtering Reinforcement Learning in Training with Control Barrier Functions](https://arxiv.org/abs/2510.14959) by Lizhi Yang et al. 2026.
@@ -547,6 +551,8 @@ Safety during learning, acceptance, and deployment, including runtime safeguards
 
 #### Safe Transfer and Update Acceptance
 
+Check whether evidence transfers with the policy, including data coverage, state mappings, and action compatibility. Acceptance determines inheritance. Release separately requires evidence for operation under the intended conditions and safeguards.
+
 - [Robust Transfer of Safety-Constrained Reinforcement Learning Agents](https://proceedings.iclr.cc/paper_files/paper/2025/file/e59bf9a9077c361ed57180fc79c5b8d8-Paper-Conference.pdf) by Markel Zubia et al. 2025.
 - [Sim-to-Lab-to-Real: Safe Reinforcement Learning with Shielding and Generalization Guarantees](https://doi.org/10.1016/j.artint.2022.103811) by Kai-Chieh Hsu et al. 2023.
 - [Towards Safe Policy Improvement for Non-Stationary MDPs](https://proceedings.neurips.cc/paper/2020/hash/680390c55bbd9ce416d1d69a9ab4760d-Abstract.html) by Yash Chandak et al. 2020.
@@ -558,6 +564,8 @@ Safety during learning, acceptance, and deployment, including runtime safeguards
 <a id="safety-runtime"></a>
 
 #### Runtime Control and Failure Monitoring
+
+Connect warnings and action restrictions to feasible backup control. Changes to policies, features, dynamics, or interfaces require joint checks of detection errors, response delays, and recovery feasibility.
 
 - [Failure Identification in Imitation Learning Via Statistical and Semantic Filtering](https://arxiv.org/abs/2604.13788v1) by Quentin Rolland et al. 2026.
 - [Code-as-Monitor: Constraint-Aware Visual Programming for Reactive and Proactive Robotic Failure Detection](https://openaccess.thecvf.com/content/CVPR2025/html/Zhou_Code-as-Monitor_Constraint-aware_Visual_Programming_for_Reactive_and_Proactive_Robotic_Failure_CVPR_2025_paper.html) by Enshen Zhou et al. 2025.
@@ -583,6 +591,8 @@ Safety during learning, acceptance, and deployment, including runtime safeguards
 
 #### Oversight and Integrity Protection
 
+Protect safety requirements, independent evaluation, and effective interruption as the improvement procedure changes. Record human safety interventions separately from human contributions to learning or selection of inherited updates.
+
 - [Reward Hacking Challenges Oversight of Autonomous Research Agents](https://arxiv.org/abs/2609.28614) by Yue Huang et al. 2026.
 - [Not What You’ve Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection](https://arxiv.org/abs/2302.12173) by Kai Greshake et al. 2023.
 - [Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners](https://proceedings.mlr.press/v229/ren23a.html) by Allen Z. Ren et al. 2023.
@@ -592,6 +602,8 @@ Safety during learning, acceptance, and deployment, including runtime safeguards
 <a id="safety-foundations"></a>
 
 #### Safety Surveys and Risk Taxonomies
+
+Use these overviews to distinguish guarantees, empirical evidence, and proposed risk frameworks. The scope and assumptions of each result matter when applying it to an evolving improvement procedure.
 
 - [Evolutionary safety of recursive self-improving AI: Taxonomy, risk discovery, and evaluation](https://arxiv.org/abs/2609.31186) by Chang Gong et al. 2026.
 - [A Review of Safe Reinforcement Learning: Methods, Theories, and Applications](https://doi.org/10.1109/TPAMI.2024.3457538) by Shangding Gu et al. 2024.
@@ -728,7 +740,7 @@ Section 7 of the v35 manuscript identifies six open problems, listed in manuscri
 - **Causal attribution across harness components:** distinguish failures in memory, skills, and workflows from their interactions, and isolate the effects of concurrent edits under limited physical trial budgets.
 - **Non-stationarity in the improvement loop:** track changing component dependencies and physical conditions, and reassess past evidence and improvement strategies without excessive revalidation costs.
 - **Reward hacking and evaluation leakage:** independently check physical outcomes, control evaluation feedback, and use fresh or statistically corrected final tests to distinguish real gains from exploitation of imperfect judgments.
-- **Safety across recursive updates:** selectively revalidate assumptions and safeguards as procedures evolve, preserve protected requirements and effective interruption, and account for risk from rejected trials, resets, and recovery.
+- **[Safety across recursive updates](docs/safety_and_control.md#open-direction-safety-across-recursive-updates):** extend safety evidence to evolving procedures and verifiers through selective reassessment under limited physical trial budgets. Preserve protected requirements, valid risk bounds, and effective interruption, while accounting for risk incurred by rejected trials, resets, and recovery.
 - **Benchmarking verified recursive gain:** track autonomous procedure revisions, inheritance, and reuse, and compare successive procedures from the same starting system and experience under matched tasks and resource budgets.
 
 These are gaps scoped to the reviewed manuscript, not claims that no related work exists elsewhere.
