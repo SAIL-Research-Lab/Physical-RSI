@@ -76,7 +76,7 @@ not a leaderboard: labels such as "self-improving," "autonomous," or "lifelong" 
 evidence on their own.
 
 This repository is actively maintained. If an author would prefer not to have a paper listed here,
-please contact <shangding.gu@berkeley.edu>. Constructive comments, corrections, and suggestions are
+please contact <shangding.gu@sjtu.edu.cn>. Constructive comments, corrections, and suggestions are
 welcome.
 
 You are also welcome to update the collection. To suggest a missing paper or correct an existing
