@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2610.18842"><img src="https://img.shields.io/badge/arXiv-2610.18842-b31b1b?style=flat-square" alt="Paper"></a>
-  <a href="#paper-catalog"><img src="https://img.shields.io/badge/catalog-324_works-2563eb?style=flat-square" alt="324 works and resources in the paper catalog"></a>
+  <a href="#paper-catalog"><img src="https://img.shields.io/badge/catalog-325_works-2563eb?style=flat-square" alt="325 works and resources in the paper catalog"></a>
   <a href="#capability-map"><img src="https://img.shields.io/badge/taxonomy-L0--L5-7c3aed?style=flat-square" alt="L0 to L5 capability taxonomy"></a>
 </p>
 
@@ -234,6 +234,7 @@ Some works span multiple functions and topics; each is listed once under the cat
 - [Self-improving agents in the era of experience: A survey of self- to meta-evolution](https://openreview.net/pdf?id=IUltZSgLMm) by Che Jiang et al. 2026.
 - [The last AI built by humans: Toward genuine recursive self-improvement](https://arxiv.org/abs/2609.11873) by Yi Duan et al. 2026.
 - [The path to recursive self-improving agents: Foundation, framework, and future directions](https://doi.org/10.20944/preprints202608.0051.v1) by Shuaiqi Liu et al. 2026.
+- [Toward Physical Recursive Self-Improvement: A Call for Body-Control Co-Design for Humanoid Robot](https://arxiv.org/abs/2510.03081v2) by Guiliang Liu et al. 2026. *NeurIPS 2026 Position Paper proposing humanoid body-control co-design as a route toward physical RSI, with constrained optimization and research directions for improving design search and controller adaptation across cycles.*
 - [A comprehensive survey of self-evolving AI agents: A new paradigm bridging foundation models and lifelong agentic systems](https://arxiv.org/abs/2508.07407) by Jinyuan Fang et al. 2025.
 - [AutoML: A Survey of the State-of-the-Art](https://doi.org/10.1016/j.knosys.2020.106622) by Xin He et al. 2021.
 - [Automated Machine Learning: Methods, Systems, Challenges](https://doi.org/10.1007/978-3-030-05318-5) by Frank Hutter et al. 2019.
