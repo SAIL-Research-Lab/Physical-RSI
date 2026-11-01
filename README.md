@@ -339,6 +339,7 @@ Includes persistent execution guidance and tool documentation, as well as explic
 #### Failure Diagnosis and Execution Recovery
 
 - [From Failed Trajectories to Reliable LLM Agents: Diagnosing and Repairing Harness Flaws](https://arxiv.org/html/2606.06324v2) by Mengzhuo Chen et al. 2026.
+- [Spotter: Let the Embodied Model Lead, and the VLM Reflect for It](https://arxiv.org/abs/2609.36808) by Long Li et al. 2026. *A VLM screens a frozen policy in parallel and repairs confirmed errors with motion primitives without scene resets; lessons learned on training seeds are frozen and retrieved at test time.*
 - [DoReMi: Grounding Language Model by Detecting and Recovering from Plan-Execution Misalignment](https://sites.google.com/view/doremi-paper) by Yanjiang Guo et al. 2024.
 
 <a id="catalog-robot-learning"></a>
