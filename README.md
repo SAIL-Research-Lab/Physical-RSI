@@ -644,6 +644,7 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 
 #### Task Learning, Performance, and Generalization
 
+- [Elastra: A Simulation Framework for Elastic Bodies](https://arxiv.org/abs/2611.15112) by Youran Sun et al. 2026. *MuJoCo simulation of elastic surfaces such as mattresses and trampolines, for training robot policies.*
 - [RoboQuest: Generalist Physical Agents that Search, Inspect and Test](https://arxiv.org/abs/2610.10388v1) by Liu Renhang et al. 2026. *Tests goal-directed search, inspection, and interactive testing within an episode; cross-episode inheritance requires an additional protocol.*
 - [EmbodiedMemory-Bench: Benchmarking Embodied Memory for Long-Horizon Embodied Tasks](https://arxiv.org/abs/2609.28236v1) by Lizhou Liang et al. 2026. *Tests memory-conditioned action and experience generalization; it does not alone show improvement of the memory-construction procedure.*
 - [RoboCasa365: A Large-Scale Simulation Framework for Training and Benchmarking Generalist Robots](https://arxiv.org/abs/2603.04356) by Soroush Nasiriany et al. 2026.
@@ -711,6 +712,7 @@ Datasets, task suites, evaluation resources, and benchmarks for embodied systems
 - [RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research](https://github.com/aiming-lab/RSI-Exam) by RSI-Exam Team. 2026.
 - [RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement](https://arxiv.org/abs/2607.25886) by Fanqing Meng et al. 2026.
 - [RSIGym: A Flexible Environment for Recursive Self-Improvement](https://arxiv.org/abs/2610.10310) by Fanqing Meng et al. 2026.
+- [SciΠvot: Benchmarking Principal-Investigator Judgment at Pivotal Moments of Scientific AutoResearch Agents](https://arxiv.org/abs/2610.21082) by Youran Sun et al. 2026. *248 principal-investigator judgment calls from 26 real research projects; four of five frontier models score below chance.*
 - [MemoryArena: Benchmarking Agent Memory in Interdependent Multi-Session Agentic Tasks](https://arxiv.org/abs/2602.16313) by Zexue He et al. 2026.
 - [Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions](https://openreview.net/forum?id=DT7JyQC3MR) by Yuanzhe Hu et al. 2026. *Benchmark: MemoryAgentBench.*
 - [MLGym: A New Framework and Benchmark for Advancing AI Research Agents](https://arxiv.org/abs/2502.14499) by Deepak Nathani et al. 2025. *Benchmark: MLGym-Bench.*
